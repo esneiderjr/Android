@@ -13,7 +13,7 @@ class _ReportsState extends State<Reports> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
-          title: const Text('Clotthy', style: TextStyle(color: Color.fromARGB(255, 0, 204, 255))),
+          title: const Text('Clotthy', style: TextStyle(color: Color.fromARGB(255, 0, 0, 0))),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
