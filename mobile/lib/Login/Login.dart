@@ -72,7 +72,7 @@ class _LoginState extends State<Login> {
                   Row(
                     children: <Widget>[
                       Image.asset(
-                        "assets/logo.png",
+                        'assets/logo.png',
                         wiLoginScreenUtil().setWidth(110),
                         height: ScreenUtil().setHeight(110),
                       ),
