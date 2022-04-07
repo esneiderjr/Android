@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'Widgets/FormCard.dart';
 
-class MyApp extends StatefulWidget {
+class Login extends StatefulWidget {
   @override
-  _MyAppState createState() => _MyAppState();
+  _LoginState createState() => _LoginState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _LoginState extends State<Login> {
   bool _isSelected = false;
 
   void _radio() {
@@ -73,7 +73,7 @@ class _MyAppState extends State<MyApp> {
                     children: <Widget>[
                       Image.asset(
                         "assets/logo.png",
-                        width: ScreenUtil().setWidth(110),
+                        wiLoginScreenUtil().setWidth(110),
                         height: ScreenUtil().setHeight(110),
                       ),
                       Text("LOGO",
