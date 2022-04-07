@@ -15,6 +15,8 @@ class _ReportsState extends State<Reports> {
       backgroundColor: const Color.fromARGB(250, 252, 255, 253),
       appBar: AppBar(
         leading: Container(
+          width: 15,
+          height: 25,
           decoration: const BoxDecoration(
               image: DecorationImage(
             image: AssetImage('images/clotthy.png'),
@@ -51,12 +53,19 @@ class _ReportsState extends State<Reports> {
                   textAlign: TextAlign.center,
                 ),
                 content: Container(
-                  height: 320,
-                  width: 210,
+                  height: 190,
+                  width: 150,
                   child: Column(
                     children: const [
+                      Divider(color: Colors.white),
                       Text(
                         'Fecha inicial',
+                        style: TextStyle(),
+                      ),
+                      TextField(),
+                      Divider(color: Colors.white),
+                      Text(
+                        'Fecha final',
                         textAlign: TextAlign.left,
                       ),
                       TextField()
