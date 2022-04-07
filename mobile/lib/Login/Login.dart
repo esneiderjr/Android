@@ -27,8 +27,8 @@ class _LoginState extends State<Login> {
             ? Container(
                 width: double.infinity,
                 height: double.infinity,
-                decoration:
-                    const BoxDecoration(shape: BoxShape.circle, color: Colors.black),
+                decoration: const BoxDecoration(
+                    shape: BoxShape.circle, color: Colors.black),
               )
             : Container(),
       );
@@ -44,10 +44,8 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-   
     return new Scaffold(
       backgroundColor: Colors.white,
-      
       body: Stack(
         fit: StackFit.expand,
         children: <Widget>[
@@ -66,14 +64,15 @@ class _LoginState extends State<Login> {
           ),
           SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.only(left: 28.0, right: 28.0, top: 60.0),
+              padding:
+                  const EdgeInsets.only(left: 28.0, right: 28.0, top: 60.0),
               child: Column(
                 children: <Widget>[
                   Row(
                     children: <Widget>[
                       Image.asset(
                         'assets/logo.png',
-                        wiLoginScreenUtil().setWidth(110),
+                        width: ScreenUtil().setWidth(110),
                         height: ScreenUtil().setHeight(110),
                       ),
                       Text("LOGO",
@@ -121,7 +120,8 @@ class _LoginState extends State<Login> {
                               borderRadius: BorderRadius.circular(6.0),
                               boxShadow: [
                                 BoxShadow(
-                                    color: const Color(0xFF6078ea).withOpacity(.3),
+                                    color:
+                                        const Color(0xFF6078ea).withOpacity(.3),
                                     offset: const Offset(0.0, 8.0),
                                     blurRadius: 8.0)
                               ]),
