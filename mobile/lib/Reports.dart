@@ -56,16 +56,9 @@ class _ReportsState extends State<Reports> {
                     children: [
                       const Text(
                         'Fecha inicial',
-                        textAlign: TextAlign.justify,
+                        textAlign: TextAlign.left,
                       ),
-                      Column(
-                        children: [
-                          ElevatedButton(
-                              style: ButtonStyle(),
-                              onPressed: () {},
-                              child: widget)
-                        ],
-                      )
+                      ListView()
                     ],
                   ),
                 ),
@@ -94,7 +87,7 @@ class _ReportsState extends State<Reports> {
             child: const Text(
               'Reportes',
               textAlign: TextAlign.left,
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(fontSize: 20, fontStyle: FontStyle.normal),
             )),
         // imagen de fondo
         Center(
