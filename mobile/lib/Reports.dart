@@ -32,74 +32,78 @@ class _ReportsState extends State<Reports> {
     }
 
     return Scaffold(
-      backgroundColor: Color.fromARGB(250, 252, 255, 253),
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: const Text('Clotthy',
-            style: TextStyle(color: Color.fromARGB(255, 0, 0, 0))),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          ButtonBar(
-            children: <Widget>[],
-          );
-        },
-        child: Icon(Icons.menu_outlined),
-      ),
-      body:
-          // este es el boton para generar reportes
-          Center(
-        child: Container(
-          width: 300,
-          height: 40,
-          child: ElevatedButton(
-            style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(
-                    Color.fromARGB(255, 36, 91, 189))),
-            onPressed: () {
-              // el AlertDialog para poder elegir la fecha del reporte
-              AlertDialog alert = AlertDialog(
-                title: const Text(
-                  'GENERAR REPORTE',
-                  // style: GoogleFonts.sourceSansPro(),
-                  textAlign: TextAlign.center,
-                ),
-                content: Container(
-                  height: 320,
-                  width: 210,
-                  child: Column(
-                    children: [
-                      Text(
-                        'Fecha inicial',
-                        textAlign: TextAlign.justify,
-                      ),
-                      Column(
-                        children: [
-                          ElevatedButton(onPressed: () {}, child: widget)
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-                actions: <Widget>[
-                  TextButton(
-                    child: const Text('OK'),
-                    onPressed: () {
-                      Navigator.pop(context, 'OK');
-                    },
-                  ),
-                ],
-              );
-              showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return alert;
-                  });
-            },
-            child: Text('Generar reporte'),
-          ),
+        backgroundColor: Color.fromARGB(250, 252, 255, 253),
+        appBar: AppBar(
+            backgroundColor: Colors.white,
+            titleSpacing: d,
+            ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            ButtonBar(
+              children: <Widget>[],
+            );
+          },
+          child: Icon(Icons.menu_outlined),
         ),
-      ),
-    );
+        body:
+            // este es el boton para generar reportes
+            Center(
+          child: Container(
+            decoration: BoxDecoration(
+                image: DecorationImage(
+              image: AssetImage('images/clotthy.png'),
+              fit: BoxFit.contain,
+            )),
+            child: ElevatedButton(
+              style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                      Color.fromARGB(255, 36, 91, 189))),
+              onPressed: () {
+                // el AlertDialog pbaara poder elegir la fecha del reporte
+                AlertDialog alert = AlertDialog(
+                  title: const Text(
+                    'GENERAR REPORTE',
+                    // style: GoogleFonts.sourceSansPro(),
+                    textAlign: TextAlign.center,
+                  ),
+                  content: Container(
+                    height: 320,
+                    width: 210,
+                    child: Column(
+                      children: [
+                        Text(
+                          'Fecha inicial',
+                          textAlign: TextAlign.justify,
+                        ),
+                        Column(
+                          children: [
+                            ElevatedButton(
+                                style: ButtonStyle(),
+                                onPressed: () {},
+                                child: widget)
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  actions: <Widget>[
+                    TextButton(
+                      child: const Text('OK'),
+                      onPressed: () {
+                        Navigator.pop(context, 'OK');
+                      },
+                    ),
+                  ],
+                );
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return alert;
+                    });
+              },
+              child: Text('Generar reporte'),
+            ),
+          ),
+        ));
   }
 }
