@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'Widgets/FormCard.dart';
 
-
 class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => new _MyAppState();
@@ -161,11 +160,11 @@ class _MyAppState extends State<MyApp> {
                   ),
                   SizedBox(
                     height: ScreenUtil().setHeight(40),
-                  ),                                     
-                    ],
-                  ) ,
+                  ),
+                ],
               ),
-            ),     
+            ),
+          ),
         ],
       ),
     );

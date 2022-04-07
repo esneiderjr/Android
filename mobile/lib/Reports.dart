@@ -29,13 +29,6 @@ class _ReportsState extends State<Reports> {
       body:
           // este es el boton para generar reportes
           Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('images/background_decoration.svg'),
-              fit: BoxFit.cover,
-              colorFilter: ColorFilter.mode(Colors.white, BlendMode.color)),
-        ),
-        color: Colors.black.withAlpha(25),
         width: 220,
         height: 40,
         child: ElevatedButton(
