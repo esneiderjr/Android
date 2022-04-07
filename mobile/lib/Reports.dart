@@ -11,15 +11,14 @@ class Reports extends StatefulWidget {
 class _ReportsState extends State<Reports> {
   @override
   Widget build(BuildContext context) {
-
-     Future <DateTime?> getDatePickerWidget() {
+    Future<DateTime?> getDatePickerWidget() {
       return showDatePicker(
           context: context,
           initialDate: DateTime.now(),
           firstDate: DateTime(2020),
           lastDate: DateTime(2022),
           builder: (context, child) {
-            return Theme(data: ThemeData.light(), child:widget);
+            return Theme(data: ThemeData.light(), child: widget);
           });
     }
 
@@ -32,7 +31,6 @@ class _ReportsState extends State<Reports> {
       });
     }
 
-   
     return Scaffold(
       backgroundColor: Color.fromARGB(250, 252, 255, 253),
       appBar: AppBar(
@@ -75,12 +73,9 @@ class _ReportsState extends State<Reports> {
                         'Fecha inicial',
                         textAlign: TextAlign.justify,
                       ),
-                      
                       Column(
                         children: [
-                          ElevatedButton(onPressed: (){
-                            
-                          }, child: child)
+                          ElevatedButton(onPressed: () {}, child: widget)
                         ],
                       )
                     ],
