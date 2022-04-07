@@ -26,48 +26,53 @@ class _ReportsState extends State<Reports> {
         },
         child: Icon(Icons.menu_outlined),
       ),
-      body: Center(
-        child: Container(
+      body:
           // este es el boton para generar reportes
-          color: Colors.black.withAlpha(25),
-          width: 280,
-          height: 40,
-          child: ElevatedButton(
-            style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(
-                    Color.fromARGB(255, 36, 91, 189))),
-            onPressed: () {
-              // el AlertDialog para poder elegir la fecha del reporte
-              AlertDialog alert = AlertDialog(
-                title: const Text(
-                  'GENERAR REPORTE',
-                  // style: GoogleFonts.sourceSansPro(),
-                  textAlign: TextAlign.center,
+          Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('images/background_decoration.svg'),
+              fit: BoxFit.cover,
+              colorFilter: ColorFilter.mode(Colors.white, BlendMode.color)),
+        ),
+        color: Colors.black.withAlpha(25),
+        width: 220,
+        height: 40,
+        child: ElevatedButton(
+          style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all<Color>(
+                  Color.fromARGB(255, 36, 91, 189))),
+          onPressed: () {
+            // el AlertDialog para poder elegir la fecha del reporte
+            AlertDialog alert = AlertDialog(
+              title: const Text(
+                'GENERAR REPORTE',
+                // style: GoogleFonts.sourceSansPro(),
+                textAlign: TextAlign.center,
+              ),
+              content: Container(
+                height: 320,
+                width: 210,
+                child: Column(
+                  children: [Text('')],
                 ),
-                content: Container(
-                  height: 320,
-                  width: 210,
-                  child: Column(
-                    children: [Text('')],
-                  ),
+              ),
+              actions: <Widget>[
+                TextButton(
+                  child: const Text('OK'),
+                  onPressed: () {
+                    Navigator.pop(context, 'OK');
+                  },
                 ),
-                actions: <Widget>[
-                  TextButton(
-                    child: const Text('OK'),
-                    onPressed: () {
-                      Navigator.pop(context, 'OK');
-                    },
-                  ),
-                ],
-              );
-              showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return alert;
-                  });
-            },
-            child: Text('Generar reporte'),
-          ),
+              ],
+            );
+            showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return alert;
+                });
+          },
+          child: Text('Generar reporte'),
         ),
       ),
     );
