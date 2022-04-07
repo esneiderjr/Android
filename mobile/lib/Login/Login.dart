@@ -4,7 +4,7 @@ import 'Widgets/FormCard.dart';
 
 class MyApp extends StatefulWidget {
   @override
-  _MyAppState createState() => new _MyAppState();
+  _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
@@ -44,12 +44,10 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.instance = ScreenUtil()..init(context);
-    ScreenUtil.instance =
-        ScreenUtil(width: 750, height: 1334, allowFontScaling: true);
+   
     return new Scaffold(
       backgroundColor: Colors.white,
-      resizeToAvoidBottomPadding: true,
+      
       body: Stack(
         fit: StackFit.expand,
         children: <Widget>[
