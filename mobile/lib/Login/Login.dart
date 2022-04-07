@@ -19,7 +19,7 @@ class _LoginState extends State<Login> {
   Widget radioButton(bool isSelected) => Container(
         width: 16.0,
         height: 16.0,
-        padding: EdgeInsets.all(2.0),
+        padding: const EdgeInsets.all(2.0),
         decoration: BoxDecoration(
             shape: BoxShape.circle,
             border: Border.all(width: 2.0, color: Colors.black)),
@@ -28,13 +28,13 @@ class _LoginState extends State<Login> {
                 width: double.infinity,
                 height: double.infinity,
                 decoration:
-                    BoxDecoration(shape: BoxShape.circle, color: Colors.black),
+                    const BoxDecoration(shape: BoxShape.circle, color: Colors.black),
               )
             : Container(),
       );
 
   Widget horizontalLine() => Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Container(
           width: ScreenUtil().setWidth(120),
           height: 1.0,
@@ -55,7 +55,7 @@ class _LoginState extends State<Login> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.only(top: 50.0),
+                padding: const EdgeInsets.only(top: 50.0),
                 child: Image.asset("assets/image_01.png"),
               ),
               Expanded(
@@ -66,7 +66,7 @@ class _LoginState extends State<Login> {
           ),
           SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.only(left: 28.0, right: 28.0, top: 60.0),
+              padding: const EdgeInsets.only(left: 28.0, right: 28.0, top: 60.0),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -94,18 +94,18 @@ class _LoginState extends State<Login> {
                     children: <Widget>[
                       Row(
                         children: <Widget>[
-                          SizedBox(
+                          const SizedBox(
                             width: 12.0,
                           ),
                           GestureDetector(
                             onTap: _radio,
                             child: radioButton(_isSelected),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 8.0,
                           ),
-                          Text("Remember me",
-                              style: TextStyle(
+                          const Text("Remember me",
+                              style: const TextStyle(
                                   fontSize: 12, fontFamily: "Poppins-Medium"))
                         ],
                       ),
@@ -114,23 +114,23 @@ class _LoginState extends State<Login> {
                           width: ScreenUtil().setWidth(330),
                           height: ScreenUtil().setHeight(100),
                           decoration: BoxDecoration(
-                              gradient: LinearGradient(colors: [
+                              gradient: const LinearGradient(colors: [
                                 Color(0xFF17ead9),
                                 Color(0xFF6078ea)
                               ]),
                               borderRadius: BorderRadius.circular(6.0),
                               boxShadow: [
                                 BoxShadow(
-                                    color: Color(0xFF6078ea).withOpacity(.3),
-                                    offset: Offset(0.0, 8.0),
+                                    color: const Color(0xFF6078ea).withOpacity(.3),
+                                    offset: const Offset(0.0, 8.0),
                                     blurRadius: 8.0)
                               ]),
                           child: Material(
                             color: Colors.transparent,
                             child: InkWell(
                               onTap: () {},
-                              child: Center(
-                                child: Text("SIGNIN",
+                              child: const Center(
+                                child: const Text("SIGNIN",
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontFamily: "Poppins-Bold",
@@ -150,7 +150,7 @@ class _LoginState extends State<Login> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       horizontalLine(),
-                      Text("Social Login",
+                      const Text("Social Login",
                           style: TextStyle(
                               fontSize: 16.0, fontFamily: "Poppins-Medium")),
                       horizontalLine()
