@@ -50,7 +50,7 @@ class _PqrsfState extends State<Pqrsf> {
         //     child: Text('tipo de solicitud'),
         //   )
         // ], onChanged: (valor){setState(() {
-          
+
         // });})
       ]),
     );
