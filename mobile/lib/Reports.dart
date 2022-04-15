@@ -73,10 +73,22 @@ class _ReportsState extends State<Reports> {
                   ),
                 ),
                 actions: <Widget>[
-                  TextButton(
-                    child: const Text('OK'),
+                  ElevatedButton(
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                            Color.fromARGB(255, 126, 128, 131))),
+                    child: const Text('Cancelar'),
                     onPressed: () {
-                      Navigator.pop(context, 'OK');
+                      Navigator.pop(context, 'cancelar');
+                    },
+                  ),
+                  ElevatedButton(
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                            Color.fromARGB(255, 36, 91, 189))),
+                    child: const Text('Aceptar'),
+                    onPressed: () {
+                      Navigator.pop(context, 'ok');
                     },
                   ),
                 ],
