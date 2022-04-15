@@ -1,170 +1,105 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'Widgets/FormCard.dart';
 
 class Login extends StatefulWidget {
+  static String id = 'login';
+
   @override
-  _LoginState createState() => _LoginState();
+  State<Login> createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
-  bool _isSelected = false;
-
-  void _radio() {
-    setState(() {
-      _isSelected = !_isSelected;
-    });
-  }
-
-  Widget radioButton(bool isSelected) => Container(
-        width: 16.0,
-        height: 16.0,
-        padding: const EdgeInsets.all(2.0),
-        decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border.all(width: 2.0, color: Colors.black)),
-        child: isSelected
-            ? Container(
-                width: double.infinity,
-                height: double.infinity,
-                decoration: const BoxDecoration(
-                    shape: BoxShape.circle, color: Colors.black),
-              )
-            : Container(),
-      );
-
-  Widget horizontalLine() => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: Container(
-          width: ScreenUtil().setWidth(120),
-          height: 1.0,
-          color: Colors.black26.withOpacity(.2),
-        ),
-      );
-
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      backgroundColor: Colors.white,
-      body: Stack(
-        fit: StackFit.expand,
-        children: <Widget>[
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(top: 50.0),
-                child: Image.asset("assets/image_01.png"),
+    return SafeArea(
+      child: Scaffold(
+        body: Center(
+          child:Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Flexible(
+                child: Image.asset('images/clotthy.png',
+                 height:200.0,
+              
+                ),
               ),
-              Expanded(
-                child: Container(),
-              ),
-              Image.asset("assets/image_02.png")
+              SizedBox(height:15.0,),
+              userTextField(),
+               SizedBox(height:15,),
+               passwordTextField(),
+               SizedBox(height:20.0,),
+               bottonLogin(),
             ],
           ),
-          SingleChildScrollView(
-            child: Padding(
-              padding:
-                  const EdgeInsets.only(left: 28.0, right: 28.0, top: 60.0),
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Image.asset(
-                        'assets/logo.png',
-                        width: ScreenUtil().setWidth(110),
-                        height: ScreenUtil().setHeight(110),
-                      ),
-                      Text("LOGO",
-                          style: TextStyle(
-                              fontFamily: "Poppins-Bold",
-                              fontSize: ScreenUtil().setSp(46),
-                              letterSpacing: .6,
-                              fontWeight: FontWeight.bold))
-                    ],
-                  ),
-                  SizedBox(
-                    height: ScreenUtil().setHeight(180),
-                  ),
-                  FormCard(),
-                  SizedBox(height: ScreenUtil().setHeight(40)),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                          const SizedBox(
-                            width: 12.0,
-                          ),
-                          GestureDetector(
-                            onTap: _radio,
-                            child: radioButton(_isSelected),
-                          ),
-                          const SizedBox(
-                            width: 8.0,
-                          ),
-                          const Text("Remember me",
-                              style: const TextStyle(
-                                  fontSize: 12, fontFamily: "Poppins-Medium"))
-                        ],
-                      ),
-                      InkWell(
-                        child: Container(
-                          width: ScreenUtil().setWidth(330),
-                          height: ScreenUtil().setHeight(100),
-                          decoration: BoxDecoration(
-                              gradient: const LinearGradient(colors: [
-                                Color(0xFF17ead9),
-                                Color(0xFF6078ea)
-                              ]),
-                              borderRadius: BorderRadius.circular(6.0),
-                              boxShadow: [
-                                BoxShadow(
-                                    color:
-                                        const Color(0xFF6078ea).withOpacity(.3),
-                                    offset: const Offset(0.0, 8.0),
-                                    blurRadius: 8.0)
-                              ]),
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: () {},
-                              child: const Center(
-                                child: const Text("SIGNIN",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontFamily: "Poppins-Bold",
-                                        fontSize: 18,
-                                        letterSpacing: 1.0)),
-                              ),
-                            ),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: ScreenUtil().setHeight(40),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      horizontalLine(),
-                      const Text("Social Login",
-                          style: TextStyle(
-                              fontSize: 16.0, fontFamily: "Poppins-Medium")),
-                      horizontalLine()
-                    ],
-                  ),
-                  SizedBox(
-                    height: ScreenUtil().setHeight(40),
-                  ),
-                ],
-              ),
+        ),      
+      )
+    );
+  }
+
+  Widget userTextField() {
+    return StreamBuilder(
+      builder: (BuildContext context, AsyncSnapshot snapshot){
+        return Container(
+          padding:EdgeInsets.symmetric(horizontal: 35.0),
+          child: TextField(
+            keyboardType: TextInputType.emailAddress,
+            decoration: InputDecoration(
+              icon: Icon(Icons.email),
+              hintText: 'Ejemplo@gmail.com',
+              labelText: 'Correo electronico',
+            ),
+            onChanged: (value){
+
+            }
+          ),
+        );
+      }
+    );
+  }
+
+  Widget passwordTextField() {
+    return StreamBuilder(
+      builder: (BuildContext context, AsyncSnapshot snapshot){
+        return Container(
+          padding:EdgeInsets.symmetric(horizontal: 35.0),
+          child: TextField(
+            keyboardType: TextInputType.emailAddress,
+            obscureText: true,
+            decoration: InputDecoration(
+              icon: Icon(Icons.lock),
+              hintText: 'Contraseña',
+              labelText: 'Ingresa tu contraseña',
+            ),
+            onChanged: (value){
+
+            }
+          ),
+        );
+      }
+    );
+  }
+
+  Widget bottonLogin() {
+    return StreamBuilder(
+      builder: (BuildContext context, AsyncSnapshot snapshot){
+        return RaisedButton(
+          child: Container(
+            padding:EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
+            child: Text('Iniciar sesion',
+            style: TextStyle(
+              fontSize: 16.0,
+              fontWeight: FontWeight.bold,
+             ),
             ),
           ),
-        ],
-      ),
+          shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+          ),
+          elevation: 10.0,
+          color: Color.fromARGB(255, 0, 89, 255),
+          onPressed:(){}
+        );
+      }
     );
   }
 }
+
