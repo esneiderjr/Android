@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/Login/screens/Pqrsf.dart';
 import 'package:mobile/Login/screens/Reports.dart';
+import 'package:mobile/Login/ui/input_decorations.dart';
 import 'package:mobile/login/widgets/widgets.dart';
+import 'package:mobile/providers/login_form_provider.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -19,9 +22,14 @@ class LoginScreen extends StatelessWidget {
                   Text("Iniciar sesion",
                       style: Theme.of(context).textTheme.headline5),
                   SizedBox(height: 30),
-                  _LoginForm(),
+
+                  ChangeNotifierProvider(
+                    create: (_) => LoginFormProvider(),
+                    child: _LoginForm(),
+                    ),
                 ],
-              )),
+               ),
+              ),
               SizedBox(height: 50),
             ],
           ),
@@ -34,71 +42,78 @@ class LoginScreen extends StatelessWidget {
 class _LoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+    final loginform = Provider.of<LoginFormProvider>(context);
+
     return Container(
       child: Form(
+        //TODO: Mantener La referencia al key
+        key: loginform.formKey,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+
         child: Column(
           children: [
             TextFormField(
               autocorrect: false,
               keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Color.fromARGB(255, 134, 136, 134),
-                  ),
-                ),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Color.fromARGB(255, 0, 47, 255),
-                    width: 2,
-                  ),
-                ),
-                hintText: "Correo@gmail.com",
+              decoration: InputDecorations.authInputDecoration(
+                hintext: "correo@gmail.com",
                 labelText: "Correo Electronico",
-                labelStyle: TextStyle(
-                  color: Colors.grey,
-                ),
-                prefixIcon: Icon(
-                  Icons.alternate_email_sharp,
-                  color: Color.fromARGB(255, 6, 106, 255),
-                ),
+                prefixIcon: Icons.alternate_email_rounded,
               ),
+              onChanged: (value) => loginform.email = value,
+              validator: (value) {
+                String pattern = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+                RegExp regExp = new RegExp(pattern);
+
+                return regExp.hasMatch(value ?? "")
+                  ? null
+                  :"El correo esta mal escrito";
+              },
             ),
+            SizedBox(height:10),
             TextFormField(
               autocorrect: false,
+              obscureText: true,
               keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Color.fromARGB(255, 134, 136, 134),
-                  ),
-                ),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Color.fromARGB(255, 0, 47, 255),
-                    width: 2,
-                  ),
-                ),
-                hintText: "Escribe tu contraseña",
+              decoration: InputDecorations.authInputDecoration(
+                hintext: "*****",
                 labelText: "Contraseña",
-                labelStyle: TextStyle(
-                  color: Colors.grey,
-                ),
-                prefixIcon: Icon(
-                  Icons.lock,
-                  color: Color.fromARGB(255, 6, 106, 255),
-                ),
+                prefixIcon: Icons.lock_outlined,
               ),
+              onChanged: (value) => loginform.password = value,
+                validator: (value) {
+                if (value != null && value.length >=6) return null;
+
+                return "La contraseña tiene que tener 6 caracteres";
+              },
             ),
-            ElevatedButton(
-                style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(
-                        Color.fromARGB(255, 36, 91, 189))),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Reports()));
-                },
-                child: Text('Iniciar sesion'))
+            SizedBox(height:35),
+            MaterialButton(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              disabledColor: Colors.grey,
+              elevation: 0,
+              color: Colors.lightBlue[800],
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 80, vertical: 15),
+                child: Text("Ingresar"),
+              ),
+              onPressed: () {
+                //todo login form
+                if (!loginform.isValidForm()) return;
+                Navigator.pushReplacementNamed(context, "home");
+              }),
+            // ElevatedButton(
+            //     style: ButtonStyle(
+            //         backgroundColor: MaterialStateProperty.all<Color>(
+            //             Color.fromARGB(255, 36, 91, 189))),
+            //     onPressed: () {
+            //       Navigator.push(context,
+            //           MaterialPageRoute(builder: (context) => Reports()));
+            //     },
+            //     child: Text('Iniciar sesion'))
           ],
         ),
       ),
