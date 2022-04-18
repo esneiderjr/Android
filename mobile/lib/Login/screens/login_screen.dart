@@ -58,10 +58,6 @@ class _LoginForm extends StatelessWidget {
                 labelStyle: TextStyle(
                   color: Colors.grey,
                 ),
-                prefixIcon: Icon(
-                  Icons.alternate_email_sharp,
-                  color: Color.fromARGB(255, 6, 106, 255),
-                ),
               ),
             ),
             TextFormField(
@@ -83,10 +79,6 @@ class _LoginForm extends StatelessWidget {
                 labelText: "Contraseña",
                 labelStyle: TextStyle(
                   color: Colors.grey,
-                ),
-                prefixIcon: Icon(
-                  Icons.lock,
-                  color: Color.fromARGB(255, 6, 106, 255),
                 ),
               ),
             ),
