@@ -8,11 +8,11 @@ class Reports extends StatefulWidget {
   @override
   State<Reports> createState() => _ReportsState();
 }
-
 class _ReportsState extends State<Reports> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return SafeArea(
+        child: Scaffold(
       backgroundColor: const Color.fromARGB(250, 252, 255, 253),
       appBar: AppBar(
         leading: Container(
@@ -22,7 +22,7 @@ class _ReportsState extends State<Reports> {
           const BoxDecoration(
               image: DecorationImage(
             image: AssetImage('images/clotthy.png'),
-            fit: BoxFit.contain,
+            fit: BoxFit.cover,
           )),
         ),
         backgroundColor: Colors.white,
@@ -122,6 +122,6 @@ class _ReportsState extends State<Reports> {
                   fit: BoxFit.contain,
                 )))),
       ]),
-    );
+    ));
   }
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Pqrsf extends StatefulWidget {
@@ -35,8 +37,8 @@ class _PqrsfState extends State<Pqrsf> {
         child: Icon(Icons.menu_outlined),
       ),
       body: Column(children: [
-        // este es el boton para generar reportes
         Divider(color: Colors.white.withOpacity(0.1)),
+        // este container contiene el titulo
         Container(
             width: 300,
             alignment: Alignment.bottomLeft,
@@ -45,6 +47,61 @@ class _PqrsfState extends State<Pqrsf> {
               textAlign: TextAlign.left,
               style: TextStyle(fontSize: 20, fontStyle: FontStyle.normal),
             )),
+        Divider(color: Colors.white.withOpacity(0.1)),
+        Divider(color: Colors.white.withOpacity(0.1)),
+        Container(
+            color: Colors.white,
+            height: 30,
+            width: 320,
+            child: TextFormField(
+                decoration: InputDecoration(
+                    hintText: "aqui va el tipo de solicitud",
+                    labelStyle: TextStyle(
+                      color: Colors.grey,
+                    )))),
+        Divider(color: Colors.white.withOpacity(0.1)),
+
+        ElevatedButton(
+            style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(
+                    Color.fromARGB(255, 39, 104, 136))),
+            onPressed: () {
+              final result = FilePicker.platform.pickFiles();
+            },
+            child: Text('adjuntar captura')),
+
+        Divider(color: Colors.white.withOpacity(0.1)),
+        Divider(color: Colors.white.withOpacity(0.1)),
+
+        Container(alignment: Alignment.topLeft, child: Text('Asunto')),
+        Divider(),
+
+        Container(
+          color: Colors.white,
+          height: 300,
+          width: 300,
+          child: TextFormField(
+            cursorHeight: 15,
+            autocorrect: false,
+            decoration: InputDecoration(
+              enabledBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: Color.fromARGB(255, 134, 136, 134),
+                ),
+              ),
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: Color.fromARGB(255, 0, 47, 255),
+                  width: 1,
+                ),
+              ),
+              hintText: "Descripcion",
+              labelStyle: TextStyle(
+                color: Colors.grey,
+              ),
+            ),
+          ),
+        ),
         // DropdownButton(items: [
         //   DropdownMenuItem(
         //     child: Text('tipo de solicitud'),

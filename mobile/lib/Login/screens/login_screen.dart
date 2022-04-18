@@ -59,7 +59,13 @@ class _LoginForm extends StatelessWidget {
               decoration: InputDecorations.authInputDecoration(
                 hintext: "correo@gmail.com",
                 labelText: "Correo Electronico",
+<<<<<<< HEAD
                 prefixIcon: Icons.alternate_email_rounded,
+=======
+                labelStyle: TextStyle(
+                  color: Colors.grey,
+                ),
+>>>>>>> d5d626af90e930e624e2bc4d0fcbde792d738bcb
               ),
               onChanged: (value) => loginform.email = value,
               validator: (value) {
@@ -79,7 +85,13 @@ class _LoginForm extends StatelessWidget {
               decoration: InputDecorations.authInputDecoration(
                 hintext: "*****",
                 labelText: "Contraseña",
+<<<<<<< HEAD
                 prefixIcon: Icons.lock_outlined,
+=======
+                labelStyle: TextStyle(
+                  color: Colors.grey,
+                ),
+>>>>>>> d5d626af90e930e624e2bc4d0fcbde792d738bcb
               ),
               onChanged: (value) => loginform.password = value,
                 validator: (value) {
