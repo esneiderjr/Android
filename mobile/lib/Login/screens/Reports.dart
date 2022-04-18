@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mobile/Login/screens/Pqrsf.dart';
 
 class Reports extends StatefulWidget {
   const Reports({Key? key}) : super(key: key);
@@ -28,9 +29,8 @@ class _ReportsState extends State<Reports> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Color.fromARGB(255, 36, 91, 189),
         onPressed: () {
-          const ButtonBar(
-            children: <Widget>[],
-          );
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Pqrsf()));
         },
         child: Icon(Icons.menu_outlined),
       ),
