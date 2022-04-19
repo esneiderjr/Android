@@ -5,6 +5,7 @@ import 'package:mobile/Login/ui/input_decorations.dart';
 import 'package:mobile/login/widgets/widgets.dart';
 import 'package:mobile/providers/login_form_provider.dart';
 import "package:provider/provider.dart";
+import 'package:mobile/Login/ui/animated.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -14,8 +15,10 @@ class LoginScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 200),
+              _HeaderImage(),
+              SizedBox(height: 20),
               CardContainer(
+                child: Center(
                   child: Column(
                 children: [
                   SizedBox(height: 10),
@@ -28,11 +31,29 @@ class LoginScreen extends StatelessWidget {
                     child: _LoginForm(),
                     ),
                 ],
+                  ),
                ),
               ),
               SizedBox(height: 50),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+class _HeaderImage extends StatelessWidget {
+  const _HeaderImage({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Container(
+        width: double.infinity,
+        margin: EdgeInsets.only(top: 15),
+        child: Image.asset('images/clotthy.png',height:135,
         ),
       ),
     );
@@ -66,9 +87,9 @@ class _LoginForm extends StatelessWidget {
                 String pattern = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
                 RegExp regExp = new RegExp(pattern);
 
-                return regExp.hasMatch(value ?? "")
+                return regExp.hasMatch(value ??"")
                   ? null
-                  :"El correo esta mal escrito";
+                  :"El correo esta mal escrito o tiene un espacio de mas";
               },
             ),
             SizedBox(height:10),
@@ -95,16 +116,35 @@ class _LoginForm extends StatelessWidget {
               ),
               disabledColor: Colors.grey,
               elevation: 0,
-              color: Colors.lightBlue[800],
+              color: Color.fromARGB(255, 36, 91, 189),
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 80, vertical: 15),
-                child: Text("Ingresar"),
+                child: Text ("Ingresar",
+                style: TextStyle(fontSize:16, color: Colors.white),
+                // style: Theme.of(context).textTheme.headline6
+                ),
               ),
               onPressed: () {
+                // _controller.forward(from: 0.0);
                 //todo login form
                 if (!loginform.isValidForm()) return;
                 Navigator.pushReplacementNamed(context, "home");
               }),
+              
+              SizedBox(height: 10),
+              MaterialButton(
+                child: Container(
+              child: Text(
+                "¿Ha olvidado su contraseña?",
+                      style: Theme.of(context).textTheme.bodyText1
+                  ),
+                ),
+                onPressed: () {
+                //todo login form
+                if (!loginform.isValidForm()) return;
+                Navigator.pushReplacementNamed(context, "Recuperar Contraseña");
+                }),
+                  SizedBox(height: 30),
             // ElevatedButton(
             //     style: ButtonStyle(
             //         backgroundColor: MaterialStateProperty.all<Color>(
@@ -114,6 +154,7 @@ class _LoginForm extends StatelessWidget {
             //           MaterialPageRoute(builder: (context) => Reports()));
             //     },
             //     child: Text('Iniciar sesion'))
+            
           ],
         ),
       ),

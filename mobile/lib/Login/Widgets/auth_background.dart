@@ -17,7 +17,7 @@ class AuthBackground extends StatelessWidget {
       child: Stack(
         children: [
           _CajaColor(),
-          _HeaderImage(),
+          // _HeaderImage(),
           this.child,
         ],
       ),
@@ -33,15 +33,11 @@ class _HeaderImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-       child: 
-      Flexible(
-        fit: FlexFit.loose,
       child: Container(
         width: double.infinity,
-        margin: EdgeInsets.only(top: 30),
+        margin: EdgeInsets.only(top: 15),
         child: Image.asset('images/clotthy.png',height:135,
-         ),
-      ),
+        ),
       ),
     );
   }
@@ -56,17 +52,17 @@ class _CajaColor extends StatelessWidget {
 
     return Container(
       width: double.infinity,
-      height: size.height * 0.6,
+      height: size.height * 0.7,
       decoration: _bluebackground(),
-      child: Stack(
-        children: [
-          Positioned(child: _Buble(), top: 90, left: 30),
-          Positioned(child: _Buble(), top: -40, left: -30),
-          Positioned(child: _Buble(), top: -50, right: -20),
-          Positioned(child: _Buble(), bottom: -50, left: 10),
-          Positioned(child: _Buble(), bottom: 120, right: 20),
-        ],
-      )
+      // child: Stack(
+      //   children: [
+      //     Positioned(child: _Buble(), top: 90, left: 30),
+      //     Positioned(child: _Buble(), top: -40, left: -30),
+      //     Positioned(child: _Buble(), top: -50, right: -20),
+      //     Positioned(child: _Buble(), bottom: -50, left: 10),
+      //     Positioned(child: _Buble(), bottom: 120, right: 20),
+      //   ],
+      // )
     );
   }
 
@@ -77,24 +73,24 @@ class _CajaColor extends StatelessWidget {
     ),
     gradient: LinearGradient(colors: [
       Color.fromARGB(255, 36, 91, 189),
-      Color.fromARGB(255, 59, 158, 240),
+      Color.fromARGB(255, 74, 112, 177),
     ]
     ),
   );
 }
 
 
-class _Buble extends StatelessWidget {
+// class _Buble extends StatelessWidget {
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 100,
-      height: 100,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(100),
-        color: Color.fromRGBO(255, 255, 255, 0.05),
-      )
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       width: 100,
+//       height: 100,
+//       decoration: BoxDecoration(
+//         borderRadius: BorderRadius.circular(100),
+//         color: Color.fromRGBO(255, 255, 255, 0.05),
+//       )
+//     );
+//   }
+// }
