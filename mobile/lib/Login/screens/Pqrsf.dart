@@ -21,7 +21,7 @@ class _PqrsfState extends State<Pqrsf> {
           height: 25,
           decoration: const BoxDecoration(
               image: DecorationImage(
-            image: AssetImage('images/clotthy.png'),
+            image: AssetImage('images/clotthy2.png'),
             fit: BoxFit.contain,
           )),
         ),
