@@ -20,19 +20,18 @@ class LoginScreen extends StatelessWidget {
               CardContainer(
                 child: Center(
                   child: Column(
-                children: [
-                  SizedBox(height: 10),
-                  Text("Iniciar sesion",
-                      style: Theme.of(context).textTheme.headline5),
-                  SizedBox(height: 30),
-
-                  ChangeNotifierProvider(
-                    create: (_) => LoginFormProvider(),
-                    child: _LoginForm(),
-                    ),
-                ],
+                    children: [
+                      SizedBox(height: 10),
+                      Text("Iniciar sesion",
+                          style: Theme.of(context).textTheme.headline5),
+                      SizedBox(height: 30),
+                      ChangeNotifierProvider(
+                        create: (_) => LoginFormProvider(),
+                        child: _LoginForm(),
+                      ),
+                    ],
                   ),
-               ),
+                ),
               ),
               SizedBox(height: 50),
             ],
@@ -42,6 +41,7 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
+
 class _HeaderImage extends StatelessWidget {
   const _HeaderImage({
     Key? key,
@@ -53,7 +53,9 @@ class _HeaderImage extends StatelessWidget {
       child: Container(
         width: double.infinity,
         margin: EdgeInsets.only(top: 15),
-        child: Image.asset('images/clotthy.png',height:135,
+        child: Image.asset(
+          'images/clotthy.png',
+          height: 135,
         ),
       ),
     );
@@ -63,7 +65,6 @@ class _HeaderImage extends StatelessWidget {
 class _LoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     final loginform = Provider.of<LoginFormProvider>(context);
 
     return Container(
@@ -84,15 +85,16 @@ class _LoginForm extends StatelessWidget {
               ),
               onChanged: (value) => loginform.email = value,
               validator: (value) {
-                String pattern = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+                String pattern =
+                    r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
                 RegExp regExp = new RegExp(pattern);
 
-                return regExp.hasMatch(value ??"")
-                  ? null
-                  :"El correo esta mal escrito o tiene un espacio de mas";
+                return regExp.hasMatch(value ?? "")
+                    ? null
+                    : "El correo esta mal escrito o tiene un espacio de mas";
               },
             ),
-            SizedBox(height:10),
+            SizedBox(height: 10),
             TextFormField(
               autocorrect: false,
               obscureText: true,
@@ -103,48 +105,48 @@ class _LoginForm extends StatelessWidget {
                 prefixIcon: Icons.lock_outlined,
               ),
               onChanged: (value) => loginform.password = value,
-                validator: (value) {
-                if (value != null && value.length >=6) return null;
+              validator: (value) {
+                if (value != null && value.length >= 10) return null;
 
-                return "La contraseña tiene que tener 6 caracteres";
+                return "La contraseña tiene que tener 10 caracteres";
               },
             ),
-            SizedBox(height:35),
+            SizedBox(height: 35),
             MaterialButton(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              disabledColor: Colors.grey,
-              elevation: 0,
-              color: Color.fromARGB(255, 36, 91, 189),
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 80, vertical: 15),
-                child: Text ("Ingresar",
-                style: TextStyle(fontSize:16, color: Colors.white),
-                // style: Theme.of(context).textTheme.headline6
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
                 ),
-              ),
-              onPressed: () {
-                // _controller.forward(from: 0.0);
-                //todo login form
-                if (!loginform.isValidForm()) return;
-                Navigator.pushReplacementNamed(context, "home");
-              }),
-              
-              SizedBox(height: 10),
-              MaterialButton(
+                disabledColor: Colors.grey,
+                elevation: 0,
+                color: Color.fromARGB(255, 36, 91, 189),
                 child: Container(
-              child: Text(
-                "¿Ha olvidado su contraseña?",
-                      style: Theme.of(context).textTheme.bodyText1
+                  padding: EdgeInsets.symmetric(horizontal: 80, vertical: 15),
+                  child: Text(
+                    "Ingresar",
+                    style: TextStyle(fontSize: 16, color: Colors.white),
+                    // style: Theme.of(context).textTheme.headline6
                   ),
                 ),
                 onPressed: () {
-                //todo login form
-                if (!loginform.isValidForm()) return;
-                Navigator.pushReplacementNamed(context, "Recuperar Contraseña");
+                  // _controller.forward(from: 0.0);
+                  //todo login form
+                  if (!loginform.isValidForm()) return;
+                  Navigator.pushReplacementNamed(context, "Reports");
                 }),
-                  SizedBox(height: 30),
+
+            SizedBox(height: 10),
+            MaterialButton(
+                child: Container(
+                  child: Text("¿Ha olvidado su contraseña?",
+                      style: Theme.of(context).textTheme.bodyText1),
+                ),
+                onPressed: () {
+                  //todo login form
+                  if (!loginform.isValidForm()) return;
+                  Navigator.pushReplacementNamed(
+                      context, "Recuperar Contraseña");
+                }),
+            SizedBox(height: 30),
             // ElevatedButton(
             //     style: ButtonStyle(
             //         backgroundColor: MaterialStateProperty.all<Color>(
@@ -154,7 +156,6 @@ class _LoginForm extends StatelessWidget {
             //           MaterialPageRoute(builder: (context) => Reports()));
             //     },
             //     child: Text('Iniciar sesion'))
-            
           ],
         ),
       ),
