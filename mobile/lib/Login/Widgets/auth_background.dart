@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 class AuthBackground extends StatelessWidget {
   final Widget child;
 
-  const AuthBackground({
-    Key? key,
-    required this.child
-    }) : super(key: key);
+  const AuthBackground({Key? key, required this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,21 +30,24 @@ class _HeaderImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Container(
-        width: double.infinity,
-        margin: EdgeInsets.only(top: 15),
-        child: Image.asset('images/clotthy.png',height:135,
-        ),
-      ),
+      child: Flexible(
+        fit: FlexFit.loose,
+        child: Container(
+          width: double.infinity,
+          margin: EdgeInsets.only(top: 30),
+          child: Image.asset(
+            'images/clotthy.png',
+            height: 135,
+           ),
+         ),
+       ),
     );
   }
 }
 
 class _CajaColor extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-
     final size = MediaQuery.of(context).size;
 
     return Container(
@@ -67,30 +67,26 @@ class _CajaColor extends StatelessWidget {
   }
 
   BoxDecoration _bluebackground() => BoxDecoration(
-    borderRadius: BorderRadius.only(
-      bottomRight: Radius.circular(100),
-      bottomLeft: Radius.circular(100),
-    ),
-    gradient: LinearGradient(colors: [
-      Color.fromARGB(255, 36, 91, 189),
-      Color.fromARGB(255, 74, 112, 177),
-    ]
-    ),
-  );
+        borderRadius: BorderRadius.only(
+          bottomRight: Radius.circular(100),
+          bottomLeft: Radius.circular(100),
+        ),
+        gradient: LinearGradient(colors: [
+          Color.fromARGB(255, 36, 91, 189),
+          Color.fromARGB(255, 36, 91, 189)
+        ]),
+      );
 }
 
-
 // class _Buble extends StatelessWidget {
-
 //   @override
 //   Widget build(BuildContext context) {
 //     return Container(
-//       width: 100,
-//       height: 100,
-//       decoration: BoxDecoration(
-//         borderRadius: BorderRadius.circular(100),
-//         color: Color.fromRGBO(255, 255, 255, 0.05),
-//       )
-//     );
+//         width: 100,
+//         height: 100,
+//         decoration: BoxDecoration(
+//           borderRadius: BorderRadius.circular(100),
+//           color: Color.fromRGBO(255, 255, 255, 0.05),
+//         ));
 //   }
 // }
