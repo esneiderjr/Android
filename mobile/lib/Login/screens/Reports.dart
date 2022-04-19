@@ -22,7 +22,7 @@ class _ReportsState extends State<Reports> {
           decoration: const BoxDecoration(
               image: DecorationImage(
             image: AssetImage('images/clotthy2.png'),
-            fit: BoxFit.fill,
+            fit: BoxFit.contain,
           )),
         ),
         backgroundColor: Colors.white,
