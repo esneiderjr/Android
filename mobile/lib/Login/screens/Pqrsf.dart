@@ -68,7 +68,7 @@ class _PqrsfState extends State<Pqrsf> {
             onPressed: () {
               final result = FilePicker.platform.pickFiles();
             },
-            child: Text('adjuntar captura')),
+            child: Text('Adjuntar captura')),
 
         Divider(color: Colors.white.withOpacity(0.1)),
         Divider(color: Colors.white.withOpacity(0.1)),
