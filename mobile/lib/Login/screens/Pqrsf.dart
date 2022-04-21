@@ -102,13 +102,16 @@ class _PqrsfState extends State<Pqrsf> {
             ),
           ),
         ),
-        // DropdownButton(items: [
-        //   DropdownMenuItem(
-        //     child: Text('tipo de solicitud'),
-        //   )
-        // ], onChanged: (valor){setState(() {
-
-        // });})
+        // DropdownButton(
+        //   items: [
+        //     DropdownMenuItem(
+        //       child: Text('tipo de solicitud'),
+        //     )
+        // ],
+        // onChanged: (valor){
+        //     setState(() {
+        //   });
+        // })
       ]),
     );
   }
