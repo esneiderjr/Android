@@ -8,6 +8,7 @@ class Reports extends StatefulWidget {
   @override
   State<Reports> createState() => _ReportsState();
 }
+
 class _ReportsState extends State<Reports> {
   @override
   Widget build(BuildContext context) {
@@ -16,13 +17,12 @@ class _ReportsState extends State<Reports> {
       backgroundColor: const Color.fromARGB(250, 252, 255, 253),
       appBar: AppBar(
         leading: Container(
-          width: 15,
+          width: 150,
           height: 25,
-          decoration: 
-          const BoxDecoration(
+          decoration: const BoxDecoration(
               image: DecorationImage(
-            image: AssetImage('images/clotthy.png'),
-            fit: BoxFit.cover,
+            image: AssetImage('images/clotthy2.png'),
+            fit: BoxFit.contain,
           )),
         ),
         backgroundColor: Colors.white,

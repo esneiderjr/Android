@@ -14,7 +14,7 @@ class AuthBackground extends StatelessWidget {
       child: Stack(
         children: [
           _CajaColor(),
-          _HeaderImage(),
+          // _HeaderImage(),
           this.child,
         ],
       ),
@@ -38,9 +38,9 @@ class _HeaderImage extends StatelessWidget {
           child: Image.asset(
             'images/clotthy.png',
             height: 135,
-          ),
-        ),
-      ),
+           ),
+         ),
+       ),
     );
   }
 }
@@ -51,18 +51,19 @@ class _CajaColor extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return Container(
-        width: double.infinity,
-        height: size.height * 0.6,
-        decoration: _bluebackground(),
-        child: Stack(
-          children: [
-            Positioned(child: _Buble(), top: 90, left: 30),
-            Positioned(child: _Buble(), top: -40, left: -30),
-            Positioned(child: _Buble(), top: -50, right: -20),
-            Positioned(child: _Buble(), bottom: -50, left: 10),
-            Positioned(child: _Buble(), bottom: 120, right: 20),
-          ],
-        ));
+      width: double.infinity,
+      height: size.height * 0.7,
+      decoration: _bluebackground(),
+      // child: Stack(
+      //   children: [
+      //     Positioned(child: _Buble(), top: 90, left: 30),
+      //     Positioned(child: _Buble(), top: -40, left: -30),
+      //     Positioned(child: _Buble(), top: -50, right: -20),
+      //     Positioned(child: _Buble(), bottom: -50, left: 10),
+      //     Positioned(child: _Buble(), bottom: 120, right: 20),
+      //   ],
+      // )
+    );
   }
 
   BoxDecoration _bluebackground() => BoxDecoration(
@@ -77,15 +78,15 @@ class _CajaColor extends StatelessWidget {
       );
 }
 
-class _Buble extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        width: 100,
-        height: 100,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(100),
-          color: Color.fromRGBO(255, 255, 255, 0.05),
-        ));
-  }
-}
+// class _Buble extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//         width: 100,
+//         height: 100,
+//         decoration: BoxDecoration(
+//           borderRadius: BorderRadius.circular(100),
+//           color: Color.fromRGBO(255, 255, 255, 0.05),
+//         ));
+//   }
+// }

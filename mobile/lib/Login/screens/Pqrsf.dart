@@ -21,7 +21,7 @@ class _PqrsfState extends State<Pqrsf> {
           height: 25,
           decoration: const BoxDecoration(
               image: DecorationImage(
-            image: AssetImage('images/clotthy.png'),
+            image: AssetImage('images/clotthy2.png'),
             fit: BoxFit.contain,
           )),
         ),
@@ -68,7 +68,7 @@ class _PqrsfState extends State<Pqrsf> {
             onPressed: () {
               final result = FilePicker.platform.pickFiles();
             },
-            child: Text('adjuntar captura')),
+            child: Text('Adjuntar captura')),
 
         Divider(color: Colors.white.withOpacity(0.1)),
         Divider(color: Colors.white.withOpacity(0.1)),
