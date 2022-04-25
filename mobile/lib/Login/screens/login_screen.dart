@@ -100,7 +100,7 @@ class _LoginForm extends StatelessWidget {
               obscureText: true,
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecorations.authInputDecoration(
-                hintext: "*****",
+                hintext: "**********",
                 labelText: "Contraseña",
                 prefixIcon: Icons.lock_outlined,
               ),

@@ -114,13 +114,16 @@ class _ReportsState extends State<Reports> {
             )),
         // imagen de fondo
         Center(
-            child: Container(
-                height: 400,
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                  image: AssetImage('images/background_decoration.png'),
-                  fit: BoxFit.contain,
-                )))),
+            child: Flexible(
+                fit: FlexFit.loose,
+                child: Container(
+                    width: 300,
+                    height: 300,
+                    decoration: const BoxDecoration(
+                        image: DecorationImage(
+                      image: AssetImage('images/background_decoration.png'),
+                      fit: BoxFit.contain,
+                    ))))),
       ]),
     ));
   }
