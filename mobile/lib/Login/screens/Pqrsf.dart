@@ -54,7 +54,7 @@ class _PqrsfState extends State<Pqrsf> {
             height: 30,
             width: 320,
             child: TextFormField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                     hintText: "aqui va el tipo de solicitud",
                     labelStyle: TextStyle(
                       color: Colors.grey,
@@ -68,40 +68,41 @@ class _PqrsfState extends State<Pqrsf> {
             onPressed: () {
               final result = FilePicker.platform.pickFiles();
             },
-            child: Text('Adjuntar captura')),
+            child: const Text('Adjuntar captura')),
 
         Divider(color: Colors.white.withOpacity(0.1)),
         Divider(color: Colors.white.withOpacity(0.1)),
 
-        Container(alignment: Alignment.topLeft, child: Text('Asunto')),
-        Divider(),
+        Container(alignment: Alignment.topLeft, child: const Text('Asunto')),
+        const Divider(),
 
-        Container(
-          color: Colors.white,
-          height: 300,
+        const Flexible(
+            child: SizedBox(
+          height: 250,
           width: 300,
-          child: TextFormField(
-            cursorHeight: 15,
-            autocorrect: false,
+          child: TextField(
+            maxLines: 50,
             decoration: InputDecoration(
-              enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(
-                  color: Color.fromARGB(255, 134, 136, 134),
-                ),
-              ),
-              focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(
-                  color: Color.fromARGB(255, 0, 47, 255),
-                  width: 1,
-                ),
-              ),
               hintText: "Descripcion",
-              labelStyle: TextStyle(
-                color: Colors.grey,
-              ),
             ),
           ),
-        ),
+        )),
+        Divider(color: Colors.white.withOpacity(0.1)),
+
+        Container(
+            height: 40,
+            width: 150,
+            child: ElevatedButton(
+              style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                      Color.fromARGB(255, 126, 128, 131))),
+              child: const Text('enviar'),
+              onPressed: () {
+                Navigator.pop(context, 'cancelar');
+              },
+            ))
+        // ElevatedButton(onPressed: (){}, child:
+        // )
         // DropdownButton(
         //   items: [
         //     DropdownMenuItem(

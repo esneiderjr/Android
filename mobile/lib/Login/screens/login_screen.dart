@@ -98,7 +98,7 @@ class _LoginForm extends StatelessWidget {
             TextFormField(
               autocorrect: false,
               obscureText: true,
-              keyboardType: TextInputType.emailAddress,
+              keyboardType: TextInputType.visiblePassword,
               decoration: InputDecorations.authInputDecoration(
                 hintext: "**********",
                 labelText: "Contraseña",
@@ -130,6 +130,8 @@ class _LoginForm extends StatelessWidget {
                 onPressed: () {
                   // _controller.forward(from: 0.0);
                   //todo login form
+                  String sinspa = loginform.email.replaceAll(" ", "");
+
                   if (!loginform.isValidForm()) return;
                   Navigator.pushReplacementNamed(context, "Reports");
                 }),
