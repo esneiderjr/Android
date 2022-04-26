@@ -16,13 +16,14 @@ class _ReportsState extends State<Reports> {
         child: Scaffold(
       backgroundColor: const Color.fromARGB(250, 252, 255, 253),
       appBar: AppBar(
+        leadingWidth: 40,
         leading: Container(
           width: 150,
-          height: 25,
+          height: 120,
           decoration: const BoxDecoration(
               image: DecorationImage(
             image: AssetImage('images/clotthy2.png'),
-            fit: BoxFit.contain,
+            fit: BoxFit.cover,
           )),
         ),
         backgroundColor: Colors.white,
@@ -115,13 +116,13 @@ class _ReportsState extends State<Reports> {
         // imagen de fondo
         Flexible(
             child: Container(
-                width: 400,
-                height: 400,
+                // width: 400,
+                // height: 400,
                 decoration: const BoxDecoration(
                     image: DecorationImage(
-                  image: AssetImage('images/background_decoration.png'),
-                  fit: BoxFit.contain,
-                )))),
+          image: AssetImage('images/background_decoration.png'),
+          fit: BoxFit.contain,
+        )))),
       ]),
     ));
   }

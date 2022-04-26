@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mobile/Login/screens/profile.dart';
 
 class Pqrsf extends StatefulWidget {
   const Pqrsf({Key? key}) : super(key: key);
@@ -30,9 +31,8 @@ class _PqrsfState extends State<Pqrsf> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Color.fromARGB(255, 36, 91, 189),
         onPressed: () {
-          const ButtonBar(
-            children: <Widget>[],
-          );
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Profile()));
         },
         child: Icon(Icons.menu_outlined),
       ),
