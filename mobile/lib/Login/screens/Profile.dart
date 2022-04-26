@@ -1,34 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/Login/screens/Pqrsf.dart';
-import 'package:mobile/Login/screens/Statistics.dart';
+
+import 'Statistics.dart';
 
 class Profile extends StatefulWidget {
-  const Profile({Key? key}) : super(key: key);
+  Profile({Key? key}) : super(key: key);
 
   @override
-  State<Profile> createState() => _ProfileState();
+  State<Profile> createState() => ProfileState();
 }
 
-class _ProfileState extends State<Profile> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "CLOTTHY",
-      theme:
-          ThemeData(backgroundColor: const Color.fromARGB(250, 252, 255, 253)),
-      home: Profile(),
-    );
-  }
-}
-
-class Perfil extends StatefulWidget {
-  Perfil({Key? key}) : super(key: key);
-
-  @override
-  State<Perfil> createState() => _PerfilState();
-}
-
-class _PerfilState extends State<Perfil> {
+class ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
