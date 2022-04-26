@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../button/Button.dart';
+
 class Statistics extends StatefulWidget {
   Statistics({Key? key}) : super(key: key);
 
@@ -15,6 +17,7 @@ class _StatisticsState extends State<Statistics> {
       appBar: AppBar(
         title: Text('Graficos'),
       ),
+      floatingActionButton: ButtonDesp(),
       body: ListView(
         children: [
           Container(

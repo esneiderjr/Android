@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mobile/Login/screens/home_screen.dart';
 import 'package:mobile/Login/screens/profile.dart';
+import 'package:mobile/button/Button.dart';
 
 class Pqrsf extends StatefulWidget {
   const Pqrsf({Key? key}) : super(key: key);
@@ -28,14 +30,7 @@ class _PqrsfState extends State<Pqrsf> {
         ),
         backgroundColor: Colors.white,
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Color.fromARGB(255, 36, 91, 189),
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Profile()));
-        },
-        child: Icon(Icons.menu_outlined),
-      ),
+      floatingActionButton: ButtonDesp(),
       body: Column(children: [
         Divider(color: Colors.white.withOpacity(0.1)),
         // este container contiene el titulo

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile/Login/screens/Pqrsf.dart';
 
+import '../../button/Button.dart';
+
 class Reports extends StatefulWidget {
   const Reports({Key? key}) : super(key: key);
 
@@ -28,14 +30,7 @@ class _ReportsState extends State<Reports> {
         ),
         backgroundColor: Colors.white,
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Color.fromARGB(255, 36, 91, 189),
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Pqrsf()));
-        },
-        child: Icon(Icons.menu_outlined),
-      ),
+      floatingActionButton: ButtonDesp(),
       body: Column(children: [
         // este es el boton para generar reportes
         Divider(color: Colors.white.withOpacity(0.1)),

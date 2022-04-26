@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/Login/screens/Pqrsf.dart';
 import 'package:mobile/Login/screens/Reports.dart';
 import 'package:mobile/login/screens/screens.dart';
 
@@ -19,3 +20,23 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
+
+
+// esta parte del codigo es para probar cosas en especifico
+
+// import 'package:flutter/material.dart';
+// import 'button/Button.dart';
+
+// void main() => runApp(MyApp());
+
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Material App',
+//       home: Pqrsf(),
+//     );
+//   }
+// }

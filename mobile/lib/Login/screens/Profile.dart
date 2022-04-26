@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../button/Button.dart';
 import 'Statistics.dart';
 
 class Profile extends StatefulWidget {
@@ -16,12 +17,7 @@ class ProfileState extends State<Profile> {
       appBar: AppBar(
         title: Text('Mi perfil'),
       ),
-      floatingActionButton: FloatingActionButton(
-          backgroundColor: Color.fromARGB(255, 36, 91, 189),
-          onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Statistics()));
-          }),
+      floatingActionButton: ButtonDesp(),
       body: ListView(
         children: [
           Container(
