@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile/Login/screens/Pqrsf.dart';
 import 'package:mobile/Login/screens/Reports.dart';
@@ -15,7 +16,7 @@ class LoginScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              _HeaderImage(),
+              ElasticIn(child: _HeaderImage()),
               SizedBox(height: 20),
               CardContainer(
                 child: Center(

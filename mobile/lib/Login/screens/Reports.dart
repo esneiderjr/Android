@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile/Login/screens/Pqrsf.dart';
+import 'package:mobile/appBar/appBar.dart';
 
 import '../../button/Button.dart';
 
@@ -16,20 +17,8 @@ class _ReportsState extends State<Reports> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+          appBar:CustomAppBar(),
       backgroundColor: const Color.fromARGB(250, 252, 255, 253),
-      appBar: AppBar(
-        leadingWidth: 40,
-        leading: Container(
-          width: 150,
-          height: 120,
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-            image: AssetImage('images/clotthy2.png'),
-            fit: BoxFit.cover,
-          )),
-        ),
-        backgroundColor: Colors.white,
-      ),
       floatingActionButton: ButtonDesp(),
       body: Column(children: [
         // este es el boton para generar reportes

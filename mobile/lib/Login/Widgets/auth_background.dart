@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
 class AuthBackground extends StatelessWidget {
@@ -22,28 +23,30 @@ class AuthBackground extends StatelessWidget {
   }
 }
 
-class _HeaderImage extends StatelessWidget {
-  const _HeaderImage({
-    Key? key,
-  }) : super(key: key);
+//Imagen desde atras
 
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Flexible(
-        fit: FlexFit.loose,
-        child: Container(
-          width: double.infinity,
-          margin: EdgeInsets.only(top: 30),
-          child: Image.asset(
-            'images/clotthy.png',
-            height: 135,
-           ),
-         ),
-       ),
-    );
-  }
-}
+// class _HeaderImage extends StatelessWidget {
+//   const _HeaderImage({
+//     Key? key,
+//   }) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return SafeArea(
+//       child: Flexible(
+//         fit: FlexFit.loose,
+//         child: Container(
+//           width: double.infinity,
+//           margin: EdgeInsets.only(top: 30),
+//           child: Image.asset(
+//             'images/clotthy.png',
+//             height: 135,
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 class _CajaColor extends StatelessWidget {
   @override
@@ -54,15 +57,14 @@ class _CajaColor extends StatelessWidget {
       width: double.infinity,
       height: size.height * 0.7,
       decoration: _bluebackground(),
-      // child: Stack(
-      //   children: [
-      //     Positioned(child: _Buble(), top: 90, left: 30),
-      //     Positioned(child: _Buble(), top: -40, left: -30),
-      //     Positioned(child: _Buble(), top: -50, right: -20),
-      //     Positioned(child: _Buble(), bottom: -50, left: 10),
-      //     Positioned(child: _Buble(), bottom: 120, right: 20),
-      //   ],
-      // )
+      //       child: Stack(
+      //         children: [
+      //           Positioned(child: _Buble(), top: 90, left: 30),
+      //           Positioned(child: _Buble(), top: -40, left: -30),
+      //           Positioned(child: _Buble(), top: -50, right: -20),
+      //           Positioned(child: _Buble(), bottom: -50, left: 10),
+      //           Positioned(child: _Buble(), bottom: 120, right: 20),
+      //         ],
     );
   }
 

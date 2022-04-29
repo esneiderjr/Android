@@ -6,6 +6,8 @@ import 'package:mobile/Login/screens/home_screen.dart';
 import 'package:mobile/Login/screens/profile.dart';
 import 'package:mobile/button/Button.dart';
 
+import '../../appBar/appBar.dart';
+
 class Pqrsf extends StatefulWidget {
   const Pqrsf({Key? key}) : super(key: key);
 
@@ -18,18 +20,7 @@ class _PqrsfState extends State<Pqrsf> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(250, 252, 255, 253),
-      appBar: AppBar(
-        leading: Container(
-          width: 15,
-          height: 25,
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-            image: AssetImage('images/clotthy2.png'),
-            fit: BoxFit.contain,
-          )),
-        ),
-        backgroundColor: Colors.white,
-      ),
+      appBar: CustomAppBar(),
       floatingActionButton: ButtonDesp(),
       body: Column(children: [
         Divider(color: Colors.white.withOpacity(0.1)),

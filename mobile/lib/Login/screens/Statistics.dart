@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../appBar/appBar.dart';
 import '../../button/Button.dart';
 
 class Statistics extends StatefulWidget {
@@ -14,9 +15,7 @@ class _StatisticsState extends State<Statistics> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Graficos'),
-      ),
+      appBar: CustomAppBar(),
       floatingActionButton: ButtonDesp(),
       body: ListView(
         children: [

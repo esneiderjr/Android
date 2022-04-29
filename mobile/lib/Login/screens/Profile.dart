@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../appBar/appBar.dart';
 import '../../button/Button.dart';
 import 'Statistics.dart';
 
@@ -14,9 +15,7 @@ class ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Mi perfil'),
-      ),
+      appBar: CustomAppBar(),
       floatingActionButton: ButtonDesp(),
       body: ListView(
         children: [
