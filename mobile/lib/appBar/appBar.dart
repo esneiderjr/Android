@@ -29,8 +29,8 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       actions: [
         Container(
           child: Column(
-            children: [ 
-              const Divider(
+            children: const [ 
+              Divider(
                 height: 10,
               ),
               Text(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile/Login/screens/Pqrsf.dart';
 import 'package:mobile/appBar/appBar.dart';
+import 'package:mobile/datePicker/DatePicker.dart';
 
 import '../../button/Button.dart';
 
@@ -17,7 +18,7 @@ class _ReportsState extends State<Reports> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-          appBar:CustomAppBar(),
+      appBar: CustomAppBar(),
       backgroundColor: const Color.fromARGB(250, 252, 255, 253),
       floatingActionButton: ButtonDesp(),
       body: Column(children: [
@@ -48,7 +49,7 @@ class _ReportsState extends State<Reports> {
                         'Fecha inicial',
                         style: TextStyle(),
                       ),
-                      TextField(),
+                      // TextField(onTap:,),
                       Divider(color: Colors.white),
                       Text(
                         'Fecha final',

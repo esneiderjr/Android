@@ -30,7 +30,7 @@ class ButtonDesp extends StatelessWidget {
         SpeedDialChild(
             backgroundColor: Color.fromARGB(255, 36, 91, 189),
             child: const Icon(
-              Icons.contact_page,
+              FontAwesomeIcons.fileLines,
               color: Colors.white,
             ),
             onTap: () => {
@@ -39,8 +39,7 @@ class ButtonDesp extends StatelessWidget {
                 }),
         SpeedDialChild(
             backgroundColor: Color.fromARGB(255, 36, 91, 189),
-            child:
-                const Icon(Icons.perm_identity_outlined, color: Colors.white),
+            child: const Icon(FontAwesomeIcons.user, color: Colors.white),
             onTap: () => {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => Profile()))
@@ -48,7 +47,7 @@ class ButtonDesp extends StatelessWidget {
         SpeedDialChild(
             backgroundColor: Color.fromARGB(255, 36, 91, 189),
             child: Icon(
-              Icons.priority_high,
+              FontAwesomeIcons.question,
               color: Colors.white,
             ),
             onTap: () => {
@@ -57,7 +56,8 @@ class ButtonDesp extends StatelessWidget {
                 }),
         SpeedDialChild(
             backgroundColor: Color.fromARGB(255, 36, 91, 189),
-            child: Icon(Icons.login, color: Colors.white))
+            child: Icon(FontAwesomeIcons.arrowRightFromBracket,
+                color: Colors.white))
       ],
     );
 
