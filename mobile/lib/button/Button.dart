@@ -61,9 +61,10 @@ class ButtonDesp extends StatelessWidget {
             child: Icon(FontAwesomeIcons.arrowRightFromBracket,
                 color: Colors.white),
             onTap: () => {
-                  Navigator.of(context).pushAndRemoveUntil(
-                      MaterialPageRoute(builder: (context) => MyApp()),
-                      ((route) => false))
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyApp()),
+                  )
                 })
       ],
     );
