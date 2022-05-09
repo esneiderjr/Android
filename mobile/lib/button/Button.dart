@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mobile/Login/screens/login_screen.dart';
+import 'package:mobile/main.dart';
 
 import '../Login/screens/Pqrsf.dart';
 import '../Login/screens/Profile.dart';
@@ -57,7 +59,12 @@ class ButtonDesp extends StatelessWidget {
         SpeedDialChild(
             backgroundColor: Color.fromARGB(255, 36, 91, 189),
             child: Icon(FontAwesomeIcons.arrowRightFromBracket,
-                color: Colors.white))
+                color: Colors.white),
+            onTap: () => {
+                  Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (context) => MyApp()),
+                      ((route) => false))
+                })
       ],
     );
 

@@ -25,7 +25,7 @@ class ProfileState extends State<Profile> {
               horizontal: 10,
             ),
             alignment: Alignment.centerRight,
-            child: Image.asset('images/descarga.png'),
+            child: Image.asset('images/Perfil.png'),
           ),
           Container(
             padding: EdgeInsets.all(15),
