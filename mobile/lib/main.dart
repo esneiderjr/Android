@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
       title: 'Clotthy',
       initialRoute: "login",
       routes: {
-        "login": (_) => LoginScreen(),
-        "Reports": (_) => Reports(),
+        "login": (context) => LoginScreen(),
+        "Reports": (contex) => Reports(),
       },
     );
   }
@@ -24,9 +24,9 @@ class MyApp extends StatelessWidget {
 // esta parte del codigo es para probar cosas en especifico
 
 // import 'package:flutter/material.dart';
-// import 'package:mobile/appBar/silverAppBar.dart';
+// // import 'package:mobile/appBar/silverAppBar.dart';
 // import 'button/Button.dart';
-
+// import 'datePicker/DatePicker.dart';
 
 // void main() => runApp(MyApp());
 
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
 //   Widget build(BuildContext context) {
 //     return MaterialApp(
 //       title: 'Material App',
-//       home: silverAppBar(),
+//       home: DatePicikerfu(),
 //     );
 //   }
 // }

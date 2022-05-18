@@ -9,6 +9,8 @@ import "package:provider/provider.dart";
 import 'package:mobile/Login/ui/animated.dart';
 
 class LoginScreen extends StatelessWidget {
+  const LoginScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
