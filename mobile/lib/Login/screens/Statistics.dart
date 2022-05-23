@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import '../../appBar/appBar.dart';
 import '../../button/Button.dart';
 
@@ -47,7 +47,10 @@ Widget boton() {
           padding: EdgeInsets.all(20),
           child: RaisedButton(
             child: Icon(FontAwesomeIcons.arrowRotateRight, size: 22),
-            onPressed: () {},
+            onPressed: () {
+              // Navigator.push(context,
+              //     MaterialPageRoute(builder: (context) =>  Statistics()));
+            },
             padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             color: Color.fromARGB(255, 36, 91, 189),
             textColor: Colors.white,

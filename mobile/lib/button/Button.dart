@@ -67,15 +67,7 @@ class ButtonDesp extends StatelessWidget {
         //           )
         //         })
 
-        // SpeedDialChild(
-        //     backgroundColor: Color.fromARGB(255, 36, 91, 189),
-        //     child: Icon(FontAwesomeIcons.arrowRightFromBracket,
-        //         color: Colors.white),
-        //     onTap: () => {
-        //           Navigator.of(context).popUntil(
-        //             ModalRoute.withName('/login'),
-        //           )
-        //         })
+      
       ],
     );
   }
