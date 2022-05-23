@@ -11,8 +11,6 @@ class Prueba extends StatefulWidget {
 class _PruebaState extends State<Prueba> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child:Scaffold(
-      body: SfDateRangePicker(),
-    ) );
+    return SafeArea(child: Scaffold(body: const Text('hola')));
   }
 }
