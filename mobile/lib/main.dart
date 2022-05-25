@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/Login/screens/Pqrsf.dart';
-import 'package:mobile/Login/screens/Reports.dart';
+import 'package:mobile/Login/screens/Company.dart';
 import 'package:mobile/appBar/appBar.dart';
 import 'package:mobile/login/screens/screens.dart';
 import 'Login/SplashScreen/splashscreen.dart';
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       routes: {
         "SplashScreen": (_) => SplashScreen(),
         "login": (_) => LoginScreen(),
-        "Reports": (_) => Reports(),
+        "Company": (_) => Company(),
       },
     );
   }

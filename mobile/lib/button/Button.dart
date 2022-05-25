@@ -6,7 +6,8 @@ import 'package:mobile/main.dart';
 
 import '../Login/screens/Pqrsf.dart';
 import '../Login/screens/Profile.dart';
-import '../Login/screens/Reports.dart';
+import '../Login/screens/Company.dart';
+import '../Login/screens/Company.dart';
 import '../Login/screens/Statistics.dart';
 
 class ButtonDesp extends StatelessWidget {
@@ -37,7 +38,7 @@ class ButtonDesp extends StatelessWidget {
             ),
             onTap: () => {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const Reports()))
+                      MaterialPageRoute(builder: (context) => const Company()))
                 }),
         SpeedDialChild(
             backgroundColor: Color.fromARGB(255, 36, 91, 189),

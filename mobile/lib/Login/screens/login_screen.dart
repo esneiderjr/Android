@@ -1,7 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile/Login/screens/Pqrsf.dart';
-import 'package:mobile/Login/screens/Reports.dart';
+import 'package:mobile/Login/screens/Company.dart';
 import 'package:mobile/Login/ui/input_decorations.dart';
 import 'package:mobile/login/widgets/widgets.dart';
 import 'package:mobile/providers/login_form_provider.dart';
