@@ -74,7 +74,7 @@ class _CajaColor extends StatelessWidget {
           bottomLeft: Radius.circular(100),
         ),
         gradient: LinearGradient(colors: [
-          Color.fromARGB(255, 36, 91, 189),
+          Color(0xFF245BBD),
           Color.fromARGB(255, 36, 91, 189)
         ]),
       );
