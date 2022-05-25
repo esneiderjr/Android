@@ -21,13 +21,11 @@ class _CompanyState extends State<Company> {
         appBar: CustomAppBar(),
         backgroundColor: const Color.fromARGB(250, 252, 255, 253),
         floatingActionButton: ButtonDesp(),
-        body: 
-        
-        Column(
+        body: Column(
           children: [
             Title(
                 color: Colors.black,
-                child: Text('Empresas',
+                child: Text('Empresass',
                     textAlign: TextAlign.left,
                     style:
                         TextStyle(fontSize: 20, fontStyle: FontStyle.normal))),
@@ -76,9 +74,11 @@ class _CompanyState extends State<Company> {
                             backgroundColor: MaterialStateProperty.all<Color>(
                                 Color.fromARGB(255, 36, 91, 189))),
                         onPressed: () => {
-                          Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => AddCompany()))
-                        },
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => AddCompany()))
+                            },
                         child: Row(children: [
                           Text('Agregar'),
                           Icon(FontAwesomeIcons.squarePlus)
