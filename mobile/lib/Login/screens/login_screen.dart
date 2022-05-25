@@ -136,7 +136,7 @@ class _LoginForm extends StatelessWidget {
                   String sinspa = loginform.email.replaceAll(" ", "");
 
                   if (!loginform.isValidForm()) return;
-                  Navigator.pushReplacementNamed(context, "Reports");
+                  Navigator.pushReplacementNamed(context, "Company");
                 }),
 
             SizedBox(height: 10),
