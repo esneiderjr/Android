@@ -48,8 +48,7 @@ Widget boton() {
           child: RaisedButton(
             child: Icon(FontAwesomeIcons.arrowRotateRight, size: 22),
             onPressed: () {
-              // Navigator.push(context,
-              //     MaterialPageRoute(builder: (context) =>  Statistics()));
+              Statistics();
             },
             padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             color: Color.fromARGB(255, 36, 91, 189),

@@ -9,7 +9,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   late VideoPlayerController _controller;
 
   @override
@@ -21,10 +20,10 @@ class _SplashScreenState extends State<SplashScreen> {
     )
       ..initialize().then((_) {
         setState(() {});
-        })
-        ..setVolume(0.0);
+      })
+      ..setVolume(0.0);
 
-      _playVideo();
+    _playVideo();
   }
 
   void _playVideo() async {
@@ -32,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     await Future.delayed(const Duration(seconds: 4));
 
-  Navigator.pushNamed(context, 'login');
+    Navigator.pushNamed(context, 'login');
   }
 
   @override
@@ -47,13 +46,13 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor: Color.fromARGB(255, 33, 92, 194),
       body: Center(
         child: _controller.value.isInitialized
-        ? AspectRatio(
-          aspectRatio: _controller.value.aspectRatio,
-          child: VideoPlayer(
-            _controller,
-          ),
-        )
-        : Container(),
+            ? AspectRatio(
+                aspectRatio: _controller.value.aspectRatio,
+                child: VideoPlayer(
+                  _controller,
+                ),
+              )
+            : Container(),
       ),
     );
   }

@@ -20,95 +20,87 @@ class _ProfileState extends State<Profile> {
 }
 
 Widget budy() {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
+  return ListView(
     children: [
-      palabra(),
-      imagen(),
-      datos(),
-      nombres(),
-      apellidos(),
-      //  documento(),
-      fecha(),
-      genero()
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          palabra(),
+          imagen(),
+          datos(),
+          nombres(),
+          apellidos(),
+          //  documento(),
+          fecha(),
+          genero()
+        ],
+      ),
     ],
   );
 }
 
 Widget palabra() {
-  return Flexible(
-    child: Container(
-        margin: EdgeInsets.only(top: 30, left: 30),
-        child: Text('Mi perfil',
-            style: TextStyle(
-              fontSize: 20,
-              fontFamily: 'rlight',
-            ))),
-  );
+  return Container(
+      margin: EdgeInsets.only(top: 30, left: 30),
+      child: Text('Mi perfil',
+          style: TextStyle(
+            fontSize: 20,
+            fontFamily: 'rlight',
+          )));
 }
 
 Widget imagen() {
-  return Flexible(
-    child: Container(
-      margin: EdgeInsets.only(top: 30, left: 30),
-      child: Image.asset(
-        'images/clotthy2.png',
-        width: 120,
-        height: 110,
-      ),
-      decoration: BoxDecoration(
-        border: Border.all(color: Color.fromARGB(66, 20, 17, 17), width: 1),
-        borderRadius: BorderRadius.circular(10),
-      ),
+  return Container(
+    margin: EdgeInsets.only(top: 30, left: 30),
+    child: Image.asset(
+      'images/Perfil.png',
+      width: 120,
+      height: 110,
+    ),
+    decoration: BoxDecoration(
+      border: Border.all(color: Color.fromARGB(66, 20, 17, 17), width: 1),
+      borderRadius: BorderRadius.circular(10),
     ),
   );
 }
 
 Widget datos() {
-  return Flexible(
-    child: Container(
-      margin: EdgeInsets.only(top: 30, left: 30),
-      child: Text('Datos basicos',
-          style: TextStyle(
-            fontSize: 20,
-          )),
-    ),
+  return Container(
+    margin: EdgeInsets.only(top: 30, left: 30),
+    child: Text('Datos basicos',
+        style: TextStyle(
+          fontSize: 20,
+        )),
   );
 }
 
 Widget nombres() {
-  return Flexible(
-    child: Container(
-      margin: EdgeInsets.only(top: 10, left: 25),
-      padding: EdgeInsets.all(15),
-      child: TextField(
-        autofocus: true,
-        keyboardType: TextInputType.name,
-        textInputAction: TextInputAction.send,
-        textCapitalization: TextCapitalization.sentences,
-        decoration: InputDecoration(
-          hintText: 'Nombre',
-          labelText: 'Nombres',
-        ),
+  return Container(
+    margin: EdgeInsets.only(top: 10, left: 25),
+    padding: EdgeInsets.all(15),
+    child: TextField(
+      keyboardType: TextInputType.name,
+      textInputAction: TextInputAction.send,
+      textCapitalization: TextCapitalization.sentences,
+      decoration: InputDecoration(
+        hintText: 'Nombre',
+        labelText: 'Nombres',
       ),
     ),
   );
 }
 
 Widget apellidos() {
-  return Flexible(
-    child: Container(
-      margin: EdgeInsets.only(top: 10, left: 30),
-      padding: EdgeInsets.all(10),
-      child: TextFormField(
-        autofocus: true,
-        keyboardType: TextInputType.name,
-        textInputAction: TextInputAction.send,
-        textCapitalization: TextCapitalization.sentences,
-        decoration: InputDecoration(
-          hintText: 'Apellido',
-          labelText: 'Apellidos',
-        ),
+  return Container(
+    margin: EdgeInsets.only(top: 10, left: 30),
+    padding: EdgeInsets.all(10),
+    child: TextFormField(
+      keyboardType: TextInputType.name,
+      textInputAction: TextInputAction.send,
+      textCapitalization: TextCapitalization.sentences,
+      decoration: InputDecoration(
+        hintText: 'Apellido',
+        labelText: 'Apellidos',
       ),
     ),
   );
