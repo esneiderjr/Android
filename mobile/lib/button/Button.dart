@@ -57,16 +57,16 @@ class ButtonDesp extends StatelessWidget {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const Pqrsf()))
                 }),
-        // SpeedDialChild(
-        //     backgroundColor: Color.fromARGB(255, 36, 91, 189),
-        //     child: Icon(FontAwesomeIcons.arrowRightFromBracket,
-        //         color: Colors.white),
-        //     onTap: () => {
-        //           Navigator.push(
-        //             context,
-        //             MaterialPageRoute(builder: (context) => MyApp()),
-        //           )
-        //         })
+        SpeedDialChild(
+            backgroundColor: Color.fromARGB(255, 36, 91, 189),
+            child: Icon(FontAwesomeIcons.arrowRightFromBracket,
+                color: Colors.white),
+            onTap: () => {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()),
+                  )
+                })
       ],
     );
   }

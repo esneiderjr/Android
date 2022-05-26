@@ -77,9 +77,9 @@ class LoginProvider extends ChangeNotifier {
     };
 
     final resp = await AllApi.httpPost(url);
-    // print(resp.body);
-    final dataMap = jsonDecode(resp.body);
-    print(dataMap.user);
+    print(resp.body);
+    // final dataMap = jsonDecode(resp.body);
+    // print(dataMap.user);
     // final Usuarios usuarios = Usuarios.fromlist(dataMap['res']);
     // this.usuarios = usuarios.dato;
     // print(usuarios); 

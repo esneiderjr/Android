@@ -29,19 +29,16 @@ class AllApi {
   }
 
   static Future<http.Response> httpPost(String path) async {
-    final url = "https://api.clotthy.com/clotthy-api/clotthy-api/api/signin/employees";
+    final url =
+        "https://api.clotthy.com/clotthy-api/clotthy-api/api/signin/employees";
     try {
-      return http.post(
-        Uri.parse(url),
-        headers: <String, String>{
-          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-        },
-        body: {
-          'email': 'pepito@gmail.com',
-          'password': 'admin12345',
-          'password_confirmation': 'admin12345'
-        }
-      );
+      return http.post(Uri.parse(url), headers: <String, String>{
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+      }, body: {
+        'email': 'pepito@gmail.com',
+        'password': 'admin12345',
+        'password_confirmation': 'admin12345'
+      });
       // print(path);
       // final resp = await _dio.post('https://api.clotthy.com/clotthy-api/clotty-api/api/signin/employees', data: fromData, options:  Options(contentType: 'application/x-www-form-urlencoded'));
       //1
