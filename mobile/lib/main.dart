@@ -3,9 +3,33 @@ import 'package:mobile/Login/screens/Pqrsf.dart';
 import 'package:mobile/Login/screens/Company.dart';
 import 'package:mobile/appBar/appBar.dart';
 import 'package:mobile/login/screens/screens.dart';
+import 'package:mobile/providers/loginProvider.dart';
+import 'package:provider/provider.dart';
 import 'Login/SplashScreen/splashscreen.dart';
+import 'api/AllApi.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  AllApi.configuteDio();
+
+  runApp(const AppState());
+}
+
+class AppState extends StatelessWidget {
+  const AppState({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    //print('__________>ZZZZZ');
+    return MultiProvider(
+      providers: [
+        //--------- provider login --------------
+        ChangeNotifierProvider(lazy: false, create: (_) => LoginProvider()),
+      ],
+      child: MyApp(),
+    );
+  }
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -46,3 +70,5 @@ class MyApp extends StatelessWidget {
 //     );
 //   }
 // }
+
+

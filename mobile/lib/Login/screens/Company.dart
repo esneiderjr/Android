@@ -13,6 +13,9 @@ class Company extends StatefulWidget {
   State<Company> createState() => _CompanyState();
 }
 
+String nombre = 'example';
+String correo = 'example@gmail.com';
+var telefono = '32116556515';
 // List empresa =[
 //     1,
 //     'example',
@@ -23,7 +26,6 @@ class Company extends StatefulWidget {
 // void empresas() {
 //   for (var i in empresa) {
 //     print('posicion $i');
-
 
 //   }
 // }
@@ -72,38 +74,90 @@ class _CompanyState extends State<Company> {
                   ),
                 ),
                 Row(children: [
-                  Card(
-                      elevation: 150,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20)),
-                      // margin: const EdgeInsets.only(left: 20, right: 20, top: 260),
-                      child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                Text('  example  '),
-                                Text(' example@gmail.com '),
-                                Text('311525434'),
-                                Container(
-                                  child: Row(
-                                    children: const [
-                                      Icon(
-                                        FontAwesomeIcons.penToSquare,
-                                        color: Color.fromARGB(255, 36, 91, 189),
-                                      ),
-                                      Icon(
-                                        FontAwesomeIcons.plus,
-                                        color: Color.fromARGB(255, 36, 91, 189),
-                                      ),
-                                      Icon(
-                                        FontAwesomeIcons.list,
-                                        color: Color.fromARGB(255, 36, 91, 189),
-                                      )
-                                    ],
+                  Container(
+                    width: 358,
+                    child: Card(
+                        elevation: 150,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        // margin: const EdgeInsets.only(left: 20, right: 20, top: 260),
+                        child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  Text(nombre),
+                                  Text(correo),
+                                  Text(telefono),
+                                  Container(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        IconButton(
+                                          onPressed: () => {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        AlertDialog(
+                                                          backgroundColor:
+                                                              Colors.white,
+                                                          title: Text(nombre),
+                                                          content: Container(
+                                                            width: 250,
+                                                            height: 250,
+                                                            child: Column(
+                                                              children: [
+                                                                ListTile(
+                                                                  title: Text(
+                                                                      correo),
+                                                                ),
+                                                                Text(correo),
+                                                                Text(telefono)
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        )))
+                                          },
+                                          icon: Icon(
+                                            FontAwesomeIcons.penToSquare,
+                                            color: Color.fromARGB(
+                                                255, 36, 91, 189),
+                                          ),
+                                        ),
+                                        IconButton(
+                                          onPressed: () => {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        AddCompany()))
+                                          },
+                                          icon: Icon(
+                                            FontAwesomeIcons.plus,
+                                            color: Color.fromARGB(
+                                                255, 36, 91, 189),
+                                          ),
+                                        ),
+                                        IconButton(
+                                            onPressed: () => {
+                                                  Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              AddCompany()))
+                                                },
+                                            icon: Icon(
+                                              FontAwesomeIcons.list,
+                                              color: Color.fromARGB(
+                                                  255, 36, 91, 189),
+                                            )),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              ])))
+                                ]))),
+                  )
                 ]),
               ],
             ),
