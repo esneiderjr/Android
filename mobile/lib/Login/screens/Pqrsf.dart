@@ -32,7 +32,7 @@ class _PqrsfState extends State<Pqrsf> {
                 width: 300,
                 alignment: Alignment.bottomLeft,
                 child: const Text(
-                  'Pqrsf',
+                  'Pqrsft',
                   textAlign: TextAlign.left,
                   style: TextStyle(fontSize: 20, fontStyle: FontStyle.normal),
                 )),
