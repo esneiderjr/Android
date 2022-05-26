@@ -4,4 +4,3 @@ export 'package:mobile/login/screens/home_screen.dart';
 
 export 'package:mobile/Login/screens/Company.dart';
 
-export 'package:mobile/Login/screens/splashscreen.dart';

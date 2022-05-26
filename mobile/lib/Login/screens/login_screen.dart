@@ -4,6 +4,7 @@ import 'package:mobile/Login/screens/Pqrsf.dart';
 import 'package:mobile/Login/screens/Company.dart';
 import 'package:mobile/Login/ui/input_decorations.dart';
 import 'package:mobile/login/widgets/widgets.dart';
+import 'package:mobile/providers/loginProvider.dart';
 import 'package:mobile/providers/login_form_provider.dart';
 import "package:provider/provider.dart";
 import 'package:mobile/Login/ui/animated.dart';
@@ -69,6 +70,7 @@ class _LoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final loginform = Provider.of<LoginFormProvider>(context);
+    final provider = Provider.of<LoginProvider>(context, listen: false);
 
     return Container(
       child: Form(
@@ -131,12 +133,13 @@ class _LoginForm extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
+                  provider.getUsuario(context);
                   // _controller.forward(from: 0.0);
                   //todo login form
-                  String sinspa = loginform.email.replaceAll(" ", "");
+                  // String sinspa = loginform.email.replaceAll(" ", "");
 
-                  if (!loginform.isValidForm()) return;
-                  Navigator.pushReplacementNamed(context, "Company");
+                  // if (!loginform.isValidForm()) return;
+                  // Navigator.pushReplacementNamed(context, "Company");
                 }),
 
             SizedBox(height: 10),

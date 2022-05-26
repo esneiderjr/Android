@@ -62,12 +62,12 @@ import '../api/AllApi.dart';
 import '../models/modeloUsuarios.dart';
 
 class LoginProvider extends ChangeNotifier {
-  String email = '';
-  String password = '';
-  String passwordConfirmation = '';
+  String email = 'pepito@gmail.com';
+  String password = 'admin12345';
+  String passwordConfirmation = 'admin12345';
   List<Usuario> usuarios = [];
 
-  getUsuario() async {
+  getUsuario(BuildContext context) async {
     String url = '/signin/employees';
 
     Map<String, String> parametros = {
@@ -76,12 +76,14 @@ class LoginProvider extends ChangeNotifier {
       'password_confirmation': passwordConfirmation
     };
 
-    final resp = await AllApi.httpPost(url, parametros);
+    final resp = await AllApi.httpPost(url);
+    // print(resp.body);
+    final dataMap = jsonDecode(resp.body);
+    print(dataMap.user);
+    // final Usuarios usuarios = Usuarios.fromlist(dataMap['res']);
+    // this.usuarios = usuarios.dato;
+    // print(usuarios); 
 
-    print(resp);
-    final dataMap = jsonDecode(resp);
-
-    final Usuarios usuarios = Usuarios.fromlist(dataMap['res']);
-    this.usuarios = usuarios.dato;
+    Navigator.pushReplacementNamed(context, "Company");
   }
 }
