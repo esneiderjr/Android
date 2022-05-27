@@ -29,7 +29,7 @@ Widget budy(BuildContext context) {
         children: [
           palabra(),
           nombres(),
-          apellidos(),
+          email(),
           //  documento(),
           fecha(),
           genero(),
@@ -106,7 +106,7 @@ Widget nombres() {
   );
 }
 
-Widget apellidos() {
+Widget email() {
   return Container(
     margin: EdgeInsets.only(top: 10, left: 30),
     padding: EdgeInsets.all(10),
@@ -115,8 +115,8 @@ Widget apellidos() {
       textInputAction: TextInputAction.send,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
-        hintText: 'Apellido',
-        labelText: 'Apellidos',
+        hintText: 'Correo',
+        labelText: 'Correo',
       ),
     ),
   );

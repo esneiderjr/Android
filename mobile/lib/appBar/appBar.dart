@@ -2,14 +2,22 @@ import 'dart:ui';
 
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile/Login/screens/Profile.dart';
 
-class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
+class CustomAppBar extends StatefulWidget with PreferredSizeWidget {
   @override
   final Size preferredSize;
 
-  CustomAppBar({Key? key})
+  CustomAppBar( {Key? key})
       : preferredSize = const Size.fromHeight(50.0),
         super(key: key);
+  
+  @override
+  State<CustomAppBar> createState() => _CustomAppBarState();
+}
+
+class _CustomAppBarState extends State<CustomAppBar> {
+
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +37,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       actions: [
         Container(
           child: Column(
-            children: const [ 
+            children: const [
               Divider(
                 height: 10,
               ),
@@ -47,7 +55,6 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             ],
           ),
         ),
-        
         CircleAvatar(
           child: Image.asset(
             'images/Perfil.png',

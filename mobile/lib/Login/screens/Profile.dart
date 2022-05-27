@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/Login/screens/Screens.dart';
 import 'package:mobile/appBar/appBar.dart';
 import 'package:mobile/button/Button.dart';
 
@@ -9,102 +10,158 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  String nameEmployees = 'Alberto';
+  String lastNameEmployees = 'Carrascales';
+  var _solicitud = ['Cc', 'Ti', 'Nit'];
+  String _vista = 'Doc';
+
   @override
   Widget build(BuildContext context) {
+    TextEditingController nameController = TextEditingController();
+    TextEditingController lastNameController = TextEditingController();
     return Scaffold(
-      appBar: CustomAppBar(),
-      floatingActionButton: ButtonDesp(),
-      body: budy(),
-    );
+        appBar: CustomAppBar(),
+        floatingActionButton: ButtonDesp(),
+        body: ListView(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // titulo
+                Container(
+                    margin: const EdgeInsets.only(top: 30, left: 30),
+                    child: const Text('Mi perfil',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontFamily: 'rlight',
+                        ))),
+                // imagen
+                Container(
+                  margin: const EdgeInsets.only(top: 30, left: 30),
+                  child: Image.asset(
+                    'images/Perfil.png',
+                    width: 120,
+                    height: 110,
+                  ),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                        color: const Color.fromARGB(66, 20, 17, 17), width: 1),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+
+                // sub titulo (datos basico)
+                Container(
+                  margin: const EdgeInsets.only(top: 30, left: 30),
+                  child: const Text('Datos basicos',
+                      style: TextStyle(
+                        fontSize: 20,
+                      )),
+                ),
+                // nombre
+                Container(
+                  margin: const EdgeInsets.only(top: 10, left: 25),
+                  padding: const EdgeInsets.all(15),
+                  child: TextFormField(
+                    controller: nameController,
+                    keyboardType: TextInputType.name,
+                    textInputAction: TextInputAction.send,
+                    textCapitalization: TextCapitalization.sentences,
+                    decoration: const InputDecoration(
+                      hintText: 'Nombre',
+                      labelText: 'Nombre',
+                    ),
+                  ),
+                ),
+
+                // apellido
+                Container(
+                  margin: EdgeInsets.only(top: 10, left: 30),
+                  padding: EdgeInsets.all(10),
+                  child: TextFormField(
+                    controller: lastNameController,
+                    keyboardType: TextInputType.name,
+                    textInputAction: TextInputAction.send,
+                    textCapitalization: TextCapitalization.sentences,
+                    decoration: InputDecoration(
+                      hintText: 'Apellido',
+                      labelText: 'Apellido',
+                    ),
+                  ),
+                ),
+
+                // documento
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(color: Colors.grey),
+                          borderRadius: BorderRadius.all(Radius.circular(7))),
+                      width: 80,
+                      height: 40,
+                      child: DropdownButton(
+                        elevation: 80,
+                        underline: Container(),
+                        items: _solicitud.map((String a) {
+                          return DropdownMenuItem(value: a, child: Text(a));
+                        }).toList(),
+                        onChanged: (value) => {
+                          // value = _vista,
+                          // setState(() => {value = _vista})
+                        },
+                        hint: Text(_vista),
+                      ),
+                    ),
+                    Container(
+                      width: 250,
+                      child: TextFormField(
+                        controller: lastNameController,
+                        keyboardType: TextInputType.name,
+                        textInputAction: TextInputAction.send,
+                        textCapitalization: TextCapitalization.sentences,
+                        decoration: InputDecoration(
+                          hintText: 'Numero de doc',
+                          labelText: 'Numero de doc',
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Divider(),
+                // boton actualizar
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Center(
+                        child: Container(
+                          width: 125,
+                          height: 50,
+                          child: Center(
+                            child: ElevatedButton(
+                                style: ButtonStyle(
+                                    backgroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                            Color.fromARGB(255, 36, 91, 189))),
+                                onPressed: () {},
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [Text('Actualizar')],
+                                )),
+                          ),
+                        ),
+                      ),
+                    ]),
+              ],
+            ),
+          ],
+        ));
   }
 }
 
-Widget budy() {
-  return ListView(
-    children: [
-      Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          palabra(),
-          imagen(),
-          datos(),
-          nombres(),
-          apellidos(),
-          //  documento(),
-          fecha(),
-          genero()
-        ],
-      ),
-    ],
-  );
-}
-
-Widget palabra() {
-  return Container(
-      margin: EdgeInsets.only(top: 30, left: 30),
-      child: Text('Mi perfil',
-          style: TextStyle(
-            fontSize: 20,
-            fontFamily: 'rlight',
-          )));
-}
-
-Widget imagen() {
-  return Container(
-    margin: EdgeInsets.only(top: 30, left: 30),
-    child: Image.asset(
-      'images/Perfil.png',
-      width: 120,
-      height: 110,
-    ),
-    decoration: BoxDecoration(
-      border: Border.all(color: Color.fromARGB(66, 20, 17, 17), width: 1),
-      borderRadius: BorderRadius.circular(10),
-    ),
-  );
-}
-
-Widget datos() {
-  return Container(
-    margin: EdgeInsets.only(top: 30, left: 30),
-    child: Text('Datos basicos',
-        style: TextStyle(
-          fontSize: 20,
-        )),
-  );
-}
-
-Widget nombres() {
-  return Container(
-    margin: EdgeInsets.only(top: 10, left: 25),
-    padding: EdgeInsets.all(15),
-    child: TextField(
-      keyboardType: TextInputType.name,
-      textInputAction: TextInputAction.send,
-      textCapitalization: TextCapitalization.sentences,
-      decoration: InputDecoration(
-        hintText: 'Nombre',
-        labelText: 'Nombres',
-      ),
-    ),
-  );
-}
-
-Widget apellidos() {
-  return Container(
-    margin: EdgeInsets.only(top: 10, left: 30),
-    padding: EdgeInsets.all(10),
-    child: TextFormField(
-      keyboardType: TextInputType.name,
-      textInputAction: TextInputAction.send,
-      textCapitalization: TextCapitalization.sentences,
-      decoration: InputDecoration(
-        hintText: 'Apellido',
-        labelText: 'Apellidos',
-      ),
-    ),
-  );
-}
+// --------------------------esto es para aplicar el documento---------------------------
 
 //  Widget documento(){
 //   var documentos=['CC','CE'];
@@ -137,10 +194,3 @@ Widget apellidos() {
 //    ],
 //  );
 // }
-Widget fecha() {
-  return Container();
-}
-
-Widget genero() {
-  return Container();
-}

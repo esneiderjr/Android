@@ -17,6 +17,7 @@ class Company extends StatefulWidget {
 String name = 'example';
 String email = 'example@gmail.com';
 var number = '32116556515';
+var nit = '12345678589-1';
 // List empresa =[
 //     1,
 //     'example',
@@ -43,6 +44,7 @@ class _CompanyState extends State<Company> {
           children: [
             Column(
               children: [
+                // este es el titulo de la seccion
                 Title(
                     color: Colors.black,
                     child: const Text('Empresas',
@@ -55,6 +57,7 @@ class _CompanyState extends State<Company> {
                     height: 50,
                     width: 150,
                     child: Center(
+                      // boton de añadir una empresa
                       child: ElevatedButton(
                           style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(
@@ -74,115 +77,209 @@ class _CompanyState extends State<Company> {
                     ),
                   ),
                 ),
-                Row(children: [
-                  Container(
-                    width: 358,
-                    child: Card(
-                        elevation: 150,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20)),
-                        // margin: const EdgeInsets.only(left: 20, right: 20, top: 260),
-                        child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  Text(name),
-                                  Text(email),
-                                  Text(number),
-                                  Container(
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        IconButton(
-                                          onPressed: () => showDialog<String>(
-                                            context: context,
-                                            builder: (BuildContext context) =>
-                                                AlertDialog(
-                                              backgroundColor: Colors.white,
-                                              title: Text(name),
-                                              content: Container(
-                                                width: 250,
-                                                height: 250,
-                                                child: Column(
-                                                  children: [
-                                                    Text(email),
-                                                    Text(number)
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          icon: Icon(
-                                            FontAwesomeIcons.list,
-                                            color: Color.fromARGB(
-                                                255, 36, 91, 189),
-                                          ),
-                                        ),
-                                        IconButton(
-                                          onPressed: () => showDialog<String>(
-                                              context: context,
-                                              builder: (BuildContext context) =>
-                                                  AlertDialog(
-                                                    title:
-                                                        Text('Redes sociales'),
-                                                    content: Container(
-                                                      height: 250,
-                                                      child: ListView(
-                                                        children: [
-                                                          ListTile(
-                                                            title: Text(
-                                                                'facebook'),
-                                                            leading: Icon(
-                                                                FontAwesomeIcons
-                                                                    .facebook),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        width: 350,
+
+                        // cards con los datos de una empresa
+                        child: Card(
+                            shadowColor: Color.fromARGB(255, 36, 91, 189),
+                            elevation: 25,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20)),
+                            // margin: const EdgeInsets.only(left: 20, right: 20, top: 260),
+                            child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      Text(name),
+                                      Text(email),
+                                      Text(number),
+                                      const Divider(
+                                        indent: 2.5,
+                                      ),
+                                      // iconos botones para redireccionar la card
+                                      Container(
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            IconButton(
+                                              onPressed: () =>
+                                                  showDialog<String>(
+                                                context: context,
+                                                builder:
+                                                    (BuildContext context) =>
+                                                        AlertDialog(
+                                                  backgroundColor: Colors.white,
+                                                  title: Text(name),
+                                                  content: Container(
+                                                    width: 250,
+                                                    height: 280,
+                                                    child: ListView(
+                                                      children: [
+                                                        ListTile(
+                                                          title: Text('Emai'),
+                                                          subtitle: Text(email),
+                                                          trailing: const Icon(
+                                                            FontAwesomeIcons
+                                                                .paperPlane,
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    36,
+                                                                    91,
+                                                                    189),
                                                           ),
-                                                          ListTile(
+                                                        ),
+                                                        ListTile(
                                                             title: Text(
-                                                                'Instagram'),
-                                                            leading: Icon(
-                                                                FontAwesomeIcons
-                                                                    .instagram),
-                                                          ),
-                                                          ListTile(
-                                                            title: Text(
-                                                                'Whatsapp'),
+                                                                'Telefono'),
                                                             subtitle:
                                                                 Text(number),
-                                                            leading: Icon(
-                                                                FontAwesomeIcons
-                                                                    .whatsapp),
+                                                            trailing:
+                                                                const Icon(
+                                                              FontAwesomeIcons
+                                                                  .phone,
+                                                              color: Color
+                                                                  .fromARGB(
+                                                                      255,
+                                                                      36,
+                                                                      91,
+                                                                      189),
+                                                            )),
+                                                        ListTile(
+                                                          title: Text('Nit'),
+                                                          subtitle: Text(nit),
+                                                          trailing: const Icon(
+                                                            FontAwesomeIcons
+                                                                .hashtag,
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    36,
+                                                                    91,
+                                                                    189),
                                                           ),
-                                                        ],
-                                                      ),
+                                                        ),
+                                                        ElevatedButton(
+                                                            style: ButtonStyle(
+                                                                backgroundColor:
+                                                                    MaterialStateProperty.all<
+                                                                            Color>(
+                                                                        Color.fromARGB(
+                                                                            255,
+                                                                            36,
+                                                                            91,
+                                                                            189))),
+                                                            onPressed: () {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                            child: const Text(
+                                                                'ok'))
+                                                      ],
                                                     ),
-                                                  )),
-                                          icon: Icon(
-                                            FontAwesomeIcons.plus,
-                                            color: Color.fromARGB(
-                                                255, 36, 91, 189),
-                                          ),
+                                                  ),
+                                                ),
+                                              ),
+                                              icon: const Icon(
+                                                FontAwesomeIcons.list,
+                                                color: Color.fromARGB(
+                                                    255, 36, 91, 189),
+                                              ),
+                                            ),
+                                            IconButton(
+                                              onPressed: () =>
+                                                  showDialog<String>(
+                                                      context: context,
+                                                      builder:
+                                                          (BuildContext
+                                                                  context) =>
+                                                              AlertDialog(
+                                                                title: Text(
+                                                                    'Redes sociales'),
+                                                                content:
+                                                                    Container(
+                                                                  height: 250,
+                                                                  child:
+                                                                      ListView(
+                                                                    children: [
+                                                                      const ListTile(
+                                                                        title: Text(
+                                                                            'facebook'),
+                                                                        leading: Icon(
+                                                                            FontAwesomeIcons
+                                                                                .facebook,
+                                                                            color:
+                                                                                Colors.blue),
+                                                                      ),
+                                                                      const ListTile(
+                                                                        title: Text(
+                                                                            'Instagram'),
+                                                                        leading:
+                                                                            Icon(
+                                                                          FontAwesomeIcons
+                                                                              .instagram,
+                                                                          color:
+                                                                              Colors.red,
+                                                                        ),
+                                                                      ),
+                                                                      ListTile(
+                                                                        title: const Text(
+                                                                            'Whatsapp'),
+                                                                        subtitle:
+                                                                            Text(number),
+                                                                        leading:
+                                                                            const Icon(
+                                                                          FontAwesomeIcons
+                                                                              .whatsapp,
+                                                                          color:
+                                                                              Colors.green,
+                                                                        ),
+                                                                      ),
+                                                                      ElevatedButton(
+                                                                          style: ButtonStyle(
+                                                                              backgroundColor: MaterialStateProperty.all<Color>(Color.fromARGB(255, 36, 91,
+                                                                                  189))),
+                                                                          onPressed:
+                                                                              () {
+                                                                            Navigator.pop(context);
+                                                                          },
+                                                                          child:
+                                                                              const Text('ok'))
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              )),
+                                              icon: Icon(
+                                                FontAwesomeIcons.plus,
+                                                color: Color.fromARGB(
+                                                    255, 36, 91, 189),
+                                              ),
+                                            ),
+                                            IconButton(
+                                                onPressed: () => {
+                                                      Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  EditCompany()))
+                                                    },
+                                                icon: Icon(
+                                                  FontAwesomeIcons.penToSquare,
+                                                  color: Color.fromARGB(
+                                                      255, 36, 91, 189),
+                                                )),
+                                          ],
                                         ),
-                                        IconButton(
-                                            onPressed: () => {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              EditCompany()))
-                                                },
-                                            icon: Icon(
-                                              FontAwesomeIcons.penToSquare,
-                                              color: Color.fromARGB(
-                                                  255, 36, 91, 189),
-                                            )),
-                                      ],
-                                    ),
-                                  ),
-                                ]))),
-                  )
-                ]),
+                                      ),
+                                    ]))),
+                      )
+                    ]),
               ],
             ),
           ],
