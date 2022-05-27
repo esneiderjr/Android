@@ -7,7 +7,6 @@ import 'package:mobile/login/widgets/widgets.dart';
 import 'package:mobile/providers/loginProvider.dart';
 import 'package:mobile/providers/login_form_provider.dart';
 import "package:provider/provider.dart";
-import 'package:mobile/Login/ui/animated.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
