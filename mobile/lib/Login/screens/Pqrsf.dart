@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mobile/Login/screens/home_screen.dart';
+import 'package:mobile/Login/screens/Home_screen.dart';
 import 'package:mobile/Login/screens/profile.dart';
 import 'package:mobile/button/Button.dart';
 

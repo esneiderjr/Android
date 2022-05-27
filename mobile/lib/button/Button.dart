@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:mobile/Login/screens/login_screen.dart';
+import 'package:mobile/Login/screens/Login_screen.dart';
 import 'package:mobile/main.dart';
 
 import '../Login/screens/Pqrsf.dart';
 import '../Login/screens/Profile.dart';
-import '../Login/screens/Company.dart';
 import '../Login/screens/Company.dart';
 import '../Login/screens/Statistics.dart';
 
@@ -62,9 +61,10 @@ class ButtonDesp extends StatelessWidget {
             child: Icon(FontAwesomeIcons.arrowRightFromBracket,
                 color: Colors.white),
             onTap: () => {
-                  Navigator.pushReplacement(
+                  Navigator.pushNamedAndRemoveUntil(
                     context,
-                    MaterialPageRoute(builder: (context) => LoginScreen()),
+                    'login',
+                    (route) => false,
                   )
                 })
       ],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/Login/screens/login_screen.dart';
+import 'package:mobile/Login/screens/Login_screen.dart';
 
 class Animacion extends StatelessWidget {
   const Animacion({Key? key}) : super(key: key);
