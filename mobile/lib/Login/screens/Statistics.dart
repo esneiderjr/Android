@@ -3,9 +3,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import '../../appBar/appBar.dart';
 import '../../button/Button.dart';
+import '../Widgets/line_chart_page.dart';
 
 class Statistics extends StatefulWidget {
   Statistics({Key? key}) : super(key: key);
+  
 
   @override
   State<Statistics> createState() => _StatisticsState();
@@ -25,7 +27,7 @@ class _StatisticsState extends State<Statistics> {
 Widget cuerpo() {
   return Container(
       child: ListView(
-    children: [boton(), imagen()],
+    children: [boton(),imagen()],
   ));
 }
 
@@ -59,7 +61,27 @@ Widget boton() {
         ),
       ]));
 }
-
 Widget imagen() {
   return Center(child: Image.asset('images/background_decoration.png'));
 }
+
+class chart extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) => Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.all(8),
+          child: PageView(
+            children: [
+              LineChartPage(),
+            ],
+          ),
+        ),
+      );
+}
+
+
+
+
+  
+
+
