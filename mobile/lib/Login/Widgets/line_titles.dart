@@ -7,7 +7,7 @@ class LineTitles {
         bottomTitles: SideTitles(
           showTitles: true,
           reservedSize: 35,
-          getTextStyles: (BuildContext context, value) => const TextStyle(
+          getTextStyles: (context, value) => const TextStyle(
             color: Color(0xff68737d),
             fontWeight: FontWeight.bold,
             fontSize: 16,
@@ -27,11 +27,10 @@ class LineTitles {
         ),
         leftTitles: SideTitles(
           showTitles: true,
-          reservedSize: 35,
-          getTextStyles: (BuildContext context, value) => const TextStyle(
+          getTextStyles: (context, value) => const TextStyle(
             color: Color(0xff67727d),
             fontWeight: FontWeight.bold,
-            fontSize: 16,
+            fontSize: 15,
           ),
           getTitles: (value) {
             switch (value.toInt()) {
@@ -44,6 +43,7 @@ class LineTitles {
             }
             return '';
           },
+          reservedSize: 35,
           margin: 12,
         ),
       );

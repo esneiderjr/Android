@@ -21,14 +21,14 @@ class LineChartWidget extends StatelessWidget {
             getDrawingHorizontalLine: (value) {
               return FlLine(
                 color: const Color(0xff37434d),
-                strokeWidth: 1,
+                strokeWidth: 2,
               );
             },
             drawVerticalLine: true,
             getDrawingVerticalLine: (value) {
               return FlLine(
                 color: const Color(0xff37434d),
-                strokeWidth: 1,
+                strokeWidth: 2,
               );
             },
           ),
