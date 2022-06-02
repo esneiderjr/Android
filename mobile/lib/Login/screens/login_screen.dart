@@ -126,16 +126,20 @@ class _LoginForm extends StatelessWidget {
                   child: Text(
                     "Ingresar",
                     style: TextStyle(fontSize: 16, color: Colors.white),
-                    // style: Theme.of(context).textTheme.headline6
+                    
                   ),
                 ),
                 onPressed: () {
-                  provider.getUsuario(context);
-                  // _controller.forward(from: 0.0);
-                  //todo login form
-                  // String sinspa = loginform.email.replaceAll(" ", "");
+                  // llama al provider para conectarlo con la api 
+                  provider.getUsuario(
+                      loginform.email, loginform.password, context);
 
-                  // if (!loginform.isValidForm()) return;
+                  // todo login form
+                  String sinspa = loginform.email.replaceAll(" ", "");
+
+                  if (!loginform.isValidForm()) return;
+
+                  
                   // Navigator.pushReplacementNamed(context, "Company");
                 }),
 
@@ -152,15 +156,6 @@ class _LoginForm extends StatelessWidget {
                       context, "Recuperar Contraseña");
                 }),
             SizedBox(height: 30),
-            // ElevatedButton(
-            //     style: ButtonStyle(
-            //         backgroundColor: MaterialStateProperty.all<Color>(
-            //             Color.fromARGB(255, 36, 91, 189))),
-            //     onPressed: () {
-            //       Navigator.push(context,
-            //           MaterialPageRoute(builder: (context) => Reports()));
-            //     },
-            //     child: Text('Iniciar sesion'))
           ],
         ),
       ),

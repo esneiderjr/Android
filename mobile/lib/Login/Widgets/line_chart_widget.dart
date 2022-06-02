@@ -5,7 +5,7 @@ import 'package:mobile/login/widgets/line_titles.dart';
 class LineChartWidget extends StatelessWidget {
   final List<Color> gradientColors = [
     const Color(0xff23b6e6),
-    const Color(0xff02d39a),
+    const Color.fromARGB(255, 36, 91, 189),
   ];
 
   @override
@@ -34,7 +34,8 @@ class LineChartWidget extends StatelessWidget {
           ),
           borderData: FlBorderData(
             show: true,
-            border: Border.all(color: const Color(0xff37434d), width: 1),
+            border:
+                Border.all(color: Color.fromARGB(255, 237, 237, 237), width: 1),
           ),
           lineBarsData: [
             LineChartBarData(
