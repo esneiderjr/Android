@@ -10,8 +10,6 @@ import 'api/AllApi.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  AllApi.configuteDio();
-
   runApp(const AppState());
 }
 
