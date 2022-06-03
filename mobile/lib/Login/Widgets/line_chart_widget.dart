@@ -20,15 +20,15 @@ class LineChartWidget extends StatelessWidget {
             show: true,
             getDrawingHorizontalLine: (value) {
               return FlLine(
-                color: const Color.fromARGB(255, 36, 91, 189),
-                strokeWidth: 1,
+                color: const Color(0xff37434d),
+                strokeWidth: 2,
               );
             },
             drawVerticalLine: true,
             getDrawingVerticalLine: (value) {
               return FlLine(
-                color: const Color.fromARGB(255, 36, 91, 189),
-                strokeWidth: 1,
+                color: const Color(0xff37434d),
+                strokeWidth: 2,
               );
             },
           ),
