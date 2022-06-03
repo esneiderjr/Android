@@ -16,9 +16,9 @@ class LoginScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              ElasticIn(child: _HeaderImage()),
+              ElasticIn(child: _HeaderImage(),duration: Duration(seconds:1)),
               SizedBox(height: 20),
-              CardContainer(
+              BounceInUp(child: CardContainer(
                 child: Center(
                   child: Column(
                     children: [
@@ -33,6 +33,8 @@ class LoginScreen extends StatelessWidget {
                     ],
                   ),
                 ),
+              ),
+              duration: Duration(seconds:2)
               ),
               SizedBox(height: 50),
             ],
