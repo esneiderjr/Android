@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:mobile/Login/screens/Company.dart';
 import '../api/AllApi.dart';
 
 class LoginProvider extends ChangeNotifier {
@@ -16,13 +15,34 @@ class LoginProvider extends ChangeNotifier {
     final resp = await AllApi.httpPost(url, parametros);
     final bodyResponse = jsonDecode(resp.body);
     final token = bodyResponse['token'];
-    // print(resp.statusCode.runtimeType);
+
+    // final message0 = bodyResponse['message'][0];
+    // final message1 = bodyResponse['message'][1];
+    // final message = message0 + " " + message1;
+
+    // print(message.runtimeType);
+
     if (resp.statusCode == 200) {
-      print(true);
       Navigator.pushReplacementNamed(context, "Company");
     } else if (resp.statusCode == 400) {
-      print(false);
-      print(resp.body);
+      AlertDialog alert = AlertDialog(
+        // backgroundColor: Colors.white.withOpacity(0.7),
+        title: const Text('error'),
+        // content: Text(message),
+        actions: <Widget>[
+          TextButton(
+            child: const Text('OK'),
+            onPressed: () {
+              Navigator.pop(context, 'OK');
+            },
+          ),
+        ],
+      );
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return alert;
+          });
     }
 
     // print(resp.body)

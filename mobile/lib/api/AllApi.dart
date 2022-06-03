@@ -12,7 +12,7 @@ class AllApi {
 
   static Future<http.Response> httpPost(String path, parametros) async {
     final url = starUrl + path;
-    print(url);
+    // print(url);
     try {
       return http.post(Uri.parse(url),
           headers: <String, String>{

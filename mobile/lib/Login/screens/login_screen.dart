@@ -128,23 +128,37 @@ class _LoginForm extends StatelessWidget {
                   child: Text(
                     "Ingresar",
                     style: TextStyle(fontSize: 16, color: Colors.white),
-                    
                   ),
                 ),
                 onPressed: () {
-                  // llama al provider para conectarlo con la api 
-                  provider.getUsuario(
+                  // llama al provider para conectarlo con la api
+
+                  var message = provider.getUsuario(
                       loginform.email, loginform.password, context);
 
                   // todo login form
                   String sinspa = loginform.email.replaceAll(" ", "");
 
                   if (!loginform.isValidForm()) return;
-
-                  
+                  // print('pepe');
+                  if (message.body) {
+                    print(message.body);
+                    AlertDialog alert = AlertDialog(
+                      backgroundColor: Colors.white.withOpacity(0.7),
+                      title: const Text('error'),
+                      content: const Text('debes llenar todos los campos'),
+                      actions: <Widget>[
+                        TextButton(
+                          child: const Text('OK'),
+                          onPressed: () {
+                            Navigator.pop(context, 'OK');
+                          },
+                        ),
+                      ],
+                    );
+                  }
                   // Navigator.pushReplacementNamed(context, "Company");
                 }),
-
             SizedBox(height: 10),
             MaterialButton(
                 child: Container(
@@ -154,6 +168,7 @@ class _LoginForm extends StatelessWidget {
                 onPressed: () {
                   //todo login form
                   if (!loginform.isValidForm()) return;
+
                   Navigator.pushReplacementNamed(
                       context, "Recuperar Contraseña");
                 }),
