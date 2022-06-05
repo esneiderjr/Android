@@ -53,19 +53,21 @@ class _CajaColor extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    return Container(
-      width: double.infinity,
-      height: size.height * 0.7,
-      decoration: _bluebackground(),
-      //       child: Stack(
-      //         children: [
-      //           Positioned(child: _Buble(), top: 90, left: 30),
-      //           Positioned(child: _Buble(), top: -40, left: -30),
-      //           Positioned(child: _Buble(), top: -50, right: -20),
-      //           Positioned(child: _Buble(), bottom: -50, left: 10),
-      //           Positioned(child: _Buble(), bottom: 120, right: 20),
-      //         ],
-    );
+    return Pulse(
+        child: Container(
+          width: double.infinity,
+          height: size.height * 0.7,
+          decoration: _bluebackground(),
+          //       child: Stack(
+          //         children: [
+          //           Positioned(child: _Buble(), top: 90, left: 30),
+          //           Positioned(child: _Buble(), top: -40, left: -30),
+          //           Positioned(child: _Buble(), top: -50, right: -20),
+          //           Positioned(child: _Buble(), bottom: -50, left: 10),
+          //           Positioned(child: _Buble(), bottom: 120, right: 20),
+          //         ],
+        ),
+        duration: Duration(seconds: 3));
   }
 
   BoxDecoration _bluebackground() => BoxDecoration(
@@ -73,10 +75,8 @@ class _CajaColor extends StatelessWidget {
           bottomRight: Radius.circular(100),
           bottomLeft: Radius.circular(100),
         ),
-        gradient: LinearGradient(colors: [
-          Color(0xFF245BBD),
-          Color.fromARGB(255, 36, 91, 189)
-        ]),
+        gradient: LinearGradient(
+            colors: [Color(0xFF245BBD), Color.fromARGB(255, 36, 91, 189)]),
       );
 }
 

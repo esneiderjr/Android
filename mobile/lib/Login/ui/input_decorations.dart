@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class InputDecorations{
 
   static InputDecoration authInputDecoration({
-    required String hintext,
+    required String hinText,
     required String labelText,
-    IconData? prefixIcon,
+    IconData? prefixIcon,suffixIcon,
   }){
     return InputDecoration(
                 enabledBorder: UnderlineInputBorder(
@@ -19,14 +19,17 @@ class InputDecorations{
                     width: 2,
                   ),
                 ),
-                hintText: hintext,
+                hintText: hinText,
                 labelText: labelText,
                 labelStyle: TextStyle(
                   color: Colors.grey,
                 ),
                 prefixIcon: prefixIcon != null 
                 ? Icon( prefixIcon, color: Colors.blue)
-                : null);
+                : null,
+                suffixIcon: suffixIcon != null 
+                ? Icon( suffixIcon, color: Colors.blue)
+                : null); 
   }
 
 }
