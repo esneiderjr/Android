@@ -6,8 +6,6 @@ import 'package:mobile/providers/loginProvider.dart';
 import 'package:mobile/providers/login_form_provider.dart';
 import "package:provider/provider.dart";
 
-import '../ui/input.dart';
-
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -124,12 +122,45 @@ class _LoginForm extends State<LoginForm> {
                 ),
                 duration: Duration(seconds: 3)),
             SizedBox(height: 10),
-            InputContrasena(
-              hinText: 'hola',
-              labelText: 'hola',
-              prefixIcon: Icons.abc_rounded,
-              suffixIcon: Icons.visibility,
-            ),
+            ElasticInLeft(
+                child: TextFormField(
+                  autocorrect: isHidden,
+                  obscureText: isHidden,
+                  keyboardType: TextInputType.visiblePassword,
+                  decoration: InputDecoration(
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Color.fromARGB(255, 134, 136, 134),
+                        ),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Color.fromARGB(255, 0, 47, 255),
+                          width: 2,
+                        ),
+                      ),
+                      hintText: "Ingresa tu contraseña",
+                      labelText: "Contraseña",
+                      prefixIcon:
+                          const Icon(Icons.lock_outlined, color: Colors.blue),
+                      suffixIcon: IconButton(
+                        color: isHidden ? Colors.blue : Colors.grey,
+                        onPressed: () {
+                          setState(() {
+                            isHidden = !isHidden;
+                          });
+                        },
+                        icon: Icon(
+                            isHidden ? Icons.visibility : Icons.visibility_off),
+                      )),
+                  onChanged: (value) => loginform.password = value,
+                  validator: (value) {
+                    if (value != null && value.length >= 10) return null;
+
+                    return "La contraseña tiene que tener 10 caracteres";
+                  },
+                ),
+                duration: Duration(seconds: 3)),
             SizedBox(height: 35),
             FlipInX(
                 child: MaterialButton(
