@@ -1,15 +1,10 @@
-import 'dart:convert';
-import 'dart:io';
-
-import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
-import '../providers/loginProvider.dart';
 
 class AllApi {
   //ferasApp.php
   static String starUrl = 'https://api.clotthy.com/api';
   // static Dio _dio = new Dio();
-  static Future<http.Response> httpGet(String path, parametros) async {
+  static Future<http.Response> httpGet(String path,) async {
     final url = starUrl + path;
     // print(url);
     try {
@@ -21,7 +16,7 @@ class AllApi {
         },
       );
     } catch (e) {
-      throw ('Error en el POST');
+      throw ('Error en el get');
     }
   }
 

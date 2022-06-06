@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile/Login/screens/Profile.dart';
+import 'package:provider/provider.dart';
+import '../providers/loginProvider.dart';
 
 class CustomAppBar extends StatefulWidget with PreferredSizeWidget {
   @override
@@ -19,6 +21,8 @@ class CustomAppBar extends StatefulWidget with PreferredSizeWidget {
 class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<LoginProvider>(context);
+
     return AppBar(
       automaticallyImplyLeading: false,
       backgroundColor: const Color.fromARGB(250, 252, 255, 253),
@@ -35,27 +39,27 @@ class _CustomAppBarState extends State<CustomAppBar> {
       actions: [
         Container(
           child: Column(
-            children: const [
+            children: [
               Divider(
                 height: 10,
               ),
               Text(
-                'Alberto Carrascales',
+                provider.userName,
                 style:
                     TextStyle(color: Colors.black, fontFamily: 'SourceSansPro'),
                 textAlign: TextAlign.center,
               ),
               Text(
-                'Anlista',
+                provider.role,
                 textAlign: TextAlign.right,
                 style: TextStyle(color: Colors.grey, fontSize: 10),
-              )
+              ),
             ],
           ),
         ),
         CircleAvatar(
-          child: Image.asset(
-            'images/Perfil.png',
+          child: Image.network(
+            provider.avatar,
             fit: BoxFit.contain,
           ),
         ),
