@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/Login/screens/Screens.dart';
 import 'package:mobile/appBar/appBar.dart';
 import 'package:mobile/button/Button.dart';
 import 'package:mobile/providers/loginProvider.dart';
@@ -51,8 +50,8 @@ class _ProfileState extends State<Profile> {
                 // imagen
                 Container(
                   margin: const EdgeInsets.only(top: 30, left: 30),
-                  child: Image.asset(
-                    'images/Perfil.png',
+                  child: Image.network(
+                    provider.avatar.toString(),
                     width: 120,
                     height: 110,
                   ),
