@@ -4,12 +4,9 @@ import '../api/AllApi.dart';
 
 class LoginProvider extends ChangeNotifier {
   late String token;
-<<<<<<< HEAD
-=======
   late String avatar;
   late String name;
   late String lastName;
->>>>>>> dc6e673eaf474f4ea0d41b5c97b1a2aee64ff13d
   late String userName;
   late String role;
 
@@ -32,12 +29,9 @@ class LoginProvider extends ChangeNotifier {
       this.token = bodyResponse['token'];
       this.userName = bodyResponse['user']['username'];
       this.role = bodyResponse['user']['user_role_info'][0]['role'];
-<<<<<<< HEAD
-=======
       this.name = bodyResponse['user']['first_name'];
       this.lastName = bodyResponse['user']['last_name'];
       this.avatar = bodyResponse['user']['avatar'];
->>>>>>> dc6e673eaf474f4ea0d41b5c97b1a2aee64ff13d
 
       Navigator.pushReplacementNamed(context, "Company");
     } else if (resp.statusCode == 400) {
