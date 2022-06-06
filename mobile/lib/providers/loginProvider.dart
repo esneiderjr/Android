@@ -12,23 +12,33 @@ class LoginProvider extends ChangeNotifier {
       'password_confirmation': password
     };
 
+    // conexion a all api contando los documentos
     final resp = await AllApi.httpPost(url, parametros);
     final bodyResponse = jsonDecode(resp.body);
     final token = bodyResponse['token'];
+    String message = "";
 
-    // final message0 = bodyResponse['message'][0];
-    // final message1 = bodyResponse['message'][1];
-    // final message = message0 + " " + message1;
-
-    // print(message.runtimeType);
-
+    // validacion de ingreso de datos;
     if (resp.statusCode == 200) {
+      print(bodyResponse);
+      var token = bodyResponse['token'];
+      var userName = bodyResponse['user']['username'];
+      var role = bodyResponse['user']['user_role_info'][0]['role'];
+      
       Navigator.pushReplacementNamed(context, "Company");
     } else if (resp.statusCode == 400) {
+      // castea los mensajes de errores y los pone en un show dialog
+      if (bodyResponse['message'] is List<dynamic>) {
+        for (var m in bodyResponse['message']) {
+          message += m + "\n";
+        }
+      } else {
+        message = bodyResponse['message'];
+      }
       AlertDialog alert = AlertDialog(
         // backgroundColor: Colors.white.withOpacity(0.7),
         title: const Text('error'),
-        // content: Text(message),
+        content: Text(message),
         actions: <Widget>[
           TextButton(
             child: const Text('OK'),
@@ -44,7 +54,5 @@ class LoginProvider extends ChangeNotifier {
             return alert;
           });
     }
-
-    // print(resp.body)
   }
 }

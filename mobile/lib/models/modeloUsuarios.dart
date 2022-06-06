@@ -16,14 +16,14 @@ class Usuario {
   String? id;
   String? email;
   String? userName;
-  String? fullName;
+  // String? fullName;
   String? token;
 
   Usuario({
     this.id,
     this.email,
     this.userName,
-    this.fullName,
+    // this.fullName,
     this.token,
   });
 
@@ -31,7 +31,7 @@ class Usuario {
     id = datos['id'];
     email = datos['email'];
     userName = datos['userName'];
-    fullName = datos['fullName'];
+    // fullName = datos['fullName'];
     token = datos['token'];
   }
 }
