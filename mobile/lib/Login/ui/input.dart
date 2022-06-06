@@ -16,8 +16,8 @@ class InputContrasena extends StatefulWidget {
 
   String hinText = '';
   String labelText = '';
-  IconData prefixIcon = Icons.abc;
-  IconData suffixIcon = Icons.ac_unit;
+  IconData prefixIcon = Icons.lock;
+  IconData suffixIcon = Icons.visibility;
 
   @override
   State<InputContrasena> createState() => _InputContrasenaState();
@@ -25,10 +25,10 @@ class InputContrasena extends StatefulWidget {
 
 class _InputContrasenaState extends State<InputContrasena> {
   bool isHidden = true;
-  
+
   @override
   Widget build(BuildContext context) {
-     final loginform = Provider.of<LoginFormProvider>(context);
+    final loginform = Provider.of<LoginFormProvider>(context);
     final provider = Provider.of<LoginProvider>(context, listen: false);
     return ElasticInLeft(
         child: TextFormField(
@@ -52,10 +52,10 @@ class _InputContrasenaState extends State<InputContrasena> {
               labelStyle: const TextStyle(
                 color: Colors.grey,
               ),
-              prefixIcon:widget. prefixIcon != null
+              prefixIcon: widget.prefixIcon != null
                   ? Icon(widget.prefixIcon, color: Colors.blue)
                   : null,
-              suffixIcon:widget. suffixIcon != null
+              suffixIcon: widget.suffixIcon != null
                   ? Icon(widget.suffixIcon, color: Colors.blue)
                   : null),
           onChanged: (value) => loginform.password = value,
@@ -81,7 +81,9 @@ class _InputContrasenaState extends State<InputContrasena> {
             isHidden = !isHidden;
           });
         },
-        icon: isHidden ?const Icon(Icons.visibility) :const Icon(Icons.visibility_off),
+        icon: isHidden
+            ? const Icon(Icons.visibility)
+            : const Icon(Icons.visibility_off),
         color: Colors.grey);
   }
 }
