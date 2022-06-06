@@ -15,6 +15,15 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<LoginProvider>(context);
+
+
+
+
+
+
+
+
+    
     // String nameEmployees = provider.userName;
     // String lastNameEmployees = 'Carrascales';
     var _solicitud = ['Cc', 'Ti', 'Nit'];
