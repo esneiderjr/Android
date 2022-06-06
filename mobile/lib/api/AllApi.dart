@@ -13,16 +13,16 @@ class AllApi {
     final url = starUrl + path;
     // print(url);
     try {
-      return http.get(Uri.parse(url),
-          headers: <String, String>{
-            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-          },
-          body: parametros);
+      return http.get(
+        Uri.parse(url),
+        headers: <String, String>{
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        },
+      );
     } catch (e) {
       throw ('Error en el POST');
     }
   }
-  
 
   static Future<http.Response> httpPost(String path, parametros) async {
     final url = starUrl + path;
