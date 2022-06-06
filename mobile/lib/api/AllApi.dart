@@ -16,7 +16,10 @@ class AllApi {
       return http.get(
         Uri.parse(url),
         headers: <String, String>{
+<<<<<<< HEAD
           
+=======
+>>>>>>> dc6e673eaf474f4ea0d41b5c97b1a2aee64ff13d
           'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
         },
       );
