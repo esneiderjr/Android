@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import '../api/AllApi.dart';
 
 class LoginProvider extends ChangeNotifier {
+  late String token;
+  late String userName;
+  late String role;
+
   getUsuario(String email, String password, context) async {
     String url = '/signin/employees';
 
@@ -21,10 +25,10 @@ class LoginProvider extends ChangeNotifier {
     // validacion de ingreso de datos;
     if (resp.statusCode == 200) {
       print(bodyResponse);
-      var token = bodyResponse['token'];
-      var userName = bodyResponse['user']['username'];
-      var role = bodyResponse['user']['user_role_info'][0]['role'];
-      
+      this.token = bodyResponse['token'];
+      this.userName = bodyResponse['user']['username'];
+      this.role = bodyResponse['user']['user_role_info'][0]['role'];
+
       Navigator.pushReplacementNamed(context, "Company");
     } else if (resp.statusCode == 400) {
       // castea los mensajes de errores y los pone en un show dialog

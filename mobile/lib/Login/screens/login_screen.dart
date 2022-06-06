@@ -6,6 +6,8 @@ import 'package:mobile/providers/loginProvider.dart';
 import 'package:mobile/providers/login_form_provider.dart';
 import "package:provider/provider.dart";
 
+import '../ui/input.dart';
+
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -122,25 +124,12 @@ class _LoginForm extends State<LoginForm> {
                 ),
                 duration: Duration(seconds: 3)),
             SizedBox(height: 10),
-            ElasticInLeft(
-                child: TextFormField(
-                  autocorrect: isHidden,
-                  obscureText: true,
-                  keyboardType: TextInputType.visiblePassword,
-                  decoration: InputDecorations.authInputDecoration(
-                    hinText: "Ingresa tu contraseña",
-                    labelText: "Contraseña",
-                    prefixIcon: Icons.lock_outlined,
-                    // suffixIcon: togglePasswordVisibility(),
-                  ),
-                  onChanged: (value) => loginform.password = value,
-                  validator: (value) {
-                    if (value != null && value.length >= 10) return null;
-
-                    return "La contraseña tiene que tener 10 caracteres";
-                  },
-                ),
-                duration: Duration(seconds: 3)),
+            InputContrasena(
+              hinText: 'hola',
+              labelText: 'hola',
+              prefixIcon: Icons.abc_rounded,
+              suffixIcon: Icons.visibility,
+            ),
             SizedBox(height: 35),
             FlipInX(
                 child: MaterialButton(
@@ -215,13 +204,15 @@ class _LoginForm extends State<LoginForm> {
       isHidden = !isHidden;
     });
   }
-  Widget togglePassword(){
-    return IconButton(onPressed: (){
-      setState(() {
-        isHidden=!isHidden;
-      });
 
-    },icon: isHidden?Icon(Icons.visibility) : Icon(Icons.visibility_off),
-    color: Colors.grey);
+  Widget togglePassword() {
+    return IconButton(
+        onPressed: () {
+          setState(() {
+            isHidden = !isHidden;
+          });
+        },
+        icon: isHidden ? Icon(Icons.visibility) : Icon(Icons.visibility_off),
+        color: Colors.grey);
   }
 }

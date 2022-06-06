@@ -6,6 +6,7 @@ class InputDecorations{
     required String hinText,
     required String labelText,
     IconData? prefixIcon,suffixIcon,
+    
   }){
     return InputDecoration(
                 enabledBorder: UnderlineInputBorder(

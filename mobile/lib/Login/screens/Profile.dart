@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mobile/Login/screens/Screens.dart';
 import 'package:mobile/appBar/appBar.dart';
 import 'package:mobile/button/Button.dart';
+import 'package:mobile/providers/loginProvider.dart';
+import 'package:provider/provider.dart';
 
 class Profile extends StatefulWidget {
   Profile({Key? key}) : super(key: key);
@@ -10,15 +12,19 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  String nameEmployees = 'Alberto';
-  String lastNameEmployees = 'Carrascales';
-  var _solicitud = ['Cc', 'Ti', 'Nit'];
-  String _vista = 'Doc';
-
   @override
   Widget build(BuildContext context) {
+    
+
+    final provider = Provider.of<LoginProvider>(context);
+    // String nameEmployees = provider.userName;
+    // String lastNameEmployees = 'Carrascales';
+    // var _solicitud = ['Cc', 'Ti', 'Nit'];
+    // String _vista = 'Doc';
+
     TextEditingController nameController = TextEditingController();
     TextEditingController lastNameController = TextEditingController();
+
     return Scaffold(
         appBar: CustomAppBar(),
         floatingActionButton: ButtonDesp(),
@@ -30,8 +36,8 @@ class _ProfileState extends State<Profile> {
                 // titulo
                 Container(
                     margin: const EdgeInsets.only(top: 30, left: 30),
-                    child: const Text('Mi perfil',
-                        style: TextStyle(
+                    child:  Text('Perfil de '+provider.userName,
+                        style:const TextStyle(
                           fontSize: 20,
                           fontFamily: 'rlight',
                         ))),
