@@ -8,17 +8,15 @@ class CustomAppBar extends StatefulWidget with PreferredSizeWidget {
   @override
   final Size preferredSize;
 
-  CustomAppBar( {Key? key})
+  CustomAppBar({Key? key})
       : preferredSize = const Size.fromHeight(50.0),
         super(key: key);
-  
+
   @override
   State<CustomAppBar> createState() => _CustomAppBarState();
 }
 
 class _CustomAppBarState extends State<CustomAppBar> {
-
-
   @override
   Widget build(BuildContext context) {
     return AppBar(

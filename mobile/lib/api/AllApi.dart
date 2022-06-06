@@ -7,7 +7,7 @@ import '../providers/loginProvider.dart';
 
 class AllApi {
   //ferasApp.php
-  static String starUrl = 'https://api.clotthy.com/clotthy-api/clotthy-api/api';
+  static String starUrl = 'https://api.clotthy.com/api';
   // static Dio _dio = new Dio();
   static Future<http.Response> httpGet(String path, parametros) async {
     final url = starUrl + path;
