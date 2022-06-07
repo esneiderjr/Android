@@ -181,30 +181,14 @@ class _LoginForm extends State<LoginForm> {
                     onPressed: () {
                       // llama al provider para conectarlo con la api
 
-                      var message = provider.getUsuario(
+                      provider.getUsuario(
                           loginform.email, loginform.password, context);
 
                       // todo login form
                       String sinspa = loginform.email.replaceAll(" ", "");
 
                       if (!loginform.isValidForm()) return;
-                      // print('pepe');
-                      if (message.body) {
-                        print(message.body);
-                        AlertDialog alert = AlertDialog(
-                          backgroundColor: Colors.white.withOpacity(0.7),
-                          title: const Text('error'),
-                          content: const Text('debes llenar todos los campos'),
-                          actions: <Widget>[
-                            TextButton(
-                              child: const Text('OK'),
-                              onPressed: () {
-                                Navigator.pop(context, 'OK');
-                              },
-                            ),
-                          ],
-                        );
-                      }
+                      // print('pepe')
                       // Navigator.pushReplacementNamed(context, "Company");
                     }),
                 duration: Duration(seconds: 3)),
