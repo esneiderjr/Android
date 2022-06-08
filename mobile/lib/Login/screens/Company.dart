@@ -4,6 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile/Login/screens/AddCompany.dart';
 import 'package:mobile/Login/screens/Pqrsf.dart';
 import 'package:mobile/appBar/appBar.dart';
+import 'package:mobile/providers/companyProvider.dart';
+import 'package:provider/provider.dart';
 import '../../button/Button.dart';
 import 'EditCompany.dart';
 
@@ -35,6 +37,8 @@ var nit = '12345678589-1';
 class _CompanyState extends State<Company> {
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<CompanyProvider>(context, listen: false);
+
     return SafeArea(
       child: Scaffold(
         appBar: CustomAppBar(),
@@ -62,12 +66,14 @@ class _CompanyState extends State<Company> {
                           style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(
                                   Color.fromARGB(255, 36, 91, 189))),
-                          onPressed: () => {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => AddCompany()))
-                              },
+                          onPressed: () {
+                            print("pepe");
+                            // Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //         builder: (context) => AddCompany()))
+                            provider.getCompany(context);
+                          },
                           child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: const [

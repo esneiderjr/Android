@@ -2,8 +2,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../api/AllApi.dart';
+import 'loginProvider.dart';
 
-class LoginProvider extends ChangeNotifier {
+class CompanyProvider extends ChangeNotifier {
   late String token;
   late String avatar;
   late String name;
@@ -13,16 +14,14 @@ class LoginProvider extends ChangeNotifier {
 
   getCompany(context) async {
     final provider = Provider.of<LoginProvider>(context);
-    String token = provider.token;
+    // String token = provider.token;
     String url = '/company';
-    Map<String, String> parametros = {
-
-    };
 
     // conexion a all api contando los documentos
-    final resp = await AllApi.httpGet(url, token);
+    final resp = await AllApi.httpGet(url, provider.token);
     final bodyResponse = jsonDecode(resp.body);
-    String message = "";
+    // String message = "";
+    print(bodyResponse);
 
     ;
   }
