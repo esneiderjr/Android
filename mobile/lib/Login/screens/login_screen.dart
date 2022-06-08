@@ -229,21 +229,4 @@ class _LoginForm extends State<LoginForm> {
       ),
     );
   }
-
-  void togglePasswordVisibility() {
-    setState(() {
-      isHidden = !isHidden;
-    });
-  }
-
-  Widget togglePassword() {
-    return IconButton(
-        onPressed: () {
-          setState(() {
-            isHidden = !isHidden;
-          });
-        },
-        icon: isHidden ? Icon(Icons.visibility) : Icon(Icons.visibility_off),
-        color: Colors.grey);
-  }
 }
