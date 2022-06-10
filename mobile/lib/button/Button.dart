@@ -1,6 +1,9 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:mobile/Login/screens/Login_screen.dart';
 import 'package:mobile/main.dart';
 
@@ -14,6 +17,7 @@ class ButtonDesp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    LocalStorage storage = LocalStorage('userLogged');
     return SpeedDial(
       activeBackgroundColor: Colors.grey,
       backgroundColor: Color.fromARGB(255, 36, 91, 189),
@@ -65,7 +69,8 @@ class ButtonDesp extends StatelessWidget {
                     context,
                     'login',
                     (route) => false,
-                  )
+                  ),
+                  storage.deleteItem('user_data')
                 })
       ],
     );
