@@ -167,7 +167,7 @@ class _CompanyState extends State<Company> {
                           Icon(FontAwesomeIcons.facebook, color: Colors.blue),
                     ),
                     ListTile(
-                      title: Text('Instagram'),
+                      title: Text('Instagrim'),
                       subtitle:
                           (provider.socialNetworks[1].nombrered == "Instagram")
                               ? (provider.isRed)
