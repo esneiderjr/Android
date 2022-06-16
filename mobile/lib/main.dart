@@ -5,6 +5,7 @@ import 'package:mobile/appBar/appBar.dart';
 import 'package:mobile/login/screens/screens.dart';
 import 'package:mobile/providers/companyProvider.dart';
 import 'package:mobile/providers/loginProvider.dart';
+import 'package:mobile/providers/logoutprovider.dart';
 import 'package:provider/provider.dart';
 import 'Login/SplashScreen/splashscreen.dart';
 import 'api/AllApi.dart';
@@ -25,6 +26,7 @@ class AppState extends StatelessWidget {
         //--------- provider login --------------
         ChangeNotifierProvider(lazy: false, create: (_) => LoginProvider()),
         ChangeNotifierProvider(lazy: false, create: (_) => CompanyProvider()),
+        ChangeNotifierProvider(lazy: false, create: (_) => LogoutProvider()),
       ],
       child: MyApp(),
     );

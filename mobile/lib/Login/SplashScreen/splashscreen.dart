@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:video_player/video_player.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -10,6 +11,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   late VideoPlayerController _controller;
+  LocalStorage storage = LocalStorage('userLogged');
 
   @override
   void initState() {
@@ -30,8 +32,11 @@ class _SplashScreenState extends State<SplashScreen> {
     _controller.play();
 
     await Future.delayed(const Duration(seconds: 4));
-
-    Navigator.pushNamed(context, 'login');
+    if (storage.getItem('user_data') == null) {
+      Navigator.pushNamed(context, 'login');
+    } else {
+      Navigator.pushNamed(context, 'Company');
+    }
   }
 
   @override

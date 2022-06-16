@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:mobile/appBar/appBar.dart';
 import 'package:mobile/button/Button.dart';
 import 'package:mobile/providers/loginProvider.dart';
@@ -14,17 +15,8 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<LoginProvider>(context);
-
-
-
-
-
-
-
-
-    
-    // String nameEmployees = provider.userName;
-    // String lastNameEmployees = 'Carrascales';
+     LocalStorage storage = LocalStorage('userLogged');
+    var userData = storage.getItem('user_data');
     var _solicitud = ['Cc', 'Ti', 'Nit'];
     String _vista = 'Doc';
 

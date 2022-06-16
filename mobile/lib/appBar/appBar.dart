@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:mobile/Login/screens/Profile.dart';
 import 'package:provider/provider.dart';
 import '../providers/loginProvider.dart';
@@ -22,6 +23,8 @@ class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<LoginProvider>(context);
+    LocalStorage storage = LocalStorage('userLogged');
+    var userData = storage.getItem('user_data');
 
     return AppBar(
       automaticallyImplyLeading: false,
@@ -44,13 +47,13 @@ class _CustomAppBarState extends State<CustomAppBar> {
                 height: 10,
               ),
               Text(
-                provider.userName,
+                userData['user']['username'].toString(),
                 style:
                     TextStyle(color: Colors.black, fontFamily: 'SourceSansPro'),
                 textAlign: TextAlign.center,
               ),
               Text(
-                provider.role,
+                userData['user']['user_role_info'][0]['role'].toString(),
                 textAlign: TextAlign.right,
                 style: TextStyle(color: Colors.grey, fontSize: 10),
               ),
@@ -59,7 +62,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
         ),
         CircleAvatar(
           child: Image.network(
-            provider.avatar,
+            userData['user']['avatar'].toString(),
             fit: BoxFit.contain,
           ),
         ),

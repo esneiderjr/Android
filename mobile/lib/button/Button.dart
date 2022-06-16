@@ -1,16 +1,14 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:localstorage/localstorage.dart';
-import 'package:mobile/Login/screens/Login_screen.dart';
-import 'package:mobile/main.dart';
-
+import 'package:mobile/providers/logoutprovider.dart';
+import 'package:provider/provider.dart';
 import '../Login/screens/Pqrsf.dart';
 import '../Login/screens/Profile.dart';
 import '../Login/screens/Company.dart';
 import '../Login/screens/Statistics.dart';
+import '../providers/loginProvider.dart';
 
 class ButtonDesp extends StatelessWidget {
   const ButtonDesp({Key? key}) : super(key: key);
@@ -18,6 +16,7 @@ class ButtonDesp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LocalStorage storage = LocalStorage('userLogged');
+    final provider = Provider.of<LogoutProvider>(context, listen: false);
     return SpeedDial(
       activeBackgroundColor: Colors.grey,
       backgroundColor: Color.fromARGB(255, 36, 91, 189),
@@ -30,8 +29,8 @@ class ButtonDesp extends StatelessWidget {
               color: Colors.white,
             ),
             onTap: () => {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Statistics()))
+                  // Navigator.push(context,
+                  //     MaterialPageRoute(builder: (context) => Statistics()))
                 }),
         SpeedDialChild(
             backgroundColor: Color.fromARGB(255, 36, 91, 189),
@@ -65,12 +64,13 @@ class ButtonDesp extends StatelessWidget {
             child: Icon(FontAwesomeIcons.arrowRightFromBracket,
                 color: Colors.white),
             onTap: () => {
+                  provider.logout(),
+                  storage.deleteItem('user_data'),
                   Navigator.pushNamedAndRemoveUntil(
                     context,
                     'login',
                     (route) => false,
-                  ),
-                  storage.deleteItem('user_data')
+                  )
                 })
       ],
     );
