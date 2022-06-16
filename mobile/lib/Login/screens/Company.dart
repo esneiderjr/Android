@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:mobile/Login/screens/AddCompany.dart';
-import 'package:mobile/Login/screens/Pqrsf.dart';
 import 'package:mobile/appBar/appBar.dart';
 import 'package:mobile/models/medelosCompany.dart';
 import 'package:mobile/providers/companyProvider.dart';
@@ -29,28 +26,25 @@ class _CompanyState extends State<Company> {
     final companys = Provider.of<CompanyProvider>(context).companys;
 
     final provider = Provider.of<CompanyProvider>(context);
-    int num = 0;
 
     List<Widget> itemMap = companys
-        .map((e) =>
-         Card(
+        .map((e) => Card(
             shadowColor: Color.fromARGB(255, 36, 91, 189),
             elevation: 25,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             // margin: const EdgeInsets.only(left: 20, right: 20, top: 260),
             child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(7),
                 child:
-                    Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-                      
+                    Column(mainAxisSize: MainAxisSize.max, children: <Widget>[
                   Text(e.nombreempresa!),
                   (provider.isTelefono)
                       ? Text(provider.telefono[0].numerotelefono!)
                       : Text('Sin Datos'),
                   Text(e.nitempresa!),
                   const Divider(
-                    indent: 2.5,
+                    indent: 3.5,
                   ),
                   // iconos botones para redireccionar la card
                   Container(
@@ -69,7 +63,7 @@ class _CompanyState extends State<Company> {
                           ),
                         ),
                         IconButton(
-                          onPressed: () => socialNet(context, e),
+                          onPressed: () => socialNet(context, e, provider),
                           icon: Icon(
                             FontAwesomeIcons.plus,
                             color: Color.fromARGB(255, 36, 91, 189),
@@ -145,7 +139,11 @@ class _CompanyState extends State<Company> {
     );
   }
 
-  Future<String?> socialNet(BuildContext context, Compani e) {
+  Future<String?> socialNet(
+      BuildContext context, Compani e, CompanyProvider provider) {
+    Provider.of<CompanyProvider>(context, listen: false).getCompanyNet(e.id!);
+    Provider.of<CompanyProvider>(context, listen: false).getCompany(e.id!);
+
     return showDialog<String>(
         context: context,
         builder: (BuildContext context) => AlertDialog(
@@ -154,21 +152,41 @@ class _CompanyState extends State<Company> {
                 height: 250,
                 child: ListView(
                   children: [
-                    const ListTile(
+                    ListTile(
                       title: Text('facebook'),
+                      subtitle:
+                          (provider.socialNetworks[0].nombrered == "Facebook")
+                              ? (provider.isRed)
+                                  ? Text(
+                                      provider.socialNetworks[0].enlacered!,
+                                      style: TextStyle(fontSize: 13),
+                                    )
+                                  : Text('Sin Datos')
+                              : Text('sin datos'),
                       leading:
                           Icon(FontAwesomeIcons.facebook, color: Colors.blue),
                     ),
-                    const ListTile(
+                    ListTile(
                       title: Text('Instagram'),
+                      subtitle:
+                          (provider.socialNetworks[1].nombrered == "Instagram")
+                              ? (provider.isRed)
+                                  ? Text(
+                                      provider.socialNetworks[1].enlacered!,
+                                      style: TextStyle(fontSize: 13),
+                                    )
+                                  : Text('Sin Datos')
+                              : Text('sin datos'),
                       leading: Icon(
                         FontAwesomeIcons.instagram,
                         color: Colors.red,
                       ),
                     ),
                     ListTile(
-                      title: const Text('Whatsapp'),
-                      subtitle: Text(e.nitempresa!),
+                      title: Text('Whatsapp'),
+                      subtitle: (provider.isTelefono)
+                          ? Text(provider.telefono[0].numerotelefono!)
+                          : Text('Sin Datos'),
                       leading: const Icon(
                         FontAwesomeIcons.whatsapp,
                         color: Colors.green,
@@ -195,14 +213,14 @@ class _CompanyState extends State<Company> {
       context: context,
       builder: (BuildContext context) => AlertDialog(
         backgroundColor: Colors.white,
-        title: Text(e.fechacreacion!),
+        title: Text(e.nombreempresa!),
         content: Container(
           width: 250,
           height: 280,
           child: ListView(
             children: [
               ListTile(
-                title: Text('Emai'),
+                title: Text('Fecha creacion'),
                 subtitle: Text(e.fechacreacion!),
                 trailing: const Icon(
                   FontAwesomeIcons.paperPlane,

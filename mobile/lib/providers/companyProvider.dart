@@ -5,18 +5,22 @@ import 'package:localstorage/localstorage.dart';
 import 'package:provider/provider.dart';
 import '../api/AllApi.dart';
 import '../models/medelosCompany.dart';
+import '../models/modeloNetworks.dart';
 import '../models/modeloTelefonos.dart';
 import 'loginProvider.dart';
 
 class CompanyProvider extends ChangeNotifier {
   List<Compani> companys = [];
   List<Telefono> telefono = [];
+  List<SocialNetwork> socialNetworks = [];
+
   bool isTelefono = false;
+  bool isRed = false;
 
   late var bodyResponse;
 
   getCompanys() async {
-    print('********************');
+    // print('********************');
     LocalStorage storage = LocalStorage('userLogged');
     String url = '/company';
     var userData = storage.getItem('user_data');
@@ -52,6 +56,30 @@ class CompanyProvider extends ChangeNotifier {
       isTelefono = true;
     }
 
+    notifyListeners();
+    // String message = "";
+  }
+
+  getCompanyNet(String id) async {
+    // print('********************');
+    LocalStorage storage = LocalStorage('userLogged');
+    String url = '/company/$id';
+    var userData = storage.getItem('user_data');
+    final token = userData['token'];
+
+    // conexion a all api contando los documentos
+    final resp = await AllApi.httpGet(url, token);
+    final bodyResponse = jsonDecode(resp.body);
+
+    print('**************  ' + bodyResponse.toString());
+    final SocialNetworks socialNetworks =
+        SocialNetworks.fromlist(bodyResponse['data']['redessociales']);
+    this.socialNetworks = socialNetworks.dato;
+    print(socialNetworks.dato);
+    if (socialNetworks.dato != "") {
+      isRed = true;
+    }
+    print(socialNetworks.dato);
     notifyListeners();
     // String message = "";
   }

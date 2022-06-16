@@ -1,4 +1,3 @@
-import '../providers/companyProvider.dart';
 
 class Companys {
   List<Compani> dato = [];
@@ -44,6 +43,6 @@ class Compani {
     fechamodificacion = datos['fechamodificacion'].toString();
     
 
-    print(nombreempresa);
+    // print(nombreempresa);
   }
 }

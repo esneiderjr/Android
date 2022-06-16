@@ -1,5 +1,5 @@
 class Telefonos {
-  List<Telefono> dato = [];
+  List<Telefono>dato = [];
   Telefonos();
 
   Telefonos.fromlist(List<dynamic> datos) {
@@ -30,6 +30,6 @@ class Telefono {
     tiponumero = datos['tiponumero'].toString();
     numerotelefono = datos['numerotelefono'].toString();
     indicativo = datos['indicativo'].toString();
-    print('******************** ' + indicativo.toString());
+    // print('******************** ' + indicativo.toString());
   }
 }
