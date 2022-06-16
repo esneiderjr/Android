@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:localstorage/localstorage.dart';
 import '../api/AllApi.dart';
 
 class LoginProvider extends ChangeNotifier {
@@ -11,7 +12,8 @@ class LoginProvider extends ChangeNotifier {
   late String role;
 
   getUsuario(String email, String password, context) async {
-    
+    final LocalStorage storage = LocalStorage('userLogged');
+
     String url = '/signin/employees';
     Map<String, String> parametros = {
       'email': email,
@@ -26,13 +28,16 @@ class LoginProvider extends ChangeNotifier {
 
     // validacion de ingreso de datos;
     if (resp.statusCode == 200) {
-      print(bodyResponse);
+      // print(bodyResponse);
       this.token = bodyResponse['token'];
       this.userName = bodyResponse['user']['username'];
       this.role = bodyResponse['user']['user_role_info'][0]['role'];
       this.name = bodyResponse['user']['first_name'];
       this.lastName = bodyResponse['user']['last_name'];
       this.avatar = bodyResponse['user']['avatar'];
+
+      storage.setItem('user_data', bodyResponse);
+      
 
       Navigator.pushReplacementNamed(context, "Company");
     } else if (resp.statusCode == 400) {
