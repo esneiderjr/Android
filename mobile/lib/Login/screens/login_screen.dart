@@ -97,23 +97,23 @@ class _LoginForm extends State<LoginForm> {
                     labelText: "Correo Electronico",
                     prefixIcon: Icons.alternate_email_rounded,
                   ),
-                  onChanged: (value) => loginform.email = value,
-                  // validator: (value) {
+                  onChanged: (correo) => loginform.email = correo,
+                  // validator: (correo) {
                   //   String pattern =
                   //       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
                   //   RegExp regExp = new RegExp(pattern);
 
-                  //   return regExp.hasMatch(value ?? "")
+                  //   return regExp.hasMatch(correo ?? "")
                   //       ? null
                   //       : "El correo esta mal escrito o tiene un espacio de mas";
                   // },
-                  validator: (value) {
+                  validator: (correo) {
                     // cuando esta vacio
-                    if (value == null || value.isEmpty) {
-                      return 'Este campo es requerido';
+                    if (correo == null || correo.isEmpty) {
+                      return "Este campo es requerido";
                     }
                     // cuando falta algo
-                    if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
+                    if (!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(correo)) {
                       return "Ingrese su email correcto";
                     }
                     // el correo es valido
@@ -153,12 +153,14 @@ class _LoginForm extends State<LoginForm> {
                         icon: Icon(
                             isHidden ? Icons.visibility : Icons.visibility_off),
                       )),
-                  onChanged: (value) => loginform.password = value,
-                  validator: (value) {
-                    if (value != null && value.length >= 10) return null;
-
+                  onChanged: (contra) => loginform.password = contra,
+                  validator: (contra) {
+                    if (contra == null || contra.isEmpty) {
+                      return "Se necesita la contraseña";
+                      }
+                    if (contra.length >= 10) return null;
                     return "La contraseña tiene que tener 10 caracteres";
-                  },
+                  }
                 ),
                 duration: Duration(seconds: 3)),
             SizedBox(height: 35),
