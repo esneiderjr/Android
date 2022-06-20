@@ -37,7 +37,7 @@ class CompanyProvider extends ChangeNotifier {
     // String message = "";
   }
 
-  getCompany(String id) async {
+  getCompanytel(String id) async {
     // print('********************');
     LocalStorage storage = LocalStorage('userLogged');
     String url = '/company/$id';
@@ -79,8 +79,43 @@ class CompanyProvider extends ChangeNotifier {
     if (socialNetworks.dato != "") {
       isRed = true;
     }
-    print(socialNetworks.dato);
+    // print(socialNetworks.dato);
     notifyListeners();
     // String message = "";
+    }
+
+    getCompany(id)async{
+      LocalStorage storage = LocalStorage('userLogged');
+    String url = '/company/$id';
+    var userData = storage.getItem('user_data');
+    final token = userData['token'];
+
+    // conexion a all api contando los documentos
+    final resp = await AllApi.httpGet(url, token);
+    final bodyResponse = jsonDecode(resp.body);
+
+    print('**************  ' + bodyResponse.toString());
+    final SocialNetworks socialNetworks =
+        SocialNetworks.fromlist(bodyResponse['data']['redessociales']);
+    this.socialNetworks = socialNetworks.dato;
+    print(socialNetworks.dato);
+    if (socialNetworks.dato != "") {
+      isRed = true;
+    }
+    // print(socialNetworks.dato);
+    notifyListeners();
+    }
+
+    late var idCompany;
+    updateCompany(String id) async {
+    LocalStorage storage = LocalStorage('userLogged');
+    String url = '/company/$id';
+    var userData = storage.getItem('user_data');
+    final token = userData['token'];
+
+
+
+
+    }
   }
-}
+

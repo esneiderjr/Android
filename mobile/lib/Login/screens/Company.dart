@@ -71,10 +71,12 @@ class _CompanyState extends State<Company> {
                         ),
                         IconButton(
                             onPressed: () => {
+                                  provider.idCompany = e.id,
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => EditCompany()))
+                                          builder: (context) =>
+                                              EditCompany()))
                                 },
                             icon: Icon(
                               FontAwesomeIcons.penToSquare,
@@ -142,7 +144,7 @@ class _CompanyState extends State<Company> {
   Future<String?> socialNet(
       BuildContext context, Compani e, CompanyProvider provider) {
     Provider.of<CompanyProvider>(context, listen: false).getCompanyNet(e.id!);
-    Provider.of<CompanyProvider>(context, listen: false).getCompany(e.id!);
+    Provider.of<CompanyProvider>(context, listen: false).getCompanytel(e.id!);
 
     return showDialog<String>(
         context: context,
@@ -154,29 +156,29 @@ class _CompanyState extends State<Company> {
                   children: [
                     ListTile(
                       title: Text('facebook'),
-                      subtitle:
-                          (provider.socialNetworks[0].nombrered == "Facebook")
-                              ? (provider.isRed)
-                                  ? Text(
-                                      provider.socialNetworks[0].enlacered!,
-                                      style: TextStyle(fontSize: 13),
-                                    )
-                                  : Text('Sin Datos')
-                              : Text('sin datos'),
+                      subtitle: (provider.isRed)
+                          ? (provider.socialNetworks[1].nombrered ==
+                                  "Instagram")
+                              ? Text(
+                                  provider.socialNetworks[0].enlacered!,
+                                  style: TextStyle(fontSize: 13),
+                                )
+                              : Text('Sin Datos')
+                          : Text('sin datos'),
                       leading:
                           Icon(FontAwesomeIcons.facebook, color: Colors.blue),
                     ),
                     ListTile(
                       title: Text('Instagrim'),
-                      subtitle:
-                          (provider.socialNetworks[1].nombrered == "Instagram")
-                              ? (provider.isRed)
-                                  ? Text(
-                                      provider.socialNetworks[1].enlacered!,
-                                      style: TextStyle(fontSize: 13),
-                                    )
-                                  : Text('Sin Datos')
-                              : Text('sin datos'),
+                      subtitle: (provider.isRed)
+                          ? (provider.socialNetworks[1].nombrered ==
+                                  "Instagram")
+                              ? Text(
+                                  provider.socialNetworks[1].enlacered!,
+                                  style: TextStyle(fontSize: 13),
+                                )
+                              : Text('Sin Datos')
+                          : Text('sin datos'),
                       leading: Icon(
                         FontAwesomeIcons.instagram,
                         color: Colors.red,
@@ -207,7 +209,7 @@ class _CompanyState extends State<Company> {
   }
 
   infoEmpresa(Compani e, CompanyProvider provider) {
-    Provider.of<CompanyProvider>(context, listen: false).getCompany(e.id!);
+    Provider.of<CompanyProvider>(context, listen: false).getCompanytel(e.id!);
 
     return showDialog<String>(
       context: context,
