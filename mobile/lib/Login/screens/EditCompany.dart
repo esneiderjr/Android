@@ -4,7 +4,6 @@ import 'package:localstorage/localstorage.dart';
 import 'package:mobile/appBar/appBar.dart';
 import 'package:mobile/button/Button.dart';
 import 'package:mobile/providers/companyProvider.dart';
-import 'package:mobile/providers/loginProvider.dart';
 import 'package:provider/provider.dart';
 
 class EditCompany extends StatefulWidget {
@@ -17,6 +16,7 @@ class _EditCompanyState extends State<EditCompany> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<CompanyProvider>(context);
+    final companys = Provider.of<CompanyProvider>(context).oneCompany;
     LocalStorage storage = LocalStorage('userLogged');
     var userData = storage.getItem('user_data');
     var result;
@@ -24,8 +24,6 @@ class _EditCompanyState extends State<EditCompany> {
     TextEditingController nameComController = TextEditingController();
     TextEditingController lastNameComController = TextEditingController();
     TextEditingController docComController = TextEditingController();
-
-    nameComController.text = provider.getCompanys().runtimeType();
 
     return Scaffold(
         appBar: CustomAppBar(),

@@ -71,12 +71,7 @@ class _CompanyState extends State<Company> {
                         ),
                         IconButton(
                             onPressed: () => {
-                                  provider.idCompany = e.id,
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              EditCompany()))
+                                  provider.getCompany(context, e.id)
                                 },
                             icon: Icon(
                               FontAwesomeIcons.penToSquare,

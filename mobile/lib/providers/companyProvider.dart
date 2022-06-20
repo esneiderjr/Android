@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
+import 'package:mobile/models/modeloOneComany.dart';
 import 'package:provider/provider.dart';
 import '../api/AllApi.dart';
 import '../models/medelosCompany.dart';
@@ -13,9 +14,11 @@ class CompanyProvider extends ChangeNotifier {
   List<Compani> companys = [];
   List<Telefono> telefono = [];
   List<SocialNetwork> socialNetworks = [];
+  List<OneCompani> oneCompany = [];
 
   bool isTelefono = false;
   bool isRed = false;
+  bool isCompany = false;
 
   late var bodyResponse;
 
@@ -74,6 +77,7 @@ class CompanyProvider extends ChangeNotifier {
     print('**************  ' + bodyResponse.toString());
     final SocialNetworks socialNetworks =
         SocialNetworks.fromlist(bodyResponse['data']['redessociales']);
+
     this.socialNetworks = socialNetworks.dato;
     print(socialNetworks.dato);
     if (socialNetworks.dato != "") {
@@ -82,10 +86,10 @@ class CompanyProvider extends ChangeNotifier {
     // print(socialNetworks.dato);
     notifyListeners();
     // String message = "";
-    }
+  }
 
-    getCompany(id)async{
-      LocalStorage storage = LocalStorage('userLogged');
+  getCompany(context, id) async {
+    LocalStorage storage = LocalStorage('userLogged');
     String url = '/company/$id';
     var userData = storage.getItem('user_data');
     final token = userData['token'];
@@ -95,27 +99,15 @@ class CompanyProvider extends ChangeNotifier {
     final bodyResponse = jsonDecode(resp.body);
 
     print('**************  ' + bodyResponse.toString());
-    final SocialNetworks socialNetworks =
-        SocialNetworks.fromlist(bodyResponse['data']['redessociales']);
-    this.socialNetworks = socialNetworks.dato;
-    print(socialNetworks.dato);
-    if (socialNetworks.dato != "") {
-      isRed = true;
+
+    final OneCompany oneCompany = OneCompany.fromlist(bodyResponse['data']);
+    this.oneCompany = oneCompany.dato;
+    print(oneCompany.dato);
+    if (oneCompany.dato != "") {
+      isCompany = true;
+      Navigator.pushReplacementNamed(context, "EditCompany");
     }
-    // print(socialNetworks.dato);
+
     notifyListeners();
-    }
-
-    late var idCompany;
-    updateCompany(String id) async {
-    LocalStorage storage = LocalStorage('userLogged');
-    String url = '/company/$id';
-    var userData = storage.getItem('user_data');
-    final token = userData['token'];
-
-
-
-
-    }
   }
-
+}

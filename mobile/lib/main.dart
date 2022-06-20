@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/Login/screens/EditCompany.dart';
 import 'package:mobile/Login/screens/Pqrsf.dart';
 import 'package:mobile/Login/screens/Company.dart';
 import 'package:mobile/appBar/appBar.dart';
@@ -46,6 +47,8 @@ class MyApp extends StatelessWidget {
         "SplashScreen": (_) => SplashScreen(),
         "login": (_) => LoginScreen(),
         "Company": (_) => Company(),
+        "EditCompany": (_) => EditCompany(),
+
       },
     );
   }
