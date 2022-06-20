@@ -182,8 +182,8 @@ class _LoginForm extends State<LoginForm> {
                     ),
                     onPressed: () {
                       // llama al provider para conectarlo con la api
-                      provider.getUsuario(
-                          loginform.email, loginform.password, context);
+                      // provider.getUsuario(
+                      //     loginform.email, loginform.password, context);
                       // todo login form
                       String sinspa = loginform.email.replaceAll(" ", "");
                       if (!loginform.isValidForm()) return;
@@ -211,3 +211,5 @@ class _LoginForm extends State<LoginForm> {
     );
   }
 }
+// cqsielptduslmple33
+// josedanielmolina323@gmail.com
