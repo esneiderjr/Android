@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:mobile/models/modeloOneComany.dart';
-import 'package:provider/provider.dart';
 import '../api/AllApi.dart';
 import '../models/medelosCompany.dart';
 import '../models/modeloNetworks.dart';
