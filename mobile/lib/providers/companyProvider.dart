@@ -96,9 +96,10 @@ class CompanyProvider extends ChangeNotifier {
     // conexion a all api contando los documentos
     final resp = await AllApi.httpGet(url, token);
     final bodyResponse = jsonDecode(resp.body);
+    List<dynamic>.from(bodyResponse['data'] as List<dynamic>);
 
-    print('**************  ' + bodyResponse.toString());
-
+    print('**************  ' + bodyResponse['data'].toString());
+    print(bodyResponse['data'].runtimeType);
     final OneCompany oneCompany = OneCompany.fromlist(bodyResponse['data']);
     this.oneCompany = oneCompany.dato;
     print(oneCompany.dato);
@@ -108,5 +109,14 @@ class CompanyProvider extends ChangeNotifier {
     }
 
     notifyListeners();
+  }
+
+  updateCompany(parametros, context) async {
+    final LocalStorage storage = LocalStorage('userLogged');
+    String url = '/company/{id}';
+    // conexion a all api contando los documentos
+    final resp = await AllApi.httpPost(url, parametros);
+    final bodyResponse = jsonDecode(resp.body);
+    String message = "";
   }
 }

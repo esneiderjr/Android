@@ -31,8 +31,8 @@ class OneCompani {
     this.nitempresa,
     this.fechacreacion,
     this.fechamodificacion,
-    this.redessociales,
-    this.telefonos,
+    // this.redessociales,
+    // this.telefonos,
   });
 
   OneCompani.fromJsonMap(Map<String, dynamic> datos) {
@@ -43,8 +43,8 @@ class OneCompani {
     nitempresa = datos['nitempresa'].toString();
     fechacreacion = datos['fechacreacion'].toString();
     fechamodificacion = datos['fechamodificacion'].toString();
-    redessociales = datos['redessociales'];
-    telefonos = datos['telefonos'];
+    // redessociales = datos['redessociales'].toString();
+    // telefonos = datos['telefonos'].toString();
 
     // print(nombreempresa);
   }

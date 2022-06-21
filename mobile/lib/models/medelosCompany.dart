@@ -1,4 +1,3 @@
-
 class Companys {
   List<Compani> dato = [];
   Companys();
@@ -33,7 +32,6 @@ class Compani {
   });
 
   Compani.fromJsonMap(Map<String, dynamic> datos) {
-    
     id = datos['id'].toString();
     idciudad = datos['idciudad'].toString();
     nombreempresa = datos['nombreempresa'].toString();
@@ -41,8 +39,5 @@ class Compani {
     nitempresa = datos['nitempresa'].toString();
     fechacreacion = datos['fechacreacion'].toString();
     fechamodificacion = datos['fechamodificacion'].toString();
-    
-
-    // print(nombreempresa);
   }
 }

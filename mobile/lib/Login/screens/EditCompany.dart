@@ -22,9 +22,15 @@ class _EditCompanyState extends State<EditCompany> {
     var result;
 
     TextEditingController nameComController = TextEditingController();
-    TextEditingController lastNameComController = TextEditingController();
+    TextEditingController nitComController = TextEditingController();
     TextEditingController docComController = TextEditingController();
 
+    
+    Map<String, String> parametros = {
+      'nombre': nameComController.text,
+      'nit': nitComController.text,
+      // 'password_confirmation': password
+    };
     return Scaffold(
         appBar: CustomAppBar(),
         floatingActionButton: ButtonDesp(),
@@ -101,7 +107,7 @@ class _EditCompanyState extends State<EditCompany> {
                   margin: EdgeInsets.only(top: 10, left: 30),
                   padding: EdgeInsets.all(10),
                   child: TextFormField(
-                    controller: lastNameComController,
+                    controller: nitComController,
                     keyboardType: TextInputType.name,
                     textInputAction: TextInputAction.send,
                     textCapitalization: TextCapitalization.sentences,
@@ -146,7 +152,9 @@ class _EditCompanyState extends State<EditCompany> {
                                     backgroundColor:
                                         MaterialStateProperty.all<Color>(
                                             Color.fromARGB(255, 36, 91, 189))),
-                                onPressed: () {},
+                                onPressed: () {
+                                  provider.updateCompany(parametros, context);
+                                },
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,

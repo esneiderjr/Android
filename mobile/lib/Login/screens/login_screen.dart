@@ -113,7 +113,9 @@ class _LoginForm extends State<LoginForm> {
                       return "Este campo es requerido";
                     }
                     // cuando falta algo
-                    if (!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(correo)) {
+                    if (!RegExp(
+                            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                        .hasMatch(correo)) {
                       return "Ingrese su email correcto";
                     }
                     // el correo es valido
@@ -124,44 +126,44 @@ class _LoginForm extends State<LoginForm> {
             SizedBox(height: 10),
             ElasticInLeft(
                 child: TextFormField(
-                  autocorrect: isHidden,
-                  obscureText: isHidden,
-                  keyboardType: TextInputType.visiblePassword,
-                  decoration: InputDecoration(
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color.fromARGB(255, 134, 136, 134),
+                    autocorrect: isHidden,
+                    obscureText: isHidden,
+                    keyboardType: TextInputType.visiblePassword,
+                    decoration: InputDecoration(
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color.fromARGB(255, 134, 136, 134),
+                          ),
                         ),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color.fromARGB(255, 0, 47, 255),
-                          width: 2,
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color.fromARGB(255, 0, 47, 255),
+                            width: 2,
+                          ),
                         ),
-                      ),
-                      hintText: "Ingresa tu contraseña",
-                      labelText: "Contraseña",
-                      prefixIcon:
-                          const Icon(Icons.lock_outlined, color: Colors.blue),
-                      suffixIcon: IconButton(
-                        color: isHidden ? Colors.blue : Colors.grey,
-                        onPressed: () {
-                          setState(() {
-                            isHidden = !isHidden;
-                          });
-                        },
-                        icon: Icon(
-                            isHidden ? Icons.visibility : Icons.visibility_off),
-                      )),
-                  onChanged: (contra) => loginform.password = contra,
-                  validator: (contra) {
-                    if (contra == null || contra.isEmpty) {
-                      return "Se necesita la contraseña";
+                        hintText: "Ingresa tu contraseña",
+                        labelText: "Contraseña",
+                        prefixIcon:
+                            const Icon(Icons.lock_outlined, color: Colors.blue),
+                        suffixIcon: IconButton(
+                          color: isHidden ? Colors.blue : Colors.grey,
+                          onPressed: () {
+                            setState(() {
+                              isHidden = !isHidden;
+                            });
+                          },
+                          icon: Icon(isHidden
+                              ? Icons.visibility
+                              : Icons.visibility_off),
+                        )),
+                    onChanged: (contra) => loginform.password = contra,
+                    validator: (contra) {
+                      if (contra == null || contra.isEmpty) {
+                        return "Se necesita la contraseña";
                       }
-                    if (contra.length >= 10) return null;
-                    return "La contraseña tiene que tener 10 caracteres";
-                  }
-                ),
+                      if (contra.length >= 10) return null;
+                      return "La contraseña tiene que tener 10 caracteres";
+                    }),
                 duration: Duration(seconds: 3)),
             SizedBox(height: 35),
             FlipInX(
@@ -182,8 +184,8 @@ class _LoginForm extends State<LoginForm> {
                     ),
                     onPressed: () {
                       // llama al provider para conectarlo con la api
-                      // provider.getUsuario(
-                      //     loginform.email, loginform.password, context);
+                      provider.getUsuario(
+                          loginform.email, loginform.password, context);
                       // todo login form
                       String sinspa = loginform.email.replaceAll(" ", "");
                       if (!loginform.isValidForm()) return;

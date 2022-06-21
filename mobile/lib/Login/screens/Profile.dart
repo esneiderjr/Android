@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:mobile/appBar/appBar.dart';
 import 'package:mobile/button/Button.dart';
+import 'package:mobile/providers/idBdProvider.dart';
 import 'package:mobile/providers/loginProvider.dart';
 import 'package:provider/provider.dart';
 
@@ -14,7 +15,7 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<LoginProvider>(context);
+    final provider = Provider.of<IdBd>(context);
     LocalStorage storage = LocalStorage('userLogged');
     var userData = storage.getItem('user_data');
     var _solicitud = ['Cc', 'Ti', 'Nit'];
@@ -149,7 +150,9 @@ class _ProfileState extends State<Profile> {
                                     backgroundColor:
                                         MaterialStateProperty.all<Color>(
                                             Color.fromARGB(255, 36, 91, 189))),
-                                onPressed: () {},
+                                onPressed: () {
+                                  provider.idTipeDoc();
+                                },
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,

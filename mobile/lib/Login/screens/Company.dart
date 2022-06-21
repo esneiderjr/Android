@@ -5,7 +5,6 @@ import 'package:mobile/models/medelosCompany.dart';
 import 'package:mobile/providers/companyProvider.dart';
 import 'package:provider/provider.dart';
 import '../../button/Button.dart';
-import 'EditCompany.dart';
 
 class Company extends StatefulWidget {
   const Company({Key? key}) : super(key: key);
