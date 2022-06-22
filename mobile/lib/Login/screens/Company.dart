@@ -71,11 +71,11 @@ class _CompanyState extends State<Company> {
                                                       255, 36, 91, 189))),
                                       onPressed: () {
                                         print(provider.telefono);
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    AddCompany()));
+                                        // Navigator.push(
+                                        //     context,
+                                        //     MaterialPageRoute(
+                                        //         builder: (context) =>
+                                        //             AddCompany()));
                                       },
                                       child: Row(
                                           mainAxisAlignment:
@@ -138,10 +138,10 @@ class _CompanyState extends State<Company> {
         shadowColor: Color.fromARGB(255, 36, 91, 189),
         elevation: 25,
         shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-              topRight: Radius.circular(40),
-              bottomLeft: Radius.circular(40),
-            )),
+            borderRadius: BorderRadius.only(
+          topRight: Radius.circular(40),
+          bottomLeft: Radius.circular(40),
+        )),
         // margin: const EdgeInsets.only(left: 20, right: 20, top: 260),
         child: Padding(
             padding: const EdgeInsets.all(7),
