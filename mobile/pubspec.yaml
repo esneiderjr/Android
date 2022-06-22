@@ -62,7 +62,8 @@ dev_dependencies:
     sdk: flutter
 
 flutter_native_splash:
-  color:"#245BBD"
+  color: "#245BBD"
+  image: images/clotthy.png
 
 
 # For information on the generic Dart part of this file, see the
