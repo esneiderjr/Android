@@ -25,9 +25,12 @@ class _CompanyState extends State<Company> {
     final size = MediaQuery.of(context).size;
 
     final companys = Provider.of<CompanyProvider>(context).companys;
-
     final provider = Provider.of<CompanyProvider>(context);
 
+<<<<<<< HEAD
+    List<Widget> itemMap =
+        companys.map((e) => card(e, provider, context)).toList();
+=======
     List<Widget> itemMap = companys
         .map((e) => Card(
             shadowColor: Color.fromARGB(255, 36, 91, 189),
@@ -86,6 +89,7 @@ class _CompanyState extends State<Company> {
                   ),
                 ]))))
         .toList();
+>>>>>>> 25bb9870660b586ef4aa2ac0fb44938c3844307f
 
     return SafeArea(
       child: Scaffold(
@@ -187,6 +191,62 @@ class _CompanyState extends State<Company> {
     );
   }
 
+  Card card(Compani e, CompanyProvider provider, BuildContext context) {
+    Provider.of<CompanyProvider>(context, listen: false).getCompanyNet(e.id!);
+    Provider.of<CompanyProvider>(context, listen: false).getCompanytel(e.id!);
+    return Card(
+        shadowColor: Color.fromARGB(255, 36, 91, 189),
+        elevation: 25,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        // margin: const EdgeInsets.only(left: 20, right: 20, top: 260),
+        child: Padding(
+            padding: const EdgeInsets.all(7),
+            child: Column(mainAxisSize: MainAxisSize.max, children: <Widget>[
+              Text(e.nombreempresa!),
+              (provider.isTelefono)
+                  ? (provider.telefono[0].numerotelefono != null)
+                      ? Text(provider.telefono[0].numerotelefono!)
+                      : const Text('Sin Datos')
+                  : const Text('Sin Datos'),
+              Text(e.nitempresa!),
+              const Divider(
+                indent: 3.5,
+              ),
+              // iconos botones para redireccionar la card
+              Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        setState(() {
+                          infoEmpresa(e, provider);
+                        });
+                      },
+                      icon: const Icon(
+                        FontAwesomeIcons.list,
+                        color: Color.fromARGB(255, 36, 91, 189),
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () => socialNet(context, e, provider),
+                      icon: Icon(
+                        FontAwesomeIcons.plus,
+                        color: Color.fromARGB(255, 36, 91, 189),
+                      ),
+                    ),
+                    IconButton(
+                        onPressed: () => {provider.getCompany(context, e.id)},
+                        icon: Icon(
+                          FontAwesomeIcons.penToSquare,
+                          color: Color.fromARGB(255, 36, 91, 189),
+                        )),
+                  ],
+                ),
+              ),
+            ])));
+  }
+
   Future<String?> socialNet(
       BuildContext context, Compani e, CompanyProvider provider) {
     Provider.of<CompanyProvider>(context, listen: false).getCompanyNet(e.id!);
@@ -233,8 +293,10 @@ class _CompanyState extends State<Company> {
                     ListTile(
                       title: Text('Whatsapp'),
                       subtitle: (provider.isTelefono)
-                          ? Text(provider.telefono[0].numerotelefono!)
-                          : Text('Sin Datos'),
+                          ? (provider.telefono.length != 0)
+                              ? Text(provider.telefono[0].numerotelefono!)
+                              : const Text('Sin Datos')
+                          : const Text('Sin Datos'),
                       leading: const Icon(
                         FontAwesomeIcons.whatsapp,
                         color: Colors.green,
@@ -278,8 +340,10 @@ class _CompanyState extends State<Company> {
               ListTile(
                   title: Text('Telefono'),
                   subtitle: (provider.isTelefono)
-                      ? Text(provider.telefono[0].numerotelefono!)
-                      : Text('Sin Datos'),
+                      ? (provider.telefono.length != 0)
+                          ? Text(provider.telefono[0].numerotelefono!)
+                          : const Text('Sin Datos')
+                      : const Text('Sin Datos'),
                   trailing: const Icon(
                     FontAwesomeIcons.phone,
                     color: Color.fromARGB(255, 36, 91, 189),
