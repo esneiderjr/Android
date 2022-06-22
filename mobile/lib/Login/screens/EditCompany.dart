@@ -1,5 +1,6 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:mobile/appBar/appBar.dart';
 import 'package:mobile/button/Button.dart';
@@ -16,20 +17,44 @@ class _EditCompanyState extends State<EditCompany> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<CompanyProvider>(context);
-    final companys = Provider.of<CompanyProvider>(context).oneCompany;
+    Provider.of<CompanyProvider>(context, listen: false)
+        .getCompanyNet(provider.id!.toString());
+    Provider.of<CompanyProvider>(context, listen: false)
+        .getCompanytel(provider.id!.toString());
+    Provider.of<CompanyProvider>(context, listen: false)
+        .getCompanytel(provider.id.toString());
     LocalStorage storage = LocalStorage('userLogged');
     var userData = storage.getItem('user_data');
     var result;
 
     TextEditingController nameComController = TextEditingController();
     TextEditingController nitComController = TextEditingController();
-    TextEditingController docComController = TextEditingController();
+    TextEditingController phoneController = TextEditingController();
+    TextEditingController instagramComController = TextEditingController();
+    TextEditingController facebookComController = TextEditingController();
 
-    
-    Map<String, String> parametros = {
-      'nombre': nameComController.text,
-      'nit': nitComController.text,
-      // 'password_confirmation': password
+    nameComController.text = provider.nombreempresa!;
+    nitComController.text = provider.nitempresa!;
+    phoneController.text = provider.telefono[0].numerotelefono!;
+    instagramComController.text = provider.socialNetworks[1].enlacered!;
+    facebookComController.text = provider.socialNetworks[0].enlacered!;
+
+    String company_name = "";
+    String nit = "";
+    String sm_url_1 = "";
+    String sm_url_2 = "";
+    String cp_1 = "";
+
+    Map<String, dynamic> parametros = {
+      'company_name': company_name,
+      'nit': nit,
+      'sm_2': '2',
+      'sm_url_1': sm_url_1,
+      'sm_url_2': sm_url_2,
+      'cp_length': '1',
+      'cp_1': cp_1,
+      'indicative_cp_1': '+57',
+      'image': result
     };
     return Scaffold(
         appBar: CustomAppBar(),
@@ -42,8 +67,8 @@ class _EditCompanyState extends State<EditCompany> {
                 // titulo
                 Container(
                     margin: const EdgeInsets.only(top: 30, left: 30),
-                    child: Text('Editar compañia',
-                        style: const TextStyle(
+                    child: const Text('Editar compañia',
+                        style: TextStyle(
                           fontSize: 20,
                           fontFamily: 'rlight',
                         ))),
@@ -65,7 +90,7 @@ class _EditCompanyState extends State<EditCompany> {
                       child: Container(
                         padding: const EdgeInsets.all(10),
                         child: Image.network(
-                          userData['user']['avatar'].toString(),
+                          provider.logo.toString(),
                           width: 150,
                           height: 150,
                         ),
@@ -102,22 +127,6 @@ class _EditCompanyState extends State<EditCompany> {
                   ),
                 ),
 
-                // apellido
-                Container(
-                  margin: EdgeInsets.only(top: 10, left: 30),
-                  padding: EdgeInsets.all(10),
-                  child: TextFormField(
-                    controller: nitComController,
-                    keyboardType: TextInputType.name,
-                    textInputAction: TextInputAction.send,
-                    textCapitalization: TextCapitalization.sentences,
-                    decoration: InputDecoration(
-                      hintText: 'Apellido',
-                      labelText: 'Apellido',
-                    ),
-                  ),
-                ),
-
                 // documento
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -126,7 +135,7 @@ class _EditCompanyState extends State<EditCompany> {
                     Container(
                         width: 250,
                         child: TextFormField(
-                          controller: docComController,
+                          controller: nitComController,
                           keyboardType: TextInputType.number,
                           textInputAction: TextInputAction.send,
                           textCapitalization: TextCapitalization.sentences,
@@ -136,6 +145,60 @@ class _EditCompanyState extends State<EditCompany> {
                           ),
                         ))
                   ],
+                ),
+
+                Container(
+                  margin: const EdgeInsets.only(top: 10, left: 25),
+                  padding: const EdgeInsets.all(15),
+                  child: TextFormField(
+                    controller: phoneController,
+                    keyboardType: TextInputType.phone,
+                    textInputAction: TextInputAction.send,
+                    textCapitalization: TextCapitalization.sentences,
+                    decoration: const InputDecoration(
+                      icon: Icon(FontAwesomeIcons.phone),
+                      hintText: 'Celular',
+                      labelText: 'Celular',
+                    ),
+                  ),
+                ),
+                Divider(),
+
+                Container(
+                  margin: const EdgeInsets.only(top: 10, left: 25),
+                  padding: const EdgeInsets.all(15),
+                  child: TextFormField(
+                    controller: instagramComController,
+                    keyboardType: TextInputType.url,
+                    textInputAction: TextInputAction.send,
+                    textCapitalization: TextCapitalization.sentences,
+                    decoration: const InputDecoration(
+                      icon: Icon(
+                        FontAwesomeIcons.instagram,
+                        color: Colors.red,
+                      ),
+                      hintText: 'Celular',
+                      labelText: 'Celular',
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(top: 10, left: 25),
+                  padding: const EdgeInsets.all(15),
+                  child: TextFormField(
+                    controller: facebookComController,
+                    keyboardType: TextInputType.url,
+                    textInputAction: TextInputAction.send,
+                    textCapitalization: TextCapitalization.sentences,
+                    decoration: const InputDecoration(
+                      icon: Icon(
+                        FontAwesomeIcons.facebook,
+                        color: Colors.blue,
+                      ),
+                      hintText: 'Celular',
+                      labelText: 'Celular',
+                    ),
+                  ),
                 ),
                 Divider(),
                 // boton actualizar
@@ -153,6 +216,13 @@ class _EditCompanyState extends State<EditCompany> {
                                         MaterialStateProperty.all<Color>(
                                             Color.fromARGB(255, 36, 91, 189))),
                                 onPressed: () {
+                                  setState(() {
+                                    company_name = nameComController.text;
+                                    nit = nitComController.text;
+                                    sm_url_1 = instagramComController.text;
+                                    sm_url_2 = facebookComController.text;
+                                    cp_1 = phoneController.text;
+                                  });
                                   provider.updateCompany(parametros, context);
                                 },
                                 child: Row(

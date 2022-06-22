@@ -21,7 +21,7 @@ class OneCompani {
   String? fechacreacion;
   String? fechamodificacion;
   String? redessociales;
-  String? telefonos;
+  // String? telefonos;
 
   OneCompani({
     this.id,
