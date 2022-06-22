@@ -7,13 +7,13 @@ import 'package:mobile/button/Button.dart';
 import 'package:mobile/providers/companyProvider.dart';
 import 'package:provider/provider.dart';
 
-class EditCompany extends StatefulWidget {
-  EditCompany({Key? key}) : super(key: key);
+class AddCompany extends StatefulWidget {
+  AddCompany({Key? key}) : super(key: key);
   @override
-  State<EditCompany> createState() => _EditCompanyState();
+  State<AddCompany> createState() => _AddCompanyState();
 }
 
-class _EditCompanyState extends State<EditCompany> {
+class _AddCompanyState extends State<AddCompany> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<CompanyProvider>(context);

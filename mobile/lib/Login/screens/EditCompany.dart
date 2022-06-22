@@ -69,7 +69,7 @@ class _EditCompanyState extends State<EditCompany> {
       'sm_url_2': sm_url_2,
       'cp_length': '1',
       'cp_1': cp_1,
-      'indicative_cp_1': '+57',
+      'indicative_cp_1': '57',
       'image': result
     };
     return Scaffold(
