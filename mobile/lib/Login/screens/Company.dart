@@ -136,7 +136,11 @@ class _CompanyState extends State<Company> {
     return Card(
         shadowColor: Color.fromARGB(255, 36, 91, 189),
         elevation: 25,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+              topRight: Radius.circular(40),
+              bottomLeft: Radius.circular(40),
+            )),
         // margin: const EdgeInsets.only(left: 20, right: 20, top: 260),
         child: Padding(
             padding: const EdgeInsets.all(7),
