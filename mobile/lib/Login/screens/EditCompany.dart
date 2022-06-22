@@ -26,18 +26,34 @@ class _EditCompanyState extends State<EditCompany> {
     LocalStorage storage = LocalStorage('userLogged');
     var userData = storage.getItem('user_data');
     var result;
+    String phone;
+    String insta;
+    String face;
 
     TextEditingController nameComController = TextEditingController();
     TextEditingController nitComController = TextEditingController();
     TextEditingController phoneController = TextEditingController();
     TextEditingController instagramComController = TextEditingController();
     TextEditingController facebookComController = TextEditingController();
+    if (provider.isTelefono && provider.telefono[0].numerotelefono != null) {
+      phone = provider.telefono[0].numerotelefono!;
+    } else {
+      phone = 'en espera de la api';
+    }
+
+    if (provider.isRed) {
+      insta = provider.socialNetworks[1].enlacered!;
+      face = provider.socialNetworks[0].enlacered!;
+    } else {
+      insta = 'en espera de la api';
+      face = 'en espera de la api';
+    }
 
     nameComController.text = provider.nombreempresa!;
     nitComController.text = provider.nitempresa!;
-    phoneController.text = provider.telefono[0].numerotelefono!;
-    instagramComController.text = provider.socialNetworks[1].enlacered!;
-    facebookComController.text = provider.socialNetworks[0].enlacered!;
+    phoneController.text = phone;
+    instagramComController.text = insta;
+    facebookComController.text = face;
 
     String company_name = "";
     String nit = "";
@@ -177,8 +193,8 @@ class _EditCompanyState extends State<EditCompany> {
                         FontAwesomeIcons.instagram,
                         color: Colors.red,
                       ),
-                      hintText: 'Celular',
-                      labelText: 'Celular',
+                      hintText: 'Instagram',
+                      labelText: 'Instagram',
                     ),
                   ),
                 ),
@@ -195,8 +211,8 @@ class _EditCompanyState extends State<EditCompany> {
                         FontAwesomeIcons.facebook,
                         color: Colors.blue,
                       ),
-                      hintText: 'Celular',
-                      labelText: 'Celular',
+                      hintText: 'Facebook',
+                      labelText: 'Faebook',
                     ),
                   ),
                 ),
@@ -221,7 +237,7 @@ class _EditCompanyState extends State<EditCompany> {
                                     nit = nitComController.text;
                                     sm_url_1 = instagramComController.text;
                                     sm_url_2 = facebookComController.text;
-                                    cp_1 = phoneController.text;
+                                    sm_url_1 = phoneController.text;
                                   });
                                   provider.updateCompany(parametros, context);
                                 },

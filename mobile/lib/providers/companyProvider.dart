@@ -170,4 +170,44 @@ class CompanyProvider extends ChangeNotifier {
           });
     }
   }
+
+  newCompany(parametros, context) async {
+    final LocalStorage storage = LocalStorage('userLogged');
+    String url = '/company';
+    // conexion a all api contando los documentos
+    final resp = await AllApi.httpPost(url, parametros);
+    final bodyResponse = jsonDecode(resp.body);
+    String message = "";
+
+    if (resp.statusCode == 200) {
+      print('ok');
+    } else if (resp.statusCode == 400) {
+      // castea los mensajes de errores y los pone en un show dialog
+      if (bodyResponse['message'] is List<dynamic>) {
+        for (var m in bodyResponse['message']) {
+          message += m + "\n";
+        }
+      } else {
+        message = bodyResponse['message'];
+      }
+      AlertDialog alert = AlertDialog(
+        // backgroundColor: Colors.white.withOpacity(0.7),
+        title: const Text('error'),
+        content: Text(message),
+        actions: <Widget>[
+          TextButton(
+            child: const Text('OK'),
+            onPressed: () {
+              Navigator.pop(context, 'OK');
+            },
+          ),
+        ],
+      );
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return alert;
+          });
+    }
+  }
 }
