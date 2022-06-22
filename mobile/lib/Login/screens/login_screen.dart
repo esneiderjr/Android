@@ -184,29 +184,35 @@ class _LoginForm extends State<LoginForm> {
                     ),
                     onPressed: () {
                       // llama al provider para conectarlo con la api
-                      provider.getUsuario(
-                          loginform.email, loginform.password, context);
+                      // provider.getUsuario(
+                      //     loginform.email, loginform.password, context);
                       // todo login form
                       String sinspa = loginform.email.replaceAll(" ", "");
-                      if (!loginform.isValidForm()) return;
+                      if(loginform.isValidForm()) {
+                        provider.signin({
+                          "email": loginform.email,
+                          "password": loginform.password,
+                          "password_confirmation": loginform.password
+                        }, context);
+                      }
                     }),
                 duration: Duration(seconds: 3)),
             SizedBox(height: 10),
-            FlipInX(
-                child: MaterialButton(
-                    child: Container(
-                      child: Text("¿Ha olvidado su contraseña?",
-                          style: Theme.of(context).textTheme.bodyText1),
-                    ),
-                    onPressed: () {
-                      //todo login form
-                      if (!loginform.isValidForm()) return;
+            // FlipInX(
+            //     child: MaterialButton(
+            //         child: Container(
+            //           child: Text("¿Ha olvidado su contraseña?",
+            //               style: Theme.of(context).textTheme.bodyText1),
+            //         ),
+            //         onPressed: () {
+            //           //todo login form
+            //           if (!loginform.isValidForm()) return;
 
-                      Navigator.pushReplacementNamed(
-                          context, "Recuperar Contraseña");
-                    }),
-                duration: Duration(seconds: 6)),
-            SizedBox(height: 30),
+            //           Navigator.pushReplacementNamed(
+            //               context, "Recuperar Contraseña");
+            //         }),
+            //     duration: Duration(seconds: 6)),
+            // SizedBox(height: 30),
           ],
         ),
       ),

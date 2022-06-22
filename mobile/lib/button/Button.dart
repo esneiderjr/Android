@@ -10,28 +10,19 @@ import '../Login/screens/Company.dart';
 import '../Login/screens/Statistics.dart';
 import '../providers/loginProvider.dart';
 
-class ButtonDesp extends StatelessWidget {
+  class ButtonDesp extends StatelessWidget {
   const ButtonDesp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    LocalStorage storage = LocalStorage('userLogged');
-    final provider = Provider.of<LogoutProvider>(context, listen: false);
+    LocalStorage storage = LocalStorage("session");
+    var userData = storage.getItem("user_logged");
+    final provider = Provider.of<LoginProvider>(context, listen: false);
     return SpeedDial(
       activeBackgroundColor: Colors.grey,
       backgroundColor: Color.fromARGB(255, 36, 91, 189),
       animatedIcon: AnimatedIcons.menu_close,
       children: [
-        SpeedDialChild(
-            backgroundColor: Color.fromARGB(255, 36, 91, 189),
-            child: Icon(
-              Icons.insights,
-              color: Colors.white,
-            ),
-            onTap: () => {
-                  // Navigator.push(context,
-                  //     MaterialPageRoute(builder: (context) => Statistics()))
-                }),
         SpeedDialChild(
             backgroundColor: Color.fromARGB(255, 36, 91, 189),
             child: const Icon(
@@ -64,14 +55,8 @@ class ButtonDesp extends StatelessWidget {
             child: Icon(FontAwesomeIcons.arrowRightFromBracket,
                 color: Colors.white),
             onTap: () => {
-                  provider.logout(),
-                  storage.deleteItem('user_data'),
-                  Navigator.pushNamedAndRemoveUntil(
-                    context,
-                    'login',
-                    (route) => false,
-                  )
-                })
+              provider.logout(userData['token'], context, true),
+            })
       ],
     );
   }

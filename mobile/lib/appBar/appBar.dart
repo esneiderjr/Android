@@ -4,6 +4,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:mobile/Login/screens/Profile.dart';
+import 'package:mobile/models/LoginModel.dart';
 import 'package:provider/provider.dart';
 import '../providers/loginProvider.dart';
 
@@ -22,11 +23,17 @@ class CustomAppBar extends StatefulWidget with PreferredSizeWidget {
 class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<LoginProvider>(context);
-    LocalStorage storage = LocalStorage('userLogged');
-    var userData = storage.getItem('user_data');
+    LocalStorage storage = LocalStorage('session');
+    final userStored = storage.getItem('user_logged'); 
+    final userData = User.fromJson(userStored);
+    String username = userData.userData!.username.toString();
+    String avatar = userData.userData!.avatar.toString();
+    String roles = userData.userData!.userRoleInfo!.join(",")
+    .replaceAll("Administrador", "")
+    .replaceAll("de", "");
 
     return AppBar(
+      toolbarHeight: 100,
       automaticallyImplyLeading: false,
       backgroundColor: const Color.fromARGB(250, 252, 255, 253),
       title: Row(
@@ -35,37 +42,38 @@ class _CustomAppBarState extends State<CustomAppBar> {
               child: Image.asset(
             'images/clotthy2.png',
             fit: BoxFit.contain,
-            height: 48,
+            height: 60,
           )),
         ],
       ),
       actions: [
-        Container(
-          child: Column(
-            children: [
-              Divider(
-                height: 10,
-              ),
-              Text(
-                userData['user']['username'].toString(),
-                style:
-                    TextStyle(color: Colors.black, fontFamily: 'SourceSansPro'),
-                textAlign: TextAlign.center,
-              ),
-              Text(
-                userData['user']['user_role_info'][0]['role'].toString(),
-                textAlign: TextAlign.right,
-                style: TextStyle(color: Colors.grey, fontSize: 10),
-              ),
-            ],
-          ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Text(
+              username.isNotEmpty ? username : "Usuario",
+              style:
+                TextStyle(color: Colors.black, fontFamily: 'SourceSansPro'),
+              textAlign: TextAlign.center,
+            ),
+            Text(
+              "Administrador" + roles,
+              textAlign: TextAlign.right,
+              style: TextStyle(color: Colors.grey, fontSize: 11),
+            ),
+          ],
         ),
+        SizedBox(width: 8),
         CircleAvatar(
           child: Image.network(
-            userData['user']['avatar'].toString(),
+            avatar,
             fit: BoxFit.contain,
           ),
+          radius: 25,
+          backgroundColor: Colors.white,
         ),
+        SizedBox(width: 10)
       ],
     );
   }
