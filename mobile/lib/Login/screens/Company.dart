@@ -27,69 +27,8 @@ class _CompanyState extends State<Company> {
     final companys = Provider.of<CompanyProvider>(context).companys;
     final provider = Provider.of<CompanyProvider>(context);
 
-<<<<<<< HEAD
     List<Widget> itemMap =
         companys.map((e) => card(e, provider, context)).toList();
-=======
-    List<Widget> itemMap = companys
-        .map((e) => Card(
-            shadowColor: Color.fromARGB(255, 36, 91, 189),
-            elevation: 25,
-            shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-              topRight: Radius.circular(40),
-              bottomLeft: Radius.circular(40),
-            )),
-            // margin: const EdgeInsets.only(left: 20, right: 20, top: 260),
-            margin: const EdgeInsets.only(bottom: 30),
-            child: Padding(
-                padding: const EdgeInsets.all(7),
-                child:
-                    Column(mainAxisSize: MainAxisSize.max, children: <Widget>[
-                  Text(e.nombreempresa!),
-                  (provider.isTelefono)
-                      ? Text(provider.telefono[0].numerotelefono!)
-                      : Text('Sin Datos'),
-                  Text(e.nitempresa!),
-                  const Divider(
-                    indent: 3.5,
-                  ),
-                  // iconos botones para redireccionar la card
-                  Container(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            setState(() {
-                              infoEmpresa(e, provider);
-                            });
-                          },
-                          icon: const Icon(
-                            FontAwesomeIcons.list,
-                            color: Color.fromARGB(255, 36, 91, 189),
-                          ),
-                        ),
-                        IconButton(
-                          onPressed: () => socialNet(context, e, provider),
-                          icon: Icon(
-                            FontAwesomeIcons.plus,
-                            color: Color.fromARGB(255, 36, 91, 189),
-                          ),
-                        ),
-                        IconButton(
-                            onPressed: () =>
-                                {provider.getCompany(context, e.id)},
-                            icon: Icon(
-                              FontAwesomeIcons.penToSquare,
-                              color: Color.fromARGB(255, 36, 91, 189),
-                            )),
-                      ],
-                    ),
-                  ),
-                ]))))
-        .toList();
->>>>>>> 25bb9870660b586ef4aa2ac0fb44938c3844307f
 
     return SafeArea(
       child: Scaffold(
