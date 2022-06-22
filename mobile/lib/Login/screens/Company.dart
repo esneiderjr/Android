@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mobile/Login/screens/AddCompany.dart';
 import 'package:mobile/appBar/appBar.dart';
 import 'package:mobile/models/medelosCompany.dart';
 import 'package:mobile/providers/companyProvider.dart';
@@ -71,11 +72,11 @@ class _CompanyState extends State<Company> {
                                                       255, 36, 91, 189))),
                                       onPressed: () {
                                         print(provider.telefono);
-                                        // Navigator.push(
-                                        //     context,
-                                        //     MaterialPageRoute(
-                                        //         builder: (context) =>
-                                        //             AddCompany()));
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    AddCompany()));
                                       },
                                       child: Row(
                                           mainAxisAlignment:
