@@ -22,6 +22,8 @@ class _CompanyState extends State<Company> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     final companys = Provider.of<CompanyProvider>(context).companys;
 
     final provider = Provider.of<CompanyProvider>(context);
@@ -30,9 +32,13 @@ class _CompanyState extends State<Company> {
         .map((e) => Card(
             shadowColor: Color.fromARGB(255, 36, 91, 189),
             elevation: 25,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+              topRight: Radius.circular(40),
+              bottomLeft: Radius.circular(40),
+            )),
             // margin: const EdgeInsets.only(left: 20, right: 20, top: 260),
+            margin: const EdgeInsets.only(bottom: 30),
             child: Padding(
                 padding: const EdgeInsets.all(7),
                 child:
@@ -69,9 +75,8 @@ class _CompanyState extends State<Company> {
                           ),
                         ),
                         IconButton(
-                            onPressed: () => {
-                                  provider.getCompany(context, e.id)
-                                },
+                            onPressed: () =>
+                                {provider.getCompany(context, e.id)},
                             icon: Icon(
                               FontAwesomeIcons.penToSquare,
                               color: Color.fromARGB(255, 36, 91, 189),
@@ -87,50 +92,97 @@ class _CompanyState extends State<Company> {
         appBar: CustomAppBar(),
         backgroundColor: const Color.fromARGB(250, 252, 255, 253),
         floatingActionButton: ButtonDesp(),
-        body: ListView(
-          children: [
-            Column(
-              children: [
-                // este es el titulo de la seccion
-                Title(
-                    color: Colors.black,
-                    child: const Text('Empresas',
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                            fontSize: 20, fontStyle: FontStyle.normal))),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Container(
-                    height: 50,
-                    width: 150,
-                    child: Center(
-                      // boton de añadir una empresa
-                      child: ElevatedButton(
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                  Color.fromARGB(255, 36, 91, 189))),
-                          onPressed: () {
-                            // print("pepe");
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: (context) => AddCompany()))
-                            // provider.getCompany(context);
-                          },
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: const [
-                                Text('Agregar'),
-                                Icon(FontAwesomeIcons.squarePlus)
-                              ])),
+        body: companys.isEmpty
+            ? const Loading()
+            : Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20),
+                child: Column(
+                  children: [
+                    Container(
+                      // este es el titulo de la seccion
+                      padding: const EdgeInsets.only(
+                        right: 20,
+                        bottom: 20,
+                        left: 20,
+                      ),
+                      width: double.infinity,
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text('Empresas',
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                    fontSize: 30, fontWeight: FontWeight.w400)),
+                            Align(
+                              alignment: Alignment.bottomRight,
+                              child: Container(
+                                height: 50,
+                                width: 150,
+                                child: Center(
+                                  // boton de añadir una empresa
+                                  child: ElevatedButton(
+                                      style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  Color.fromARGB(
+                                                      255, 36, 91, 189))),
+                                      onPressed: () {
+                                        // print("pepe");
+                                        // Navigator.push(
+                                        //     context,
+                                        //     MaterialPageRoute(
+                                        //         builder: (context) => AddCompany()))
+                                        // provider.getCompany(context);
+                                      },
+                                      child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: const [
+                                            Text('Agregar'),
+                                            Icon(FontAwesomeIcons.squarePlus)
+                                          ])),
+                                ),
+                              ),
+                            ),
+                          ]),
                     ),
-                  ),
-                ),
-              ],
-            ),
-            ...itemMap
-          ],
-        ),
+                    SizedBox(
+                      height: size.height * 0.6,
+                      child: ListView(
+                        padding: const EdgeInsets.all(20),
+                        children: itemMap,
+                      ),
+                    ),
+                    const SizedBox(height: 30),
+                    Container(
+                        width: double.infinity,
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              IconButton(
+                                highlightColor:
+                                    const Color.fromARGB(255, 36, 91, 189),
+                                onPressed: () {},
+                                icon: const Icon(
+                                  FontAwesomeIcons.arrowLeft,
+                                  color: Colors.black,
+                                  size: 30,
+                                ),
+                              ),
+                              const SizedBox(width: 40),
+                              IconButton(
+                                highlightColor:
+                                    const Color.fromARGB(255, 36, 91, 189),
+                                onPressed: () {},
+                                icon: const Icon(
+                                  FontAwesomeIcons.arrowRight,
+                                  color: Colors.black,
+                                  size: 30,
+                                ),
+                              ),
+                            ]))
+                  ],
+                )),
       ),
     );
   }
@@ -252,6 +304,20 @@ class _CompanyState extends State<Company> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class Loading extends StatelessWidget {
+  const Loading({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Align(
+      alignment: Alignment.center,
+      child: Text("Cargando...", style: TextStyle(fontSize: 20)),
     );
   }
 }
