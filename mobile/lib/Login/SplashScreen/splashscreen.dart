@@ -32,12 +32,11 @@ class _SplashScreenState extends State<SplashScreen> {
     _controller.play();
 
     await Future.delayed(const Duration(seconds: 4));
-    if (storage.getItem('user_data') == null) {
-      Navigator.pushNamed(context, 'login');
-    } else {
+    // if (storage.getItem('user_data') == null) {
+    //   Navigator.pushNamed(context, 'login');
+    // } else {
       Navigator.pushNamed(context, 'Company');
     }
-  }
 
   @override
   void dispose() {
