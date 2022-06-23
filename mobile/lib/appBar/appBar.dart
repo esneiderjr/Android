@@ -4,7 +4,6 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:mobile/Login/screens/Profile.dart';
-import 'package:mobile/models/LoginModel.dart';
 import 'package:provider/provider.dart';
 import '../providers/loginProvider.dart';
 
@@ -13,7 +12,7 @@ class CustomAppBar extends StatefulWidget with PreferredSizeWidget {
   final Size preferredSize;
 
   CustomAppBar({Key? key})
-      : preferredSize = const Size.fromHeight(70.0),
+      : preferredSize = const Size.fromHeight(50.0),
         super(key: key);
 
   @override
@@ -23,17 +22,11 @@ class CustomAppBar extends StatefulWidget with PreferredSizeWidget {
 class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
-    LocalStorage storage = LocalStorage('session');
-    final userStored = storage.getItem('user_logged'); 
-    final userData = User.fromJson(userStored);
-    String username = userData.userData!.username.toString();
-    String avatar = userData.userData!.avatar.toString();
-    String roles = userData.userData!.userRoleInfo!.join(",")
-    .replaceAll("Administrador", "")
-    .replaceAll("de", "");
+    final provider = Provider.of<LoginProvider>(context);
+    LocalStorage storage = LocalStorage('userLogged');
+    var userData = storage.getItem('user_data');
 
     return AppBar(
-      toolbarHeight: 100,
       automaticallyImplyLeading: false,
       backgroundColor: const Color.fromARGB(250, 252, 255, 253),
       title: Row(
@@ -42,38 +35,37 @@ class _CustomAppBarState extends State<CustomAppBar> {
               child: Image.asset(
             'images/clotthy2.png',
             fit: BoxFit.contain,
-            height: 60,
+            height: 48,
           )),
         ],
       ),
       actions: [
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Text(
-              username.isNotEmpty ? username : "Usuario",
-              style:
-                TextStyle(color: Colors.black, fontFamily: 'SourceSansPro'),
-              textAlign: TextAlign.center,
-            ),
-            Text(
-              "Administrador" + roles,
-              textAlign: TextAlign.right,
-              style: TextStyle(color: Colors.grey, fontSize: 11),
-            ),
-          ],
+        Container(
+          child: Column(
+            children: [
+              Divider(
+                height: 10,
+              ),
+              Text(
+                userData['user']['username'].toString(),
+                style:
+                    TextStyle(color: Colors.black, fontFamily: 'SourceSansPro'),
+                textAlign: TextAlign.center,
+              ),
+              Text(
+                userData['user']['user_role_info'][0]['role'].toString(),
+                textAlign: TextAlign.right,
+                style: TextStyle(color: Colors.grey, fontSize: 10),
+              ),
+            ],
+          ),
         ),
-        SizedBox(width: 8),
         CircleAvatar(
           child: Image.network(
-            avatar,
+            userData['user']['avatar'].toString(),
             fit: BoxFit.contain,
           ),
-          radius: 25,
-          backgroundColor: Colors.white,
         ),
-        SizedBox(width: 10)
       ],
     );
   }
