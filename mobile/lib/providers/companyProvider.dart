@@ -89,15 +89,16 @@ class CompanyProvider extends ChangeNotifier {
     final bodyResponse = jsonDecode(resp.body);
 
     // print('**************  ' + bodyResponse.toString());
-    try{
-    final SocialNetworks socialNetworks =
-        SocialNetworks.fromlist(bodyResponse['data']['redessociales']);
+    try {
+      final SocialNetworks socialNetworks =
+          SocialNetworks.fromlist(bodyResponse['data']['redessociales']);
 
-    this.socialNetworks = socialNetworks.dato;
-    print(socialNetworks.dato);
-    if (socialNetworks.dato != "") {
-      isRed = true;
-    }} finally{
+      this.socialNetworks = socialNetworks.dato;
+      print(socialNetworks.dato);
+      if (socialNetworks.dato != "") {
+        isRed = true;
+      }
+    } finally {
       print('error en redes');
     }
     // // print(socialNetworks.dato);
@@ -116,13 +117,8 @@ class CompanyProvider extends ChangeNotifier {
     final bodyResponse = jsonDecode(resp.body);
     print('**************  ' + bodyResponse['data'].toString());
     print(bodyResponse['data'].runtimeType);
-    // final OneCompany oneCompany = OneCompany.fromlist(bodyResponse['data']);
-    // this.oneCompany = oneCompany.dato;
-    // print(oneCompany.dato);
-    // if (oneCompany.dato != "") {
-    //   isCompany = true;
-    // }
-    Navigator.pushReplacementNamed(context, "EditCompany");
+
+    Navigator.pushNamed(context, "EditCompany");
 
     this.id = bodyResponse['data']['id'];
     this.idciudad = bodyResponse['data']['idciudad'];
