@@ -134,7 +134,7 @@ class _EditCompanyState extends State<EditCompany> {
                   child: TextFormField(
                     controller: nameComController,
                     keyboardType: TextInputType.name,
-                    textInputAction: TextInputAction.send,
+                    // textInputAction: TextInputAction.send,
                     textCapitalization: TextCapitalization.sentences,
                     decoration: const InputDecoration(
                       hintText: 'Razon Social',
