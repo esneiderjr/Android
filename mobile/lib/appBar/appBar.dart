@@ -1,9 +1,6 @@
-import 'dart:ui';
-
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
-import 'package:mobile/Login/screens/Profile.dart';
 import 'package:provider/provider.dart';
 import '../providers/loginProvider.dart';
 
@@ -43,9 +40,6 @@ class _CustomAppBarState extends State<CustomAppBar> {
         Container(
           child: Column(
             children: [
-              Divider(
-                height: 10,
-              ),
               Text(
                 userData['user']['username'].toString(),
                 style:
@@ -57,6 +51,15 @@ class _CustomAppBarState extends State<CustomAppBar> {
                 textAlign: TextAlign.right,
                 style: TextStyle(color: Colors.grey, fontSize: 10),
               ),
+              (userData['user']['user_role_info'][1]['role'] == null)
+                  ? Divider(
+                      height: 10,
+                    )
+                  : Text(
+                      userData['user']['user_role_info'][1]['role'],
+                      textAlign: TextAlign.right,
+                      style: TextStyle(color: Colors.grey, fontSize: 10),
+                    ),
             ],
           ),
         ),
