@@ -1,15 +1,10 @@
-// Flutter
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile/Login/ui/input_decorations.dart';
+import 'package:mobile/login/widgets/widgets.dart';
+import 'package:mobile/providers/loginProvider.dart';
+import 'package:mobile/providers/login_form_provider.dart';
 import "package:provider/provider.dart";
-
-import '../../providers/LoginProvider.dart';
-import '../../providers/login_form_provider.dart';
-import '../UI/input_decorations.dart';
-import '../widgets/auth_background.dart';
-import '../widgets/card_container.dart';
-
-// Components
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -21,7 +16,7 @@ class LoginScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              FadeIn(child: _HeaderImage(), duration: Duration(seconds: 3)),
+              Spin(child: _HeaderImage(), duration: Duration(seconds: 1)),
               SizedBox(height: 20),
               BounceInUp(
                   child: CardContainer(
@@ -60,11 +55,10 @@ class _HeaderImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return SafeArea(
       child: Container(
         width: double.infinity,
-        margin: EdgeInsets.only(top: size.height * 0.1),
+        margin: EdgeInsets.only(top: 15),
         child: Image.asset(
           'images/clotthy.png',
           height: 135,
@@ -91,6 +85,7 @@ class _LoginForm extends State<LoginForm> {
         //TODO: Mantener La referencia al key
         key: loginform.formKey,
         autovalidateMode: AutovalidateMode.onUserInteraction,
+
         child: Column(
           children: [
             ElasticInLeft(
@@ -103,6 +98,15 @@ class _LoginForm extends State<LoginForm> {
                     prefixIcon: Icons.alternate_email_rounded,
                   ),
                   onChanged: (correo) => loginform.email = correo,
+                  // validator: (correo) {
+                  //   String pattern =
+                  //       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+                  //   RegExp regExp = new RegExp(pattern);
+
+                  //   return regExp.hasMatch(correo ?? "")
+                  //       ? null
+                  //       : "El correo esta mal escrito o tiene un espacio de mas";
+                  // },
                   validator: (correo) {
                     // cuando esta vacio
                     if (correo == null || correo.isEmpty) {
@@ -179,17 +183,29 @@ class _LoginForm extends State<LoginForm> {
                       ),
                     ),
                     onPressed: () {
+                      // llama al provider para conectarlo con la api
+                      provider.getUsuario(
+                          loginform.email, loginform.password, context);
                       // todo login form
                       String sinspa = loginform.email.replaceAll(" ", "");
-                      if(loginform.isValidForm()) {
-                        provider.signin({
-                          "email": loginform.email,
-                          "password": loginform.password,
-                          "password_confirmation": loginform.password
-                        }, context);
-                      }
+                      if (!loginform.isValidForm()) return;
                     }),
                 duration: Duration(seconds: 3)),
+            SizedBox(height: 10),
+            FlipInX(
+                child: MaterialButton(
+                    child: Container(
+                      child: Text("¿Ha olvidado su contraseña?",
+                          style: Theme.of(context).textTheme.bodyText1),
+                    ),
+                    onPressed: () {
+                      //todo login form
+                      if (!loginform.isValidForm()) return;
+
+                      Navigator.pushReplacementNamed(
+                          context, "Recuperar Contraseña");
+                    }),
+                duration: Duration(seconds: 6)),
             SizedBox(height: 30),
           ],
         ),
@@ -197,6 +213,5 @@ class _LoginForm extends State<LoginForm> {
     );
   }
 }
-
 // cqsielptduslmple33
 // josedanielmolina323@gmail.com
