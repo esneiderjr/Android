@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
+import 'package:mobile/Login/screens/Profile.dart';
 import 'package:provider/provider.dart';
 import '../providers/loginProvider.dart';
 
@@ -32,7 +33,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
               child: Image.asset(
             'images/clotthy2.png',
             fit: BoxFit.contain,
-            height: 48,
+            height: 55,
           )),
         ],
       ),
@@ -44,11 +45,11 @@ class _CustomAppBarState extends State<CustomAppBar> {
                 userData['user']['username'].toString(),
                 style:
                     TextStyle(color: Colors.black, fontFamily: 'SourceSansPro'),
-                textAlign: TextAlign.center,
+                textAlign: TextAlign.justify,
               ),
               Text(
                 userData['user']['user_role_info'][0]['role'].toString(),
-                textAlign: TextAlign.right,
+                textAlign: TextAlign.justify,
                 style: TextStyle(color: Colors.grey, fontSize: 10),
               ),
               (userData['user']['user_role_info'][1]['role'] == null)

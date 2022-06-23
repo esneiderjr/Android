@@ -15,18 +15,24 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<IdBd>(context);
+    final idb = Provider.of<IdBd>(context);
+    final provider = Provider.of<LoginProvider>(context);
+
     LocalStorage storage = LocalStorage('userLogged');
     var userData = storage.getItem('user_data');
-    var _solicitud = ['Cc', 'Ti', 'Nit'];
-    String _vista = 'Doc';
+    // var _solicitud = ['Cc'];
+    // String _vista = 'Cc';
 
     TextEditingController nameController = TextEditingController();
     TextEditingController lastNameController = TextEditingController();
+    TextEditingController docController = TextEditingController();
+
+    nameController.text = userData['user']['first_name'];
+    lastNameController.text = userData['user']['last_name'];
 
     return Scaffold(
         appBar: CustomAppBar(),
-        floatingActionButton: ButtonDesp(),
+        floatingActionButton: const ButtonDesp(),
         body: ListView(
           children: [
             Column(
@@ -97,108 +103,75 @@ class _ProfileState extends State<Profile> {
                 ),
 
                 // documento
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border.all(color: Colors.grey),
-                          borderRadius: BorderRadius.all(Radius.circular(7))),
-                      width: 80,
-                      height: 40,
-                      child: DropdownButton(
-                        elevation: 80,
-                        underline: Container(),
-                        items: _solicitud.map((String a) {
-                          return DropdownMenuItem(value: a, child: Text(a));
-                        }).toList(),
-                        onChanged: (value) => {
-                          // value = _vista,
-                          // setState(() => {value = _vista})
-                        },
-                        hint: Text(_vista),
-                      ),
-                    ),
-                    Container(
-                      width: 250,
-                      child: TextFormField(
-                        controller: lastNameController,
-                        keyboardType: TextInputType.name,
-                        textInputAction: TextInputAction.send,
-                        textCapitalization: TextCapitalization.sentences,
-                        decoration: InputDecoration(
-                          hintText: 'Numero de doc',
-                          labelText: 'Numero de doc',
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Divider(),
-                // boton actualizar
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Center(
-                        child: Container(
-                          width: 125,
-                          height: 50,
-                          child: Center(
-                            child: ElevatedButton(
-                                style: ButtonStyle(
-                                    backgroundColor:
-                                        MaterialStateProperty.all<Color>(
-                                            Color.fromARGB(255, 36, 91, 189))),
-                                onPressed: () {
-                                  provider.idTipeDoc();
-                                },
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [Text('Actualizar')],
-                                )),
-                          ),
-                        ),
-                      ),
-                    ]),
+                // Row(
+
+                //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                //   children: [
+                //     Container(
+                //       decoration: BoxDecoration(
+                //           color: Colors.white,
+                //           border: Border.all(color: Colors.grey),
+                //           borderRadius: BorderRadius.all(Radius.circular(7))),
+                //       width: 80,
+                //       height: 40,
+                //       child: DropdownButton(
+                //         elevation: 80,
+                //         underline: Container(),
+                //         items: _solicitud.map((String a) {
+                //           return DropdownMenuItem(value: a, child: Text(a));
+                //         }).toList(),
+                //         onChanged: (value) => {
+                //           // value = _vista,
+                //           // setState(() => {value = _vista})
+                //         },
+                //         hint: Text(_vista),
+                //       ),
+                //     ),
+                //     Container(
+                //       width: 250,
+                //       child: TextFormField(
+                //         controller: docController,
+                //         keyboardType: TextInputType.name,
+                //         textInputAction: TextInputAction.send,
+                //         textCapitalization: TextCapitalization.sentences,
+                //         decoration: InputDecoration(
+                //           hintText: 'Numero de doc',
+                //           labelText: 'Numero de doc',
+                //         ),
+                //       ),
+                //     ),
+                //   ],
+                // ),
+                // Divider(),
+                // // boton actualizar
+                // Row(
+                //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                //     children: [
+                //       Center(
+                //         child: Container(
+                //           width: 125,
+                //           height: 50,
+                //           child: Center(
+                //             child: ElevatedButton(
+                //                 style: ButtonStyle(
+                //                     backgroundColor:
+                //                         MaterialStateProperty.all<Color>(
+                //                             Color.fromARGB(255, 36, 91, 189))),
+                //                 onPressed: () {
+                //                   // provider.idTipeDoc();
+                //                 },
+                //                 child: Row(
+                //                   mainAxisAlignment:
+                //                       MainAxisAlignment.spaceEvenly,
+                //                   children: [Text('Actualizar')],
+                //                 )),
+                //           ),
+                //         ),
+                //       ),
+                //     ]),
               ],
             ),
           ],
         ));
   }
 }
-
-// --------------------------esto es para aplicar el documento---------------------------
-
-//  Widget documento(){
-//   var documentos=['CC','CE'];
-//   String vista='CC';
-//  return Row(
-//     children: [
-//      DropdownButton(
-//     items: <String> ['CC','CE']
-//     .map<DropdownMenuItem<String>>((String value){
-//       return DropdownMenuItem<String>(
-//         value: value,
-//         child: Text(value),
-//       );
-//     }).toList(),
-//       value:documentos,
-//       icon:Icon(Icons.arrow_drop_down),
-//       iconSize:15,
-//       elevation: 16,
-//       style: TextStyle(color: Colors.grey),
-//       underline: Container(
-//         height:3,
-//       ),
-//      onChanged: (String value){
-//        setState((){
-//         documentos = value;
-//        }
-
-//        )
-//      });
-//    ],
-//  );
-// }

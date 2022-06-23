@@ -67,6 +67,21 @@ class LoginProvider extends ChangeNotifier {
           builder: (BuildContext context) {
             return alert;
           });
+        
     }
+
+  }
+
+  getUsuarios(id) async{
+      LocalStorage storage = LocalStorage('userLogged');
+    String url = '/person/$id';
+    var userData = storage.getItem('user_data');
+    final token = userData['token'];
+
+    // conexion a all api contando los documentos
+    final resp = await AllApi.httpGet(url, token);
+    final bodyResponse = jsonDecode(resp.body);
+    
+
   }
 }

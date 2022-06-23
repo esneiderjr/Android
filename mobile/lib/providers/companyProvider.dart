@@ -63,15 +63,18 @@ class CompanyProvider extends ChangeNotifier {
     final bodyResponse = jsonDecode(resp.body);
 
     // print(bodyResponse);
-    final Telefonos telefono =
-        Telefonos.fromlist(bodyResponse['data']['telefonos']);
-    this.telefono = telefono.dato;
-    if (telefono.dato[0].id != "") {
-      isTelefono = true;
-    }
+    try {
+      final Telefonos telefono =
+          Telefonos.fromlist(bodyResponse['data']['telefonos']);
+      this.telefono = telefono.dato;
+      if (telefono.dato[0].id != "") {
+        isTelefono = true;
+      }
 
-    notifyListeners();
-    // String message = "";
+      notifyListeners();
+    } finally {
+      print(''); // String message = "";
+    }
   }
 
   getCompanyNet(String id) async {
@@ -85,7 +88,8 @@ class CompanyProvider extends ChangeNotifier {
     final resp = await AllApi.httpGet(url, token);
     final bodyResponse = jsonDecode(resp.body);
 
-    print('**************  ' + bodyResponse.toString());
+    // print('**************  ' + bodyResponse.toString());
+    try{
     final SocialNetworks socialNetworks =
         SocialNetworks.fromlist(bodyResponse['data']['redessociales']);
 
@@ -93,6 +97,8 @@ class CompanyProvider extends ChangeNotifier {
     print(socialNetworks.dato);
     if (socialNetworks.dato != "") {
       isRed = true;
+    }} finally{
+      print('error en redes');
     }
     // // print(socialNetworks.dato);
     // notifyListeners();

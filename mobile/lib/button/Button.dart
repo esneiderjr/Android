@@ -22,16 +22,16 @@ class ButtonDesp extends StatelessWidget {
       backgroundColor: Color.fromARGB(255, 36, 91, 189),
       animatedIcon: AnimatedIcons.menu_close,
       children: [
-        SpeedDialChild(
-            backgroundColor: Color.fromARGB(255, 36, 91, 189),
-            child: Icon(
-              Icons.insights,
-              color: Colors.white,
-            ),
-            onTap: () => {
-                  // Navigator.push(context,
-                  //     MaterialPageRoute(builder: (context) => Statistics()))
-                }),
+        // SpeedDialChild(
+        //     backgroundColor: Color.fromARGB(255, 36, 91, 189),
+        //     child: Icon(
+        //       Icons.insights,
+        //       color: Colors.white,
+        //     ),
+        //     onTap: () => {
+        //           // Navigator.push(context,
+        //           //     MaterialPageRoute(builder: (context) => Statistics()))
+        //         }),
         SpeedDialChild(
             backgroundColor: Color.fromARGB(255, 36, 91, 189),
             child: const Icon(

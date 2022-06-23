@@ -147,13 +147,39 @@ class _CompanyState extends State<Company> {
         child: Padding(
             padding: const EdgeInsets.all(7),
             child: Column(mainAxisSize: MainAxisSize.max, children: <Widget>[
-              Text(e.nombreempresa!),
-              (provider.isTelefono)
-                  ? (provider.telefono[0].numerotelefono != null)
-                      ? Text(provider.telefono[0].numerotelefono!)
-                      : const Text('Sin Datos')
-                  : const Text('Sin Datos'),
-              Text(e.nitempresa!),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(
+                      child: Icon(FontAwesomeIcons.building,
+                          color: Color.fromARGB(255, 36, 91, 189))),
+                  Center(child: Text(e.nombreempresa!)),
+                ],
+              ),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(FontAwesomeIcons.phone,
+                      color: Color.fromARGB(255, 36, 91, 189)),
+                  (provider.isTelefono)
+                      ? (provider.telefono[0].numerotelefono != null)
+                          ? Text(provider.telefono[0].numerotelefono!)
+                          : const Text('Sin Datos')
+                      : const Text('Sin Datos'),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'NIT:',
+                    style: TextStyle(color: Color.fromARGB(255, 36, 91, 189)),
+                  ),
+                  Text(e.nitempresa!),
+                ],
+              ),
+
               const Divider(
                 indent: 3.5,
               ),
