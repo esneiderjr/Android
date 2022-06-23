@@ -181,13 +181,7 @@ class _LoginForm extends State<LoginForm> {
                     onPressed: () {
                       // todo login form
                       String sinspa = loginform.email.replaceAll(" ", "");
-                      if(loginform.isValidForm()) {
-                        provider.signin({
-                          "email": loginform.email,
-                          "password": loginform.password,
-                          "password_confirmation": loginform.password
-                        }, context);
-                      }
+                      if (loginform.isValidForm()) ;
                     }),
                 duration: Duration(seconds: 3)),
             SizedBox(height: 30),
