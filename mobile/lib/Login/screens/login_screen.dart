@@ -182,7 +182,7 @@ class _LoginForm extends State<LoginForm> {
                       // todo login form
                       String sinspa = loginform.email.replaceAll(" ", "");
                       if(loginform.isValidForm()) {
-                        provider.signin({
+                        provider.({
                           "email": loginform.email,
                           "password": loginform.password,
                           "password_confirmation": loginform.password
